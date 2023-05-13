@@ -3,6 +3,8 @@
 
 # fyde-grub2
 It is used to boot fydeOS, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
+#### File Tree
+<img src="README/fydeos-grub2.png">
 
 ## 💻️Preview👀
 
@@ -13,10 +15,8 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 </details>
 
 ## 🧭Guide⬇️
-
 ### Copy in ESP
 - Copy the folder `zip: ESP/EFI/fyde` into `ESP: \EFI`;
-
 
 ### Copy in ext4
 - Copy the folder `zip: ext4/boot/grub` into `FYDEOS-DUAL-BOOT: /boot`;
