@@ -4,7 +4,7 @@
 # fyde-grub2
 It is used to boot fydeOS, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
 #### File Tree
-<img src="README/fydeos-grub2.png">
+<img src="README/fyde-grub2.png">
 
 ## 💻️Preview👀
 
