@@ -17,7 +17,7 @@ font = "Ubuntu Mono Bold 28"
 text_color = "#000000"
 fg_color = "#8cfffb"
 bg_color = "#ffffff"
-border_color = "#ffffff"
+border_color = "#c4d7f8"
 text = "@TIMEOUT_NOTIFICATION_LONG@"
 }
 
