@@ -11,7 +11,8 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 <details>
 <summary>🖱️Click to Unfold to see🖱️</summary>
 
-![image](https://github.com/M-L-P/fyde-grub2/assets/69227436/0d8da192-9718-4d29-b40a-edd2c00530f3)
+![image](https://github.com/M-L-P/fyde-grub2/assets/69227436/df5ca51a-b5b8-4489-b66b-6dd288b1c8df)<br/>
+![image](https://github.com/M-L-P/fyde-grub2/assets/69227436/d7eec819-cee3-4c15-85d5-fd0aaacacef4)
 </details>
 
 ## 🧭Guide⬇️
