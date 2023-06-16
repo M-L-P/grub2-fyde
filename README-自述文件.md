@@ -27,6 +27,15 @@
 
 ### 复制到 ext4
 - 复制文件夹 `zip: ext4/boot/grub` 到 `FYDEOS-DUAL-BOOT: /boot`；
+你可以在 fydeOS 上使用 crosh shell。
+`Ctrl` + `Alt` + `t`
+`shell`
+```
+sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes
+cd ~/Downloads/ext4
+sudo cp -f -r boot /media/removable/FYDEOS-DUAL-BOOT
+sudo reboot
+```
 
 ## 📝FAQ❓️
 ### 安全启动

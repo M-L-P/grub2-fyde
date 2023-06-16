@@ -21,11 +21,21 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 </details>
 
 ## 🧭Guide⬇️
+
 ### Copy in ESP
 - Copy the folder `zip: ESP/EFI/fyde` into `ESP: \EFI`;
 
 ### Copy in ext4
 - Copy the folder `zip: ext4/boot/grub` into `FYDEOS-DUAL-BOOT: /boot`;
+You can use crosh shell on fydeOS.
+`Ctrl` + `Alt` + `t`
+`shell`
+```
+sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes
+cd ~/Downloads/ext4
+sudo cp -f -r boot /media/removable/FYDEOS-DUAL-BOOT
+sudo reboot
+```
 
 ## 📝FAQ❓️
 ### Secure Boot
