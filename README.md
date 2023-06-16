@@ -27,14 +27,14 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 
 ### Copy in ext4
 - Copy the folder `zip: ext4/boot/grub` into `FYDEOS-DUAL-BOOT: /boot`;
-You can use crosh shell on fydeOS.
-`Ctrl` + `Alt` + `t`
-`shell`
+You can use crosh shell on fydeOS.<br/>
+`Ctrl` + `Alt` + `t`<br/>
+`shell`<br/>
 ```
-sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes
-cd ~/Downloads/ext4
-sudo cp -f -r boot /media/removable/FYDEOS-DUAL-BOOT
-sudo reboot
+sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes	#Delete old files of the theme
+cd ~/Downloads/ext4/boot										#Enter the folder named boot
+sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot		#Copy the folder named grub into `FYDEOS-DUAL-BOOT: /boot`
+sudo reboot														#reboot
 ```
 
 ## 📝FAQ❓️

@@ -28,13 +28,13 @@
 ### 復製到 ext4
 - 復製文件夾 `zip: ext4/boot/grub` 到 `FYDEOS-DUAL-BOOT: /boot`；
 你可以在 fydeOS 上使用 crosh shell。
-`Ctrl` + `Alt` + `t`
-`shell`
+`Ctrl` + `Alt` + `t`<br/>
+`shell`<br/>
 ```
-sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes
-cd ~/Downloads/ext4
-sudo cp -f -r boot /media/removable/FYDEOS-DUAL-BOOT
-sudo reboot
+sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes	#刪除舊的主題文件
+cd ~/Downloads/ext4/boot										#定位文件夾 boot
+sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot		#復製文件夾 grub 到 `FYDEOS-DUAL-BOOT: /boot`
+sudo reboot														#重啟
 ```
 
 ## 📝FAQ❓️
