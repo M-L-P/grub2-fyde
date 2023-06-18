@@ -1,16 +1,22 @@
+<div align="center">
+
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/M-L-P/grub2-fyde)](https://github.com/M-L-P/grub2-fyde/releases/latest)
 [![GitHub all releases](https://img.shields.io/github/downloads/M-L-P/grub2-fyde/total)](https://github.com/M-L-P/grub2-fyde/releases)
 [![GitHub Discussions](https://img.shields.io/github/discussions/M-L-P/grub2-fyde)](https://github.com/M-L-P/grub2-fyde/discussions)
 ![GitHub Repo stars](https://img.shields.io/github/stars/M-L-P/grub2-fyde?style=social)
 
+</div>
+
 [English](README.md)|[简体中文](README-自述文件.md)|[繁體中文](README-繁體中文.md)|...
 --|--|--|--
 
-# fyde-grub2
+<h1 align="center">fyde-grub2</h1>
+
 這個是用來啟動 fydeOS 的，添加了改編自 [brunch](https://github.com/sebanc/brunch) 的 grub 主題。
 #### 文件結構樹狀圖
 <img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/fyde-grub2.png">
 
+-----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️預覽👀
 
 <details>
