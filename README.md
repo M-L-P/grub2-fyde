@@ -32,9 +32,9 @@ You can use crosh shell on fydeOS.<br/>
 `shell`<br/>
 ```
 sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes	#Delete old files of the theme
-cd ~/Downloads/ext4/boot										#Enter the folder named boot
-sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot		#Copy the folder named grub into `FYDEOS-DUAL-BOOT: /boot`
-sudo reboot														#reboot
+cd ~/Downloads/ext4/boot				  	#Enter the folder named boot
+sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot       #Copy the folder named grub into `FYDEOS-DUAL-BOOT: /boot`
+sudo reboot							#reboot
 ```
 
 ## 📝FAQ❓️

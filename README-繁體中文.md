@@ -32,9 +32,9 @@
 `shell`<br/>
 ```
 sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes	#刪除舊的主題文件
-cd ~/Downloads/ext4/boot										#定位文件夾 boot
-sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot		#復製文件夾 grub 到 `FYDEOS-DUAL-BOOT: /boot`
-sudo reboot														#重啟
+cd ~/Downloads/ext4/boot                                        #定位文件夾 boot
+sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot       #復製文件夾 grub 到 `FYDEOS-DUAL-BOOT: /boot`
+sudo reboot                                                     #重啟
 ```
 
 ## 📝FAQ❓️
