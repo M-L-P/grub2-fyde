@@ -1,7 +1,7 @@
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/M-L-P/fyde-grub2)](https://github.com/M-L-P/fyde-grub2/releases/latest)
-[![GitHub all releases](https://img.shields.io/github/downloads/M-L-P/fyde-grub2/total)](https://github.com/M-L-P/fyde-grub2/releases)
-[![GitHub Discussions](https://img.shields.io/github/discussions/M-L-P/fyde-grub2)](https://github.com/M-L-P/fyde-grub2/discussions)
-![GitHub Repo stars](https://img.shields.io/github/stars/M-L-P/fyde-grub2?style=social)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/M-L-P/grub2-fyde)](https://github.com/M-L-P/grub2-fyde/releases/latest)
+[![GitHub all releases](https://img.shields.io/github/downloads/M-L-P/grub2-fyde/total)](https://github.com/M-L-P/grub2-fyde/releases)
+[![GitHub Discussions](https://img.shields.io/github/discussions/M-L-P/grub2-fyde)](https://github.com/M-L-P/grub2-fyde/discussions)
+![GitHub Repo stars](https://img.shields.io/github/stars/M-L-P/grub2-fyde?style=social)
 
 [English](README.md)|[简体中文](README-自述文件.md)|[繁體中文](README-繁體中文.md)|...
 --|--|--|--
