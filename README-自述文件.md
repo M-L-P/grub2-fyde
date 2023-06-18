@@ -10,11 +10,11 @@
 [English](README.md)|[简体中文](README-自述文件.md)|[繁體中文](README-繁體中文.md)|...
 --|--|--|--
 
-<h1 align="center">fyde-grub2</h1>
+<h1 align="center">grub2-fyde</h1>
 
 这个是用来启动 fydeOS 的，添加了改编自 [brunch](https://github.com/sebanc/brunch) 的 grub 主题。
 #### 文件结构树状图
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/fyde-grub2.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde.png">
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️预览👀
