@@ -10,7 +10,7 @@ terminal-font: "Ubuntu Mono Bold 28"
 + progress_bar {
 id = "__timeout__"
 left = 5%
-top = 85%
+top = 90%
 height = 20
 width = 80%
 font = "Ubuntu Mono Bold 28"
@@ -23,7 +23,7 @@ text = "@TIMEOUT_NOTIFICATION_LONG@"
 
 + boot_menu {
 left = 0
-width = 500
+width = 700
 top = 0%
 height = 100%
 
@@ -31,7 +31,7 @@ menu_pixmap_style = "boot_menu_*.png"
 
 item_font = "Ubuntu Mono Bold 28"
 item_color = "#eff0f1"
-item_height = 140
+item_height = 120
 item_icon_space = 40
 item_padding = 0
 item_spacing = 0
