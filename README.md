@@ -14,7 +14,7 @@
 
 It is used to boot fydeOS, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
 #### File Tree
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️Preview👀
@@ -22,26 +22,14 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 <details>
 <summary>🖱️Click to Unfold to see🖱️</summary>
 
-![image](https://github.com/M-L-P/fyde-grub2/assets/69227436/c114e5bf-433c-4c11-8147-9630bb3cf5d6)<br/>
-![image](https://github.com/M-L-P/fyde-grub2/assets/69227436/acaad98a-167b-4252-9279-004287719e56)
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png"><br/>
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light.png">
 </details>
 
 ## 🧭Guide⬇️
 
 ### Copy in ESP
 - Copy the folder `zip: ESP/EFI/fyde` into `ESP: \EFI`;
-
-### Copy in ext4
-- Copy the folder `zip: ext4/boot/grub` into `FYDEOS-DUAL-BOOT: /boot`;
-You can use crosh shell on fydeOS.<br/>
-`Ctrl` + `Alt` + `t`<br/>
-`shell`<br/>
-```
-sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes	#Delete old files of the theme
-cd ~/Downloads/ext4/boot				  	#Enter the folder named boot
-sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot       #Copy the folder named grub into `FYDEOS-DUAL-BOOT: /boot`
-sudo reboot							#reboot
-```
 
 ## 📝FAQ❓️
 ### Secure Boot

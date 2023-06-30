@@ -14,7 +14,7 @@
 
 这个是用来启动 fydeOS 的，添加了改编自 [brunch](https://github.com/sebanc/brunch) 的 grub 主题。
 #### 文件结构树状图
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️预览👀
@@ -22,26 +22,14 @@
 <details>
 <summary>🖱️点击展开查看🖱️</summary>
 
-![image](https://github.com/M-L-P/fyde-grub2/assets/69227436/c114e5bf-433c-4c11-8147-9630bb3cf5d6)<br/>
-![image](https://github.com/M-L-P/fyde-grub2/assets/69227436/acaad98a-167b-4252-9279-004287719e56)
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png"><br/>
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light.png">
 </details>
 
 ## 🧭指南⬇️
 
 ### 复制到 ESP
 - 复制文件夹 `zip: ESP/EFI/fyde` 到 `ESP: \EFI`；
-
-### 复制到 ext4
-- 复制文件夹 `zip: ext4/boot/grub` 到 `FYDEOS-DUAL-BOOT: /boot`；
-你可以在 fydeOS 上使用 crosh shell。
-`Ctrl` + `Alt` + `t`<br/>
-`shell`<br/>
-```
-sudo rm -rf /media/removable/FYDEOS-DUAL-BOOT/boot/grub/themes	#删除旧的主题文件
-cd ~/Downloads/ext4/boot                                        #定位文件夹 boot
-sudo cp -f -r grub /media/removable/FYDEOS-DUAL-BOOT/boot       #复制文件夹 grub 到 `FYDEOS-DUAL-BOOT: /boot`
-sudo reboot                                                     #重启
-```
 
 ## 📝FAQ❓️
 ### 安全启动

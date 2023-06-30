@@ -1,0 +1,56 @@
+###############################################################################
+#                                [menu.lst]
+#                     Configuration file for menuentries
+###############################################################################
+
+#==============================================================================
+#####----{menuentry}----
+#------------------------------------------------------------------------------
+# NOTE: find rootfs by label (not partion label)
+#------------------------------------------------------------------------------
+menuentry "fydeOS multiboot on ROOT-A" --class "A" {
+	savedefault
+	search --label --set root FYDEOS-DUAL-BOOT
+	set img=/fydeos/fydeos_dual_boot.img
+	loopback loopdev $img
+	linux (loopdev,gpt12)/syslinux/vmlinuz.A init=/sbin/init root=/fydeos/root boot=local rootwait noresume noswap ro loglevel=7 console= i915.modeset=1 cros_efi cros_debug  fydeos_dualboot vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
+	initrd /boot/dual_boot_ramfs.cpio
+}
+#------------------------------------------------------------------------------
+menuentry "fydeOS multiboot on ROOT-B" --class "B" {
+	savedefault
+	search --label --set root FYDEOS-DUAL-BOOT
+	set img=/fydeos/fydeos_dual_boot.img
+	loopback loopdev $img
+	linux (loopdev,gpt12)/syslinux/vmlinuz.B init=/sbin/init root=/fydeos/root boot=local rootwait noresume noswap ro loglevel=7 console= i915.modeset=1 cros_efi cros_debug  fydeos_dualboot vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
+	initrd /boot/dual_boot_ramfs.cpio
+}
+#------------------------------------------------------------------------------
+menuentry "fydeOS Recovery Tools" --class "RE" {
+	search --label --set root FYDEOS-DUAL-BOOT
+	set img=/fydeos/fydeos_dual_boot.img
+	loopback loopdev $img
+	linux /boot/fydeos_vmlinuzB init=/sbin/init root=/fydeos/root boot=local rootwait noresume noswap ro loglevel=7 console= i915.modeset=1 cros_efi cros_debug vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
+	initrd /boot/core_util_ramfs.cpio
+}
+#------------------------------------------------------------------------------
+submenu "Boot with KernelSU" --class "KSU" {
+	menuentry "Kernel-5.4.217" --class "KSU" {
+		savedefault
+		#search --label --set root FYDEOS-DUAL-BOOT
+		#set img=/fydeos/fydeos_dual_boot.img
+		#loopback loopdev $img
+		#linux /boot/vmlinuz-ksu-5.4.217 init=/sbin/init root=/fydeos/root boot=local rootwait noresume noswap ro loglevel=7 console= i915.modeset=1 cros_efi cros_debug  fydeos_dualboot vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
+		#initrd /boot/dual_boot_ramfs.cpio
+		menuentry "Coming Soon or Late!" --class "coming" {echo "Coming Soon or Late!"}
+	}
+	submenu "Kernel-5.10.133" --class "KSU" {
+		#search --label --set root FYDEOS-DUAL-BOOT
+		#set img=/fydeos/fydeos_dual_boot.img
+		#loopback loopdev $img
+		#linux /boot/vmlinuz-ksu--5.10.133 init=/sbin/init root=/fydeos/root boot=local rootwait noresume noswap ro loglevel=7 console= i915.modeset=1 cros_efi cros_debug  fydeos_dualboot vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
+		#initrd /boot/dual_boot_ramfs.cpio
+		menuentry "Coming Soon or Late!" --class "coming" {echo "Coming Soon or Late!"}
+	}
+}
+#==============================================================================
