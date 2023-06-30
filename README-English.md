@@ -39,7 +39,8 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 - I have adapted `grub.cfg` to make the three menuentries generic so that it can boot no matter which partition is `FYDEOS-DUAL-BOOT`.
 
 ## ⭐Star🌟
-If you like it and are looking forward to the coming update, you can star it.💫
+If you like it and are looking forward to the coming update, you can star it.💫<br/>
+Tell your friends that you have got a good stuff.
 
 ## 🎉Credit🎊
 - Many things are adapted from [Brunch Framework](https://github.com/sebanc/brunch);
