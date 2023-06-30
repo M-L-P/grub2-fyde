@@ -7,7 +7,7 @@
 
 </div>
 
-[English](README.md)|[简体中文](README-自述文件.md)|[繁體中文](README-繁體中文.md)|...
+[简体中文](README.md)|[繁體中文](README-繁體中文.md)|[English](README-English.md)|...
 --|--|--|--
 
 <h1 align="center">grub2-fyde</h1>
