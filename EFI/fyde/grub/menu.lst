@@ -8,7 +8,7 @@
 #------------------------------------------------------------------------------
 # NOTE: find rootfs by label (not partion label)
 #------------------------------------------------------------------------------
-menuentry "fydeOS multiboot on ROOT-A" --class "A" {
+menuentry "fydeOS multiboot on ROOT-A" --class "A" --id "A" {
 	savedefault
 	search --label --set root FYDEOS-DUAL-BOOT
 	set img=/fydeos/fydeos_dual_boot.img
@@ -17,7 +17,7 @@ menuentry "fydeOS multiboot on ROOT-A" --class "A" {
 	initrd /boot/dual_boot_ramfs.cpio
 }
 #------------------------------------------------------------------------------
-menuentry "fydeOS multiboot on ROOT-B" --class "B" {
+menuentry "fydeOS multiboot on ROOT-B" --class "B" --id "B" {
 	savedefault
 	search --label --set root FYDEOS-DUAL-BOOT
 	set img=/fydeos/fydeos_dual_boot.img
@@ -26,7 +26,7 @@ menuentry "fydeOS multiboot on ROOT-B" --class "B" {
 	initrd /boot/dual_boot_ramfs.cpio
 }
 #------------------------------------------------------------------------------
-menuentry "fydeOS Recovery Tools" --class "RE" {
+menuentry "fydeOS Recovery Tools" --class "RE" --id "RE" {
 	search --label --set root FYDEOS-DUAL-BOOT
 	set img=/fydeos/fydeos_dual_boot.img
 	loopback loopdev $img
@@ -34,8 +34,8 @@ menuentry "fydeOS Recovery Tools" --class "RE" {
 	initrd /boot/core_util_ramfs.cpio
 }
 #------------------------------------------------------------------------------
-submenu "Boot with KernelSU" --class "KSU" {
-	menuentry "Kernel-5.4.217" --class "KSU" {
+submenu "Boot with KernelSU" --class "KSU" --id "KSU" {
+	menuentry "Kernel-5.4.217" --class "KSU" --id "5.4" {
 		savedefault
 		#search --label --set root FYDEOS-DUAL-BOOT
 		#set img=/fydeos/fydeos_dual_boot.img
@@ -44,7 +44,7 @@ submenu "Boot with KernelSU" --class "KSU" {
 		#initrd /boot/dual_boot_ramfs.cpio
 		menuentry "Coming Soon or Late!" --class "coming" {echo "Coming Soon or Late!"}
 	}
-	submenu "Kernel-5.10.133" --class "KSU" {
+	submenu "Kernel-5.10.133" --class "KSU" --id "5.10" {
 		#search --label --set root FYDEOS-DUAL-BOOT
 		#set img=/fydeos/fydeos_dual_boot.img
 		#loopback loopdev $img
