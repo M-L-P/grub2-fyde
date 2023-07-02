@@ -22,8 +22,12 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 <details>
 <summary>🖱️Click to Unfold to see🖱️</summary>
 
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png"><br/>
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-1k.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1k-ter.png">
 <img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-ter.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark-1k.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png">
 </details>
 
 ## 🧭Guide⬇️
@@ -45,4 +49,5 @@ Tell your friends that you have got a good stuff.
 ## 🎉Credit🎊
 - Many things are adapted from [Brunch Framework](https://github.com/sebanc/brunch);
 - Secure Boot Certificate comes from [Ventoy](https://github.com/ventoy/Ventoy);
+- Terminal box is adapted from the official theme of [Ventoy](https://github.com/ventoy/Ventoy);
 - ...

@@ -22,8 +22,12 @@
 <details>
 <summary>🖱️點擊展開查看🖱️</summary>
 
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png"><br/>
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-1k.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1k-ter.png">
 <img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-ter.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark-1k.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png">
 </details>
 
 ## 🧭指南⬇️
@@ -45,4 +49,5 @@
 ## 🎉來源🎊
 - 絕大多數改編自 [Brunch Framework](https://github.com/sebanc/brunch);
 - 安全證書來自 [Ventoy](https://github.com/ventoy/Ventoy);
+- Terminal box 來自 [Ventoy](https://github.com/ventoy/Ventoy) 的官方主題；
 - ...
