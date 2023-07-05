@@ -44,6 +44,9 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 - - `grub.cer`(Secure Boot Certificate) is from [Ventoy](https://github.com/ventoy/Ventoy);
 ### Menuentries
 - I have adapted `grub.cfg` to make the three menuentries generic so that it can boot no matter which partition is `FYDEOS-DUAL-BOOT`.
+### Flappy Bird
+[floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2)
+- - need CSM mode enabled, it cannot run on only UEFI;
 
 ## ⭐Star🌟
 If you like it and are looking forward to the coming update, you can star it.💫<br/>
@@ -53,4 +56,5 @@ Tell your friends that you have got a good stuff.
 - Many things are adapted from [Brunch Framework](https://github.com/sebanc/brunch);
 - Secure Boot Certificate comes from [Ventoy](https://github.com/ventoy/Ventoy);
 - Terminal box is adapted from the official theme of [Ventoy](https://github.com/ventoy/Ventoy);
+- [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2);
 - ...

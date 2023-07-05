@@ -44,6 +44,9 @@
 - - `grub.cer`(安全啟動證書) 來自 [Ventoy](https://github.com/ventoy/Ventoy)；
 ### 啟動入口菜單
 - 我已經改編了 `grub.cfg` 使得那三個啟動入口都變成通用的了，所以無論 `FYDEOS-DUAL-BOOT` 是哪個分區都能夠啟動。
+### Flappy Bird
+[floppybird](https://github.com/mikebdp2/floppybird) 來自 [mikebdp2](https://github.com/mikebdp2)
+- - 需要開啟 CSM 模式，純 UEFI 無法運行。
 
 ## ⭐收藏🌟
 如果你喜歡並且期待未來的更新，你可以點亮星星。💫<br/>
@@ -53,4 +56,5 @@
 - 絕大多數改編自 [Brunch Framework](https://github.com/sebanc/brunch);
 - 安全證書來自 [Ventoy](https://github.com/ventoy/Ventoy);
 - Terminal box 來自 [Ventoy](https://github.com/ventoy/Ventoy) 的官方主題；
-- ...
+-[floppybird](https://github.com/mikebdp2/floppybird) 來自 [mikebdp2](https://github.com/mikebdp2)；
+- ……
