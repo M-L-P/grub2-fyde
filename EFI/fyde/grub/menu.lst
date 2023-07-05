@@ -8,7 +8,7 @@
 #------------------------------------------------------------------------------
 # NOTE: find rootfs by label (not partion label)
 #------------------------------------------------------------------------------
-menuentry "fydeOS multiboot A" --class "A" --id "A" {
+menuentry "fydeOS multiboot A" --class "A" --id "A" --hotkey "a" {
 	save_default
 	search --label --set root FYDEOS-DUAL-BOOT
 	set img=/fydeos/fydeos_dual_boot.img
