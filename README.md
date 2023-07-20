@@ -53,8 +53,8 @@
 告诉你的朋友，你得到了个好东西。
 
 ## 🎉来源🎊
-- 绝大多数改编自 [Brunch Framework](https://github.com/sebanc/brunch);
-- 安全证书来自 [Ventoy](https://github.com/ventoy/Ventoy);
+- 绝大多数改编自 [Brunch Framework](https://github.com/sebanc/brunch)；
+- 安全证书来自 [Ventoy](https://github.com/ventoy/Ventoy)；
 - Terminal box 来自 [Ventoy](https://github.com/ventoy/Ventoy) 的官方主题；
 - [floppybird](https://github.com/mikebdp2/floppybird) 来自 [mikebdp2](https://github.com/mikebdp2)；
 - ……
