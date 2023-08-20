@@ -18,15 +18,32 @@
 - 根据日出日落时间，定时切换 亮|暗 主题；
 - 支持鼠标，支持 PS/2 触控板；
 - 支持多语言；
+- 图形界面切换 A|B 槽位；
 - 图形界面设置倒计时的时间；
 - 图形界面切换主题版本；
-#### 全局快捷键
-- 【Delete】 —— 显示隐藏菜单；
-- 【F5】 —— 刷新，重新进入 grub2；
-- 【Ctrl】+【Alt】+【F12】 —— 截屏；（需要固件支持修饰键）
-- 【Xxxxxx】 —— Xxxxxx_XX
+#### 全局按键
+
+按键|功能
+-|-
+【↑】【↓】|导航；
+【Enter】|进入已选择的选项；
+【ESC】|返回上一个菜单列表；（主菜单处退出）
+【Delete】|显示隐藏菜单；
+【F5】|刷新，重新进入 grub2；
+【Ctrl】+【Alt】+【F12】|截屏；（需要固件支持修饰键）
+【Xxxxxx】|Xxxxxx_XX
+
+#### 鼠标映射
+
+操作|功能
+-|-
+上滑|【↑】
+下滑|【↓】
+左键|【Enter】
+右键|【ESC】
+
 #### 文件结构树状图
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.gif">
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️预览👀
@@ -64,8 +81,9 @@
 告诉你的朋友，你得到了个好东西。
 
 ## 🎉来源🎊
-- 绝大多数改编自 [Brunch Framework](https://github.com/sebanc/brunch)；
 - [grub](https://github.com/a1ive/grub) 来自 [a1ive](https://github.com/a1ive)；
+- 排版改编自 [Brunch Framework](https://github.com/sebanc/brunch)；
 - Terminal box 来自 [Ventoy](https://github.com/ventoy/Ventoy) 的官方主题；
+- 许多图标改编自 emoji；
 - [floppybird](https://github.com/mikebdp2/floppybird) 来自 [mikebdp2](https://github.com/mikebdp2)；
 - ……

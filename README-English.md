@@ -13,20 +13,37 @@
 <h1 align="center">grub2-fyde</h1>
 
 It is used to boot fydeOS, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
-#### 特色
+#### Feature
 - Dark mode;
 - Schedule light theme at dawn, and dark theme at dusk;
 - Mouse and PS/2 trackpad;
 - Multiple languages;
+- -Switching A|B slots on the graphical interface;
 - Set the timeout on the graphical interface;
 - Switch theme versions through graphical interface;
-#### 全局快捷键
-- [Delete] — Show hidden menu;
-- [F5] — Refresh and re-enter grub2;
-- [Ctrl]+[Alt]+[F12] — Screenshot; (Requires firmware support for modifier keys)
-- [Xxxxxx] — Xxxxxx_XX
+#### Global keys
+
+Key|Function
+-|-
+[↑] [↓] | Navigation;
+[Enter] | Enter the selected entry;
+[ESC] | Returns to the previous menu list; (Exit from the main menu)
+[Delete] | Show hidden menu;
+[F5] | Refresh and re-enter grub2;
+[Ctrl]+[Alt]+[F12] | Screenshot; (Requires firmware support for modifier keys)
+[Xxxxxx] | Xxxxxx_XX
+
+#### Mouse mapping
+
+Operation | Function
+-|-
+Slide up | [↑]
+Down | [↓]
+Left click | [Enter]
+Right click | [ESC]
+
 #### File Tree
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.gif">
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️Preview👀
@@ -64,8 +81,9 @@ If you like it and are looking forward to the coming update, you can star it.�
 Tell your friends that you have got a good stuff.
 
 ## 🎉Credit🎊
-- Many things are adapted from [Brunch Framework](https://github.com/sebanc/brunch);
 - [grub](https://github.com/a1ive/grub) from [a1ive](https://github.com/a1ive);
+- Type setting is adapted from [Brunch Framework](https://github.com/sebanc/brunch);
 - Terminal box is adapted from the official theme of [Ventoy](https://github.com/ventoy/Ventoy);
+- Many icons are adapted from emoji;
 - [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2);
 - ...
