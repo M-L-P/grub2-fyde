@@ -14,6 +14,8 @@
 
 It is used to boot fydeOS, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
 #### Feature
+- Using patched [grub](https://github.com/a1ive/grub) of [a1ive](https://github.com/a1ive), it totally supports secure boot，
+  - It can load any unsigned kernel, so that fydeOS can be booted with Secure Boot enabled, not disabled anymore;
 - Dark mode;
 - Schedule light theme at dawn, and dark theme at dusk;
 - Mouse and PS/2 trackpad;
@@ -66,8 +68,6 @@ Right click | [ESC]
 
 ## 📝FAQ❓️
 ### Secure Boot
-- Using patched gurb, it fully supports secure boot;
-- It can load any unsigned kernel, so that fydeOS can be booted with Secure Boot enabled , not disabled anymore.
 - You should use [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) (with patch) to load `grub2-fyde.efi` (unsigned).
 
 ### Menuentries

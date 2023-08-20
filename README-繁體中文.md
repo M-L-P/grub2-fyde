@@ -14,6 +14,8 @@
 
 這個是用來啟動 fydeOS 的，添加了改編自 [brunch](https://github.com/sebanc/brunch) 的 grub 主題。
 #### 特色
+- 使用了 [a1ive](https://github.com/a1ive) 的打過補丁的 [grub](https://github.com/a1ive/grub)，全面支持安全啟動，
+  - 可以啟動任意未簽名的內核，以便 fydeOS 在安全啟動模式開啟的情況下啟動，再也不必為了 fydeOS 關閉安全啟動了；
 - 暗黑模式；
 - 根據日出日落時間，定時切換 亮|暗 主題；
 - 支持鼠標，支持 PS/2 觸控板；
@@ -66,8 +68,6 @@
 
 ## 📝FAQ❓️
 ### 安全啟動
-- 使用了打過補丁的 grub2，全面支持安全啟動；
-- 可以啟動任意未簽名的內核，以便 fydeOS 在安全啟動模式開啟的情況下啟動，再也不必為了 fydeOS 關閉安全啟動了；
 - 需要通過 [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) （有補丁）啟動 `grub2-fyde.efi`，因為該文件未簽名；
 
 ### 啟動入口菜單
