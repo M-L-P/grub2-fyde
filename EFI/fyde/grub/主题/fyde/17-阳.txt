@@ -1,0 +1,53 @@
+desktop-image: "壁纸/17-阳.jpg"
+desktop-image-scale-method: "crop"
+desktop-image-h-align: "center"
+title-text: ""
+terminal-box: "终端/终端_*.png"
+terminal-left: "520"
+terminal-top: "15%"
+terminal-width: "480"
+terminal-height: "70%"
+terminal-border: "0"
+terminal-font: "Terminus Regular 12"
+
++ progress_bar {
+	id = "__timeout__"
+	left = 5%
+	top = 90%
+	height = 20
+	width = 90%
+	font = "Microsoft YaHei Regular 24"
+	text_color = "#000000"
+	fg_color = "#8cfffb"
+	bg_color = "#ffffff"
+	border_color = "#c4d7f8"
+	text = "@TIMEOUT_NOTIFICATION_SHORT@"
+}
+
++ boot_menu {
+	left = 0
+	width = 508
+	top = 0%
+	height = 100%
+
+	menu_pixmap_style = "菜单/阳菜单_*.png"
+
+	item_font = "Microsoft YaHei Regular 24"
+	item_color = "#2F4F4F"
+	item_height = 120
+	item_icon_space = 40
+	item_padding = 0
+	item_spacing = 0
+
+	selected_item_font = "Microsoft YaHei Regular 24"
+	selected_item_color= "#141012"
+	selected_item_pixmap_style = "菜单/阳选择_*.png"
+
+	icon_height = 100
+	icon_width = 100
+
+	scrollbar = true
+	scrollbar_width = 4
+	scrollbar_thumb = "滚动条_*.png"
+	scrollbar_right_pad = 2
+}
