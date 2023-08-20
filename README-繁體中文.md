@@ -13,6 +13,18 @@
 <h1 align="center">grub2-fyde</h1>
 
 這個是用來啟動 fydeOS 的，添加了改編自 [brunch](https://github.com/sebanc/brunch) 的 grub 主題。
+#### 特色
+- 暗黑模式；
+- 根據日出日落時間，定時切換 亮|暗 主題；
+- 支持鼠標，支持 PS/2 觸控板；
+- 支持多語言；
+- 圖形界面設置倒計時的時間；
+- 圖形界面切換主題版本；
+#### 全局快捷鍵
+- 【Delete】 —— 顯示隱藏菜單；
+- 【F5】 —— 刷新，重新進入 grub2；
+- 【Ctrl】+【Alt】+【F12】 —— 截屏；（需要固件支持修飾鍵）
+- 【Xxxxxx】 —— Xxxxxx_XX
 #### 文件結構樹狀圖
 <img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
 
@@ -23,14 +35,11 @@
 <summary>🖱️點擊展開查看🖱️</summary>
 
 ### 1024x768
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-1k.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1k-ter.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark-1k.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/繁體中文/繁體中文.png">
 
 ### 1920x1080
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-ter.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/繁體中文/1080p-light.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/繁體中文/1080p-dark.png">
 </details>
 
 ## 🧭指南⬇️
@@ -40,8 +49,10 @@
 
 ## 📝FAQ❓️
 ### 安全啟動
-- 我還沒試過，但可能支持安全啟動，如果你使用 `grub.cer`(安全啟動證書)，
-- - `grub.cer`(安全啟動證書) 來自 [Ventoy](https://github.com/ventoy/Ventoy)；
+- 使用了打過補丁的 grub2，全面支持安全啟動；
+- 可以啟動任意未簽名的內核，以便 fydeOS 在安全啟動模式開啟的情況下啟動，再也不必為了 fydeOS 關閉安全啟動了；
+- 需要通過 [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) （有補丁）啟動 `grub2-fyde.efi`，因為該文件未簽名；
+
 ### 啟動入口菜單
 - 我已經改編了 `grub.cfg` 使得那三個啟動入口都變成通用的了，所以無論 `FYDEOS-DUAL-BOOT` 是哪個分區都能夠啟動。
 ### Flappy Bird
@@ -53,8 +64,8 @@
 告訴你的朋友，你得到了個好東西。
 
 ## 🎉來源🎊
-- 絕大多數改編自 [Brunch Framework](https://github.com/sebanc/brunch);
-- 安全證書來自 [Ventoy](https://github.com/ventoy/Ventoy);
+- 絕大多數改編自 [Brunch Framework](https://github.com/sebanc/brunch)；
+- [grub](https://github.com/a1ive/grub) 來自 [a1ive](https://github.com/a1ive)；
 - Terminal box 來自 [Ventoy](https://github.com/ventoy/Ventoy) 的官方主題；
--[floppybird](https://github.com/mikebdp2/floppybird) 來自 [mikebdp2](https://github.com/mikebdp2)；
+- [floppybird](https://github.com/mikebdp2/floppybird) 來自 [mikebdp2](https://github.com/mikebdp2)；
 - ……

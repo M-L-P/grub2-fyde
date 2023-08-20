@@ -13,6 +13,18 @@
 <h1 align="center">grub2-fyde</h1>
 
 It is used to boot fydeOS, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
+#### 特色
+- Dark mode;
+- Schedule light theme at dawn, and dark theme at dusk;
+- Mouse and PS/2 trackpad;
+- Multiple languages;
+- Set the timeout on the graphical interface;
+- Switch theme versions through graphical interface;
+#### 全局快捷键
+- [Delete] — Show hidden menu;
+- [F5] — Refresh and re-enter grub2;
+- [Ctrl]+[Alt]+[F12] — Screenshot; (Requires firmware support for modifier keys)
+- [Xxxxxx] — Xxxxxx_XX
 #### File Tree
 <img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
 
@@ -23,14 +35,11 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 <summary>🖱️Click to Unfold to see🖱️</summary>
 
 ### 1024x768
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-1k.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1k-ter.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark-1k.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/English/English.png">
 
 ### 1920x1080
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/light-ter.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/dark.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/English/1080p-light.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/English/1080p-dark.png">
 </details>
 
 ## 🧭Guide⬇️
@@ -40,8 +49,10 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 
 ## 📝FAQ❓️
 ### Secure Boot
-- It might support secure boot if you use `grub.cer`(Secure Boot Certificate), which is what I haven't tried,
-- - `grub.cer`(Secure Boot Certificate) is from [Ventoy](https://github.com/ventoy/Ventoy);
+- Using patched gurb, it fully supports secure boot;
+- It can load any unsigned kernel, so that fydeOS can be booted with Secure Boot enabled , not disabled anymore.
+- You should use [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) (with patch) to load `grub2-fyde.efi` (unsigned).
+
 ### Menuentries
 - I have adapted `grub.cfg` to make the three menuentries generic so that it can boot no matter which partition is `FYDEOS-DUAL-BOOT`.
 ### Flappy Bird
@@ -54,7 +65,7 @@ Tell your friends that you have got a good stuff.
 
 ## 🎉Credit🎊
 - Many things are adapted from [Brunch Framework](https://github.com/sebanc/brunch);
-- Secure Boot Certificate comes from [Ventoy](https://github.com/ventoy/Ventoy);
+- [grub](https://github.com/a1ive/grub) from [a1ive](https://github.com/a1ive);
 - Terminal box is adapted from the official theme of [Ventoy](https://github.com/ventoy/Ventoy);
 - [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2);
 - ...
