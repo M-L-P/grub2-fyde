@@ -48,6 +48,6 @@ terminal-font: "Terminus Regular 12"
 
 	scrollbar = true
 	scrollbar_width = 4
-	scrollbar_thumb = "滚动条_*.png"
+	scrollbar_thumb = "菜单/滚动条_*.png"
 	scrollbar_right_pad = 2
 }

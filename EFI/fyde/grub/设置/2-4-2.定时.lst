@@ -37,7 +37,7 @@ fi
 #==============================================================================
 #####----{条目}----
 #------------------------------------------------------------------------------
-menuentry "${SUBMENU_ENABLE} | ${SUBMENU_DISABLE}" --class "开关/${schedule}" --id "定时" {
+menuentry "${SUBMENU_ENABLE} | ${SUBMENU_DISABLE}" --class "启事/${schedule}" --id "定时" {
 	if [ "开" != "${schedule}" ]; then
 		export schedule=开 MENU_FOUR=menu_date MENU_DATE=
 	else
