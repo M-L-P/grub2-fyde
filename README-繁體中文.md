@@ -86,4 +86,5 @@
 - Terminal box 來自 [Ventoy](https://github.com/ventoy/Ventoy) 的官方主題；
 - 許多圖標改編自 emoji；
 - [floppybird](https://github.com/mikebdp2/floppybird) 來自 [mikebdp2](https://github.com/mikebdp2)；
+- .gif 的動態截圖是使用 [Screen2Gif](https://github.com/NickeManarin/ScreenToGif) 對 hyper-V 截取的；
 - ……

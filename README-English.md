@@ -86,4 +86,5 @@ Tell your friends that you have got a good stuff.
 - Terminal box is adapted from the official theme of [Ventoy](https://github.com/ventoy/Ventoy);
 - Many icons are adapted from emoji;
 - [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2);
+- The .gif cartoon is taken by using Hyper-V and [Screen2Gif](https://github.com/NickeManarin/ScreenToGif);
 - ...
