@@ -74,7 +74,8 @@ Right click | [ESC]
 - The android for fydeOS is LXC, using the [kernel of its host system](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4);
 - If you need android root, you should use [KernelSU](https://github.com/tiann/KernelSU) to patch when compiling your kernel.
 <details>
-<summary>🖱️点击展开查看🖱️</summary>
+<summary>🖱️Click to Unfold to see🖱️</summary>
+
 #### Source Codes
 - [Kernel of fydeOS r114](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
 - [KernelSU Repo](https://github.com/tiann/KernelSU)；
@@ -88,6 +89,7 @@ Having compiled，
 - There are indeed many users of fydeOS for PC, and a kernel patched with KernelSU can indeed be convenient for a large number of people, but I have to do other things in my spare time;
 Therefore, only the entry for KernelSU is provided here, and a compiled kernel is not provided, temporarily.<br/>
 If you have the ability to compile kernels, understand KernelSU, and want to help more people, you can pull request after your testing.
+
 </details>
 
 ### Flappy Bird

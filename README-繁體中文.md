@@ -75,8 +75,9 @@
 - 如果你需要安卓的超級用戶權限，你應該在編譯內核的時候添加 [KernelSU](https://github.com/tiann/KernelSU) 的補丁；
 <details>
 <summary>🖱️點擊展開查看🖱️</summary>
+
 #### 源代碼
-- [內核源代碼](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
+- [fydeOS r114 的內核源代碼](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
 - [KernelSU 倉庫](https://github.com/tiann/KernelSU)；
 #### 操作
 編譯好了以後，
@@ -88,6 +89,7 @@
 - fydeOS for PC 的用戶確實很多，一個用 KernelSU 修補後的內核確實可以方便大波人，但我業余時間要做別的事情；
 所以，此處暫時僅提供 KernelSU 的啟動入口，暫時不提供編譯好的內核。<br/>
 如果你具有編譯內核的能力，而且了解 KernelSU，並且想幫助到更多的人，你可以編譯好以後，Pull request。
+
 </details>
 
 ### 飛揚的小鳥
