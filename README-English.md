@@ -87,6 +87,7 @@ Having compiled，
 - As a rising star, KernelSU updates frequently, so I can't keep up with the pace of updates to KernelSU;
 - There are several models of fydeOS for you, but I don't have any and cannot conduct any testing;
 - There are indeed many users of fydeOS for PC, and a kernel patched with KernelSU can indeed be convenient for a large number of people, but I have to do other things in my spare time;
+
 Therefore, only the entry for KernelSU is provided here, and a compiled kernel is not provided, temporarily.<br/>
 If you have the ability to compile kernels, understand KernelSU, and want to help more people, you can pull request after your testing.
 

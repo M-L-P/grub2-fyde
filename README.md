@@ -87,6 +87,7 @@
 - KernelSU 作为后起之秀，更新频繁，我跟不上 KernelSU 更新的节奏；
 - fydeOS for you 有好些机型，我一台都没有，无法进行任何测试；
 - fydeOS for PC 的用户确实很多，一个用 KernelSU 修补后的内核确实可以方便大波人，但我业余时间要做别的事情；
+
 所以，此处暂时仅提供 KernelSU 的启动入口，暂时不提供编译好的内核。<br/>
 如果你具有编译内核的能力，而且了解 KernelSU，并且想帮助到更多的人，你可以编译好以后，Pull request。
 
