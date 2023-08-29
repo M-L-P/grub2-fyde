@@ -33,7 +33,7 @@
 【Delete】|顯示隱藏菜單；
 【F5】|刷新，重新進入 grub2；
 【Ctrl】+【Alt】+【F12】|截屏；（需要固件支持修飾鍵）
-【Xxxxxx】|Xxxxxx_XX
+【Insert】|KernelSU 的入口；（暫時需要自行準備修補後的內核）
 
 #### 鼠標映射
 

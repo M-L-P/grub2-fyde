@@ -33,7 +33,7 @@ Key|Function
 [Delete] | Show hidden menu;
 [F5] | Refresh and re-enter grub2;
 [Ctrl]+[Alt]+[F12] | Screenshot; (Requires firmware support for modifier keys)
-[Xxxxxx] | Xxxxxx_XX
+[Insert] | The entry of KernelSU; (You need to prepare your own patched kernel, temporarily)
 
 #### Mouse mapping
 
