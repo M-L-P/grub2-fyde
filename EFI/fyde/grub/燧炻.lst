@@ -4,43 +4,56 @@
 ###############################################################################
 
 #==============================================================================
-#####----{菜单入口}----
+#####----{功能}----
 #------------------------------------------------------------------------------
 # NOTE: find rootfs by label (not partion label)
 #------------------------------------------------------------------------------
+function loop_img {
+	search --label --set root FYDEOS-DUAL-BOOT
+	set img=/fydeos/fydeos_dual_boot.img
+	loopback loopdev $img
+}
+#------------------------------------------------------------------------------
+function enter_fydeos {
+	linux ${vmlinuz} init=/sbin/init \
+		root=/fydeos/root boot=local rootwait noresume \
+		noswap ro loglevel=7 console= i915.modeset=1 \
+		cros_efi cros_debug fydeos_dualboot \
+		vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
+	initrd /boot/dual_boot_ramfs.cpio
+}
+#==============================================================================
+
+#==============================================================================
+#####----{条目}----
+#------------------------------------------------------------------------------
 function multiboot_A {
 	menuentry "${MENU_FYDEOS_A}" --class "A" --id "fyde" --hotkey "a" {
-		search --label --set root FYDEOS-DUAL-BOOT
-		set img=/fydeos/fydeos_dual_boot.img
-		loopback loopdev $img
-		linux /boot/fydeos_vmlinuzA init=/sbin/init \
-			root=/fydeos/root boot=local rootwait noresume \
-			noswap ro loglevel=7 console= i915.modeset=1 \
-			cros_efi cros_debug fydeos_dualboot \
-			vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
-		initrd /boot/dual_boot_ramfs.cpio
+		loop_img
+		if [ "/boot/fydeos_vmlinuzA" -nt "(loopdev,gpt12)/syslinux/vmlinuz.A" ]; then
+			set vmlinuz=/boot/fydeos_vmlinuzA
+		else
+			set vmlinuz=(loopdev,gpt12)/syslinux/vmlinuz.A
+		fi
+		enter_fydeos
 	}
 }
 #------------------------------------------------------------------------------
 function multiboot_B {
 	menuentry "${MENU_FYDEOS_B}" --class "B" --id "fyde" --hotkey "b" {
-		search --label --set root FYDEOS-DUAL-BOOT
-		set img=/fydeos/fydeos_dual_boot.img
-		loopback loopdev $img
-		linux /boot/fydeos_vmlinuzB init=/sbin/init \
-			root=/fydeos/root boot=local rootwait noresume \
-			noswap ro loglevel=7 console= i915.modeset=1 \
-			cros_efi cros_debug fydeos_dualboot \
-			vtit=/sbin/init audit=0 audit=0 ventoyos=fydeos
-		initrd /boot/dual_boot_ramfs.cpio
+		loop_img
+		if [ "/boot/fydeos_vmlinuzB" -nt "(loopdev,gpt12)/syslinux/vmlinuz.B" ]; then
+			set vmlinuz=/boot/fydeos_vmlinuzB
+		else
+			set vmlinuz=(loopdev,gpt12)/syslinux/vmlinuz.B
+		fi
+		enter_fydeos
 	}
 }
 #------------------------------------------------------------------------------
 function recovery_tools {
 	menuentry "${MENU_RECOVERY}" --class "RE" --id "RE" --hotkey "r" {
-		search --label --set root FYDEOS-DUAL-BOOT
-		set img=/fydeos/fydeos_dual_boot.img
-		loopback loopdev $img
+		loop_img
 		linux /boot/fydeos_vmlinuzB init=/sbin/init \
 			root=/fydeos/root boot=local rootwait noresume \
 			noswap ro loglevel=7 console= i915.modeset=1 \

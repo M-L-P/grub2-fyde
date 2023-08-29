@@ -70,9 +70,27 @@
 ### 安全啟動
 - 需要通過 [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) （有補丁）啟動 `grub2-fyde.efi`，因為該文件未簽名；
 
-### 啟動入口菜單
-- 我已經改編了 `grub.cfg` 使得那三個啟動入口都變成通用的了，所以無論 `FYDEOS-DUAL-BOOT` 是哪個分區都能夠啟動。
-### Flappy Bird
+### Kernel SU
+- fydeOS 的 安卓容器 是 LXC，與宿主系統[共用內核](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
+- 如果你需要安卓的超級用戶權限，你應該在編譯內核的時候添加 [KernelSU](https://github.com/tiann/KernelSU) 的補丁；
+<details>
+<summary>🖱️點擊展開查看🖱️</summary>
+#### 源代碼
+- [內核源代碼](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
+- [KernelSU 倉庫](https://github.com/tiann/KernelSU)；
+#### 操作
+編譯好了以後，
+- 重命名為 `kernelsu-5.4` 或 `kernelsu-5.10`，
+- 然後復製到 `ESP: \EFI\fyde`；
+#### 這裏暫時不提供編譯好的，原因如下
+- KernelSU 作為後起之秀，更新頻繁，我跟不上 KernelSU 更新的節奏；
+- fydeOS for you 有好些機型，我一臺都沒有，無法進行任何測試；
+- fydeOS for PC 的用戶確實很多，一個用 KernelSU 修補後的內核確實可以方便大波人，但我業余時間要做別的事情；
+所以，此處暫時僅提供 KernelSU 的啟動入口，暫時不提供編譯好的內核。<br/>
+如果你具有編譯內核的能力，而且了解 KernelSU，並且想幫助到更多的人，你可以編譯好以後，Pull request。
+</details>
+
+### 飛揚的小鳥
 [floppybird](https://github.com/mikebdp2/floppybird) 來自 [mikebdp2](https://github.com/mikebdp2)
 - - 需要開啟 CSM 模式，純 UEFI 無法運行。
 

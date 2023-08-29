@@ -70,8 +70,26 @@ Right click | [ESC]
 ### Secure Boot
 - You should use [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) (with patch) to load `grub2-fyde.efi` (unsigned).
 
-### Menuentries
-- I have adapted `grub.cfg` to make the three menuentries generic so that it can boot no matter which partition is `FYDEOS-DUAL-BOOT`.
+### Kernel SU
+- The android for fydeOS is LXC, using the [kernel of its host system](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4);
+- If you need android root, you should use [KernelSU](https://github.com/tiann/KernelSU) to patch when compiling your kernel.
+<details>
+<summary>🖱️点击展开查看🖱️</summary>
+#### Source Codes
+- [Kernel of fydeOS r114](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
+- [KernelSU Repo](https://github.com/tiann/KernelSU)；
+#### Operation
+Having compiled，
+- Rename it `kernelsu-5.4` or `kernelsu-5.10`,
+- Copy it and paste to `ESP: \EFI\fyde`；
+#### Compiled kernels are not temporarily available here for the following reasons
+- As a rising star, KernelSU updates frequently, so I can't keep up with the pace of updates to KernelSU;
+- There are several models of fydeOS for you, but I don't have any and cannot conduct any testing;
+- There are indeed many users of fydeOS for PC, and a kernel patched with KernelSU can indeed be convenient for a large number of people, but I have to do other things in my spare time;
+Therefore, only the entry for KernelSU is provided here, and a compiled kernel is not provided, temporarily.<br/>
+If you have the ability to compile kernels, understand KernelSU, and want to help more people, you can pull request after your testing.
+</details>
+
 ### Flappy Bird
 [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2)
 - - need CSM mode enabled, it cannot run on only UEFI;
