@@ -67,8 +67,9 @@ Right click | [ESC]
 - Copy the folder `zip: ESP/EFI/fyde` into `ESP: \EFI`;
 
 ## 📝FAQ❓️
+
 ### Secure Boot
-- You should use [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) (with patch) to load `grub2-fyde.efi` (unsigned).
+- You should use [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) (with patch) to load `grub2-fyde.efi` (unsigned).
 
 ### Kernel SU
 - The android for fydeOS is LXC, using the [kernel of its host system](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4);

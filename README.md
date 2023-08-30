@@ -67,8 +67,9 @@
 - 复制文件夹 `zip: ESP/EFI/fyde` 到 `ESP: \EFI`；
 
 ## 📝FAQ❓️
+
 ### 安全启动
-- 需要通过 [rEFInd-theme-Yours](https://github.com/M-L-P/rEFInd-theme-Yours) （有补丁）启动 `grub2-fyde.efi`，因为该文件未签名；
+- 需要通过 [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) （有补丁）启动 `grub2-fyde.efi`，因为该文件未签名；
 
 ### Kernel SU
 - fydeOS 的 安卓容器 是 LXC，与宿主系统[共用内核](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
