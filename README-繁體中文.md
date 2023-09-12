@@ -67,7 +67,7 @@
 ## 🧭指南⬇️
 
 ### 復製到 ESP
-- 復製文件夾 `zip: ESP/EFI/fyde` 到 `ESP: \EFI`；
+- 復製文件夾 `zip: EFI/fyde` 到 `ESP: \EFI`；
 
 ## 📝FAQ❓️
 

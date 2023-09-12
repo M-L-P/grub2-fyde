@@ -67,7 +67,7 @@ Right click | [ESC]
 ## 🧭Guide⬇️
 
 ### Copy in ESP
-- Copy the folder `zip: ESP/EFI/fyde` into `ESP: \EFI`;
+- Copy the folder `zip: EFI/fyde` into `ESP: \EFI`;
 
 ## 📝FAQ❓️
 

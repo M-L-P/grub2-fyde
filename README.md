@@ -67,7 +67,7 @@
 ## 🧭指南⬇️
 
 ### 复制到 ESP
-- 复制文件夹 `zip: ESP/EFI/fyde` 到 `ESP: \EFI`；
+- 复制文件夹 `zip: EFI/fyde` 到 `ESP: \EFI`；
 
 ## 📝FAQ❓️
 
