@@ -8,7 +8,7 @@ storage=$(cat ../mod_list/storage.txt)
 terminal=$(cat ../mod_list/terminal.txt)
 time=$(cat ../mod_list/time.txt)
 var=$(cat ../mod_list/var.txt)
-sudo ../grub-mkimage \
+../grub-mkimage \
 -m grub2-fyde.xz \
 -d "../x86_64-efi" \
 -c grub2-fyde.cfg \
