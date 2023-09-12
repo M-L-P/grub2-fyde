@@ -35,7 +35,7 @@ Key|Function
 [ESC] | Returns to the previous menu list; (Exit from the main menu)
 [Delete] | Show hidden menu;
 [F5] | Refresh and re-enter grub2;
-[F10] | Screenshot; (Requires firmware support for modifier keys)
+[F10] | Screenshot;
 [Insert] | The entry of KernelSU; (You need to prepare your own patched kernel, temporarily)
 
 #### Mouse mapping
