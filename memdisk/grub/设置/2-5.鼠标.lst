@@ -31,7 +31,7 @@ menuentry "USB ${MENU_MOUSE}${USB_MOUSE}" --class "启事/${USB_MOUSE}" --id "US
 	else
 		disable_usb
 	fi
-	save_env USB_MOUSE
+	save_env --file=${cmdpath}/grubenv USB_MOUSE
 	set SELECTED=USB
 	save_mouse
 }
@@ -42,7 +42,7 @@ menuentry "PS/2 ${TITLE_TRACKPAD} & ${MENU_MOUSE}${PS2_MOUSE}" --class "启事/$
 	else
 		disable_ps2
 	fi
-	save_env PS2_MOUSE
+	save_env --file=${cmdpath}/grubenv PS2_MOUSE
 	set SELECTED=PS2
 	save_mouse
 }

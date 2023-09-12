@@ -7,7 +7,7 @@
 #####----{功能}----
 #------------------------------------------------------------------------------
 function save_gear {
-	save_env schedule MENU_FOUR MENU_DATE
+	save_env --file=${cmdpath}/grubenv schedule MENU_FOUR MENU_DATE
 	set SELECTED=定时
 	refresh_lang
 	refresh_theme

@@ -1,87 +1,87 @@
 ###############################################################################
-#                                 [破晓.lst]
-#                          to list items of dawn time
+#                                 [黄昏.lst]
+#                          to list items of dusk time
 ###############################################################################
 
 #==============================================================================
 #####----{功能}----
 #------------------------------------------------------------------------------
-function ini_dawn {
-	ini_get --set=DAWN2 ${SET}/破晓.ini ${DAWN_HOUR}:晓2
-	ini_get --set=DAWN3 ${SET}/破晓.ini ${DAWN_HOUR}:晓3
-	ini_get --set=DAWN4 ${SET}/破晓.ini ${DAWN_HOUR}:晓4
-	ini_get --set=DAWN5 ${SET}/破晓.ini ${DAWN_HOUR}:晓5
-	ini_get --set=DAWN6 ${SET}/破晓.ini ${DAWN_HOUR}:晓6
-	ini_get --set=DAWN7 ${SET}/破晓.ini ${DAWN_HOUR}:晓7
-	ini_get --set=DAWN8 ${SET}/破晓.ini ${DAWN_HOUR}:晓8
-	ini_get --set=DAWN9 ${SET}/破晓.ini ${DAWN_HOUR}:晓9
-	ini_get --set=DAWN10 ${SET}/破晓.ini ${DAWN_HOUR}:晓10
+function ini_dusk {
+	ini_get --set=DUSK14 ${SET}/黄昏.ini ${DUSK_HOUR}:昏14
+	ini_get --set=DUSK15 ${SET}/黄昏.ini ${DUSK_HOUR}:昏15
+	ini_get --set=DUSK16 ${SET}/黄昏.ini ${DUSK_HOUR}:昏16
+	ini_get --set=DUSK17 ${SET}/黄昏.ini ${DUSK_HOUR}:昏17
+	ini_get --set=DUSK18 ${SET}/黄昏.ini ${DUSK_HOUR}:昏18
+	ini_get --set=DUSK19 ${SET}/黄昏.ini ${DUSK_HOUR}:昏19
+	ini_get --set=DUSK20 ${SET}/黄昏.ini ${DUSK_HOUR}:昏20
+	ini_get --set=DUSK21 ${SET}/黄昏.ini ${DUSK_HOUR}:昏21
+	ini_get --set=DUSK22 ${SET}/黄昏.ini ${DUSK_HOUR}:昏22
 }
 #------------------------------------------------------------------------------
-function save_dawn {
-	save_env DAWN_HOUR
-	ini_dawn
-	export DAWN_HOUR DAWN2 DAWN3 DAWN4 DAWN5 DAWN6 DAWN7 DAWN8 DAWN9 DAWN10
+function save_dusk {
+	save_env --file=${cmdpath}/grubenv DUSK_HOUR
+	ini_dusk
+	export DUSK_HOUR DUSK14 DUSK15 DUSK16 DUSK17 DUSK18 DUSK19 DUSK20 DUSK21 DUSK22
 	refresh_theme
-	configfile ${SET}/2-4-2-3.破晓.lst
+	configfile ${SET}/2-4-2-4.黄昏.lst
 }
 #==============================================================================
-default="'${DAWN_HOUR}'"
+default="'${DUSK_HOUR}'"
 #==============================================================================
 #####----{返回}----
 #------------------------------------------------------------------------------
 menuentry "${MENU_BACK}" --class "启事/返回" --hotkey "esc" {
-	set SELECTED=破晓
+	set SELECTED=黄昏
 	configfile ${SET}/2-4-2.定时.lst
 }
 #==============================================================================
-ini_dawn
+ini_dusk
 #==============================================================================
 #####----{条目}----
 #------------------------------------------------------------------------------
-menuentry "${DAWN2}  2" --class "破晓时针/2" --id "'2'" {
-	set DAWN_HOUR=2
-	save_dawn
+menuentry "${DUSK14}  14" --class "黄昏时针/14" --id "'14'" {
+	set DUSK_HOUR=14
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN3}  3" --class "破晓时针/3" --id "'3'" {
-	set DAWN_HOUR=3
-	save_dawn
+menuentry "${DUSK15}  15" --class "黄昏时针/15" --id "'15'" {
+	set DUSK_HOUR=15
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN4}  4" --class "破晓时针/4" --id "'4'" {
-	set DAWN_HOUR=4
-	save_dawn
+menuentry "${DUSK16}  16" --class "黄昏时针/16" --id "'16'" {
+	set DUSK_HOUR=16
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN5}  5" --class "破晓时针/5" --id "'5'" {
-	set DAWN_HOUR=5
-	save_dawn
+menuentry "${DUSK17}  17" --class "黄昏时针/17" --id "'17'" {
+	set DUSK_HOUR=17
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN6}  6" --class "破晓时针/6" --id "'6'" {
-	set DAWN_HOUR=6
-	save_dawn
+menuentry "${DUSK18}  18" --class "黄昏时针/18" --id "'18'" {
+	set DUSK_HOUR=18
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN7}  7" --class "破晓时针/7" --id "'7'" {
-	set DAWN_HOUR=7
-	save_dawn
+menuentry "${DUSK19}  19" --class "黄昏时针/19" --id "'19'" {
+	set DUSK_HOUR=19
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN8}  8" --class "破晓时针/8" --id "'8'" {
-	set DAWN_HOUR=8
-	save_dawn
+menuentry "${DUSK20}  20" --class "黄昏时针/20" --id "'20'" {
+	set DUSK_HOUR=20
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN9}  9" --class "破晓时针/9" --id "'9'" {
-	set DAWN_HOUR=9
-	save_dawn
+menuentry "${DUSK21}  21" --class "黄昏时针/21" --id "'21'" {
+	set DUSK_HOUR=21
+	save_dusk
 }
 #------------------------------------------------------------------------------
-menuentry "${DAWN10}  10" --class "破晓时针/10" --id "'10'" {
-	set DAWN_HOUR=10
-	save_dawn
+menuentry "${DUSK22}  22" --class "黄昏时针/22" --id "'22'" {
+	set DUSK_HOUR=22
+	save_dusk
 }
 #==============================================================================
 
@@ -89,7 +89,7 @@ menuentry "${DAWN10}  10" --class "破晓时针/10" --id "'10'" {
 #####----{返回}----
 #------------------------------------------------------------------------------
 menuentry "${MENU_BACK}" --class "启事/返回" --hotkey "esc" {
-	set SELECTED=破晓
+	set SELECTED=黄昏
 	configfile ${SET}/2-4-2.定时.lst
 }
 #==============================================================================

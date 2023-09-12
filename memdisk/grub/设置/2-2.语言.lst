@@ -13,7 +13,7 @@ function ini_lang {
 }
 #------------------------------------------------------------------------------
 function save_lang {
-	save_env lang
+	save_env --file=${cmdpath}/grubenv lang
 	ini_lang
 	export lang LANG1 LANG2 LANG3
 	refresh_lang

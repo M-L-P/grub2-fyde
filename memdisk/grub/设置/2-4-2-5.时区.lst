@@ -35,7 +35,7 @@ function ini_timezone {
 }
 #------------------------------------------------------------------------------
 function save_timezone {
-	save_env TIME_ZONE
+	save_env --file=${cmdpath}/grubenv TIME_ZONE
 	ini_timezone
 	export TIME_ZONE W12 W11 W10 W9 W8 W7 W6 W5 W4 W3 W2 W1 Z0 E1 E2 E3 E4 E5 E6 E7 E8 E9 E10 E11 E12
 	refresh_date
