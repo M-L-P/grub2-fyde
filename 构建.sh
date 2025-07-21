@@ -17,7 +17,7 @@ done;
 cd ..; ls -l;
 ### 合成 memdisk.xz
 cd memdisk; ls -l;
-rm ./grub/主题/su.pptx; rm ./grub/主题/fyde/图标/图标编辑器.pptx; rm ./grub/主题/fyde/壁纸/壁纸编辑器.pptx;
+rm ./grub/主题/*.pptx; rm ./grub/主题/fyde/图标/*.pptx; rm ./grub/主题/fyde/壁纸/*.pptx;
 find ./grub ./游戏.d | cpio -o -H newc | xz -9 -e > ../grub-mkimage/grub2-fyde.xz;
 cd ..; ls -l;
 ### 合成 grub2-fyde.efi
@@ -28,6 +28,7 @@ cd grub2/grub2-fyde; ls -l;
 sudo bash ./grub2-fyde.sh;
 cd ../../;ls -l;
 ### 归档文件
+cp ./grub2/grub2-fyde/grub2-fyde.xz ./
 mkdir -p ESP/EFI/fyde;
 cp ./grub2/grub2-fyde/grub2-fyde.efi ./ESP/EFI/fyde;
 cp -R ./cmdpath/* ./ESP/EFI/fyde;
