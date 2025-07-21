@@ -30,5 +30,6 @@ cd ../../;ls -l;
 ### 归档文件
 mkdir -p ESP/EFI/fyde;
 cp ./grub2/grub2-fyde/grub2-fyde.efi ./ESP/EFI/fyde;
-cp ./cmdpath/* ./ESP/EFI/fyde;
+cp -R ./cmdpath/* ./ESP/EFI/fyde;
+zip -r grub2-fyde.zip ./ESP;
 cd ./ESP/EFI/fyde; ls -l;

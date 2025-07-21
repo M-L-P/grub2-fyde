@@ -33,7 +33,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.type }}
-        path: ESP
+        path: |
+            grub2-fyde.zip
+            grub2/grub2-fyde/grub2-fyde.xz
 
     - name: 发布
       uses: softprops/action-gh-release@v2
@@ -43,4 +45,4 @@ jobs:
         make_latest: true
         body_path: docs/发布模板.md
         files: |
-          ESP
+          grub2-fyde.zip
