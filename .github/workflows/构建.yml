@@ -33,11 +33,11 @@ jobs:
         path: ESP
 
     - name: 发布
-        uses: softprops/action-gh-release@v2
-        with:
-          name: "grub2-fyde-v20.0"
-          tag_name: v20test
-          make_latest: true
-          body_path: docs/发布模板.md
-          files: |
-            ESP
+      uses: softprops/action-gh-release@v2
+      with:
+        name: "grub2-fyde-v20.0"
+        tag_name: v20test
+        make_latest: true
+        body_path: docs/发布模板.md
+        files: |
+          ESP
