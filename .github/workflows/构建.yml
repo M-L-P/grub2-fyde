@@ -24,8 +24,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: 构建 ${{ matrix.type }}
-      run: |
-        sudo bash ./构建.sh
+      run: sudo bash ./构建.sh
 
     - name: 上传到此处
       uses: actions/upload-artifact@v4
