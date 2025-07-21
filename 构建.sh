@@ -26,9 +26,14 @@ chmod -R 777 grub2;
 mv ./grub-mkimage ./grub2/grub2-fyde;
 cd grub2/grub2-fyde; ls -l;
 sudo bash ./grub2-fyde.sh;
-cd ../../;ls -l;
+cd ../..; ls -l;
+### 合成 initrd
+cd initrd_root; ls -l;
+find * | cpio -o -H newc | gzip -9 > ../virtual_usb.cpio;
+cd ..; ls -l;
 ### 归档文件
-cp ./grub2/grub2-fyde/grub2-fyde.xz ./
+cp ./grub2/grub2-fyde/grub2-fyde.xz ./;
+cp ./virtual_usb.cpio ./cmdpath/experimental;
 mkdir -p ESP/EFI/fyde;
 cp ./grub2/grub2-fyde/grub2-fyde.efi ./ESP/EFI/fyde;
 cp -R ./cmdpath/* ./ESP/EFI/fyde;
