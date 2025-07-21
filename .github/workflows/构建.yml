@@ -36,6 +36,7 @@ jobs:
         path: |
             ESP
             grub2-fyde.xz
+            virtual_usb.cpio
 
     - name: 发布
       uses: softprops/action-gh-release@v2
@@ -46,3 +47,5 @@ jobs:
         body_path: docs/发布模板.md
         files: |
           grub2-fyde.zip
+          grub2-fyde.xz
+          virtual_usb.cpio
