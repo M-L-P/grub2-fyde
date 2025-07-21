@@ -4,6 +4,7 @@ cd /d "%~dp0"
 set /p boot= < ..\mod_list\boot.txt
 set /p device= < ..\mod_list\device.txt
 set /p graphical= < ..\mod_list\graphical.txt
+set /p grubfm= < ..\mod_list\grubfm.txt
 set /p shell= < ..\mod_list\shell.txt
 set /p storage= < ..\mod_list\storage.txt
 set /p terminal= < ..\mod_list\terminal.txt
@@ -19,9 +20,10 @@ set /p var= < ..\mod_list\var.txt
 %boot% ^
 %device% ^
 %graphical% ^
+%grubfm% ^
 %shell% ^
 %storage% ^
 %terminal% ^
 %time% ^
 %var% ^
-configfile tetris
+eval configfile tetris

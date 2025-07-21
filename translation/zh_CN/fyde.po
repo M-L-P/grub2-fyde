@@ -1,0 +1,233 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: grub2-fyde-20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Chauncy\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: \n"
+"X-Generator: Poedit 3.6\n"
+
+msgid "fydeOS multiboot A"
+msgstr "燧炻系统 A分区"
+
+msgid "fydeOS multiboot B"
+msgstr "燧炻系统 B分区"
+
+msgid "fydeOS Recovery Tools"
+msgstr "燧炻系统恢复工具"
+
+msgid "Slot: [${SLOT}]"
+msgstr "槽位：【${SLOT}】"
+
+msgid "Turn A"
+msgstr "转 A"
+
+msgid "Turn B"
+msgstr "转 B"
+
+msgid "Install fydeOS"
+msgstr "安装 fydeOS"
+
+msgid "Files: "
+msgstr "文件："
+
+msgid "file"
+msgstr "文件"
+
+msgid "Folder"
+msgstr "文件夹"
+
+msgid "FyDrop"
+msgstr "燧炻传送"
+
+msgid "My files"
+msgstr "我的文件"
+
+msgid "Bug reports"
+msgstr "错误报告"
+
+msgid "Storage"
+msgstr "存储"
+
+msgid "Trash"
+msgstr "回收站"
+
+msgid "Mount"
+msgstr "挂载"
+
+msgid "Unmount: "
+msgstr "卸载："
+
+msgid "Show information related to image files: "
+msgstr "显示映像文件相关信息："
+
+msgid "Show the passed variables: "
+msgstr "显示传递变量："
+
+msgid "Boot: "
+msgstr "启动："
+
+msgid "Select the image file"
+msgstr "选定映像文件"
+
+msgid "Cancel the image file"
+msgstr "取消映像文件"
+
+msgid "Boot menu"
+msgstr "启动菜单"
+
+msgid "Terminal"
+msgstr "终端"
+
+msgid "Root permission"
+msgstr "Root 权限"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "You are going to lose your current settings!!!"
+msgstr "你将丢失当前的设置项！！！"
+
+msgid "No (press [ESC] or [F4])"
+msgstr "否（按【ESC】或【F4】）"
+
+msgid "Yes (waiting for the countdown to end)"
+msgstr "是（等待倒计时结束）"
+
+msgid "Coming Soon or Late!"
+msgstr "迟早到来！"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Disable"
+msgstr "禁用"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Light"
+msgstr "光亮"
+
+msgid "Dark"
+msgstr "暗黑"
+
+msgid "Exit"
+msgstr "完全退出"
+
+msgid "About"
+msgstr "关于"
+
+msgid "Developer: "
+msgstr "开发者："
+
+msgid "Version: "
+msgstr "版本："
+
+msgid "Flappy Bird"
+msgstr "飞扬的小鸟"
+
+msgid "Countdown: "
+msgstr "倒计时："
+
+msgid "Custom: "
+msgstr "自定义："
+
+msgid "Please enter the countdown seconds (positive integer) that you want."
+msgstr "请输入你想要的倒计时秒数（正整数），然后回车。"
+
+msgid "Devices"
+msgstr "设备"
+
+msgid "Mouse: "
+msgstr "鼠标："
+
+msgid "Trackpad"
+msgstr "触控板"
+
+msgid "on"
+msgstr "开"
+
+msgid "off"
+msgstr "关"
+
+msgid "Keyboard: "
+msgstr "键盘："
+
+msgid "Key mapping"
+msgstr "按键映射"
+
+msgid "Display"
+msgstr "显示"
+
+msgid "Resolution: "
+msgstr "分辨率："
+
+msgid "max"
+msgstr "最大"
+
+msgid "Scale: "
+msgstr "缩放："
+
+msgid "Auto"
+msgstr "自动"
+
+msgid "Themes: "
+msgstr "主题："
+
+msgid "Schedule: [${GEAR_SCHEDULE}d]"
+msgstr "定时【已${GEAR_SCHEDULE}】"
+
+msgid "Dawn Clockwise: "
+msgstr "破晓时针："
+
+msgid "Dusk Clockwise: "
+msgstr "黄昏时针："
+
+msgid "Time Zones: "
+msgstr "时区："
+
+msgid "Time & language"
+msgstr "时间和语言"
+
+msgid "Language: "
+msgstr "语言: "
+
+msgid "Language: English"
+msgstr "语言：简体中文"
+
+msgid "Experimental locale"
+msgstr "实验性的多国语言"
+
+msgid "The language you have selected may not have been fully translated."
+msgstr "你所选中的语言可能并未翻译完全。"
+
+msgid "You can participate in the translation by visiting https://github.com/M-L-P/grub2-fyde ."
+msgstr "你可以访问 https://github.com/M-L-P/grub2-fyde 参与翻译。"
+
+msgid "Input"
+msgstr "输入"
+
+msgid "Existential Blossom"
+msgstr "存在之花"
+
+msgid "Nostalgic Reflections"
+msgstr "怀旧反射"
+
+msgid "Prosperous Aftermath"
+msgstr "繁荣余波"
+
+msgid "Desolate Frontier"
+msgstr "荒凉边境"
+
+msgid "Cosmic Memories"
+msgstr "宇宙记忆"

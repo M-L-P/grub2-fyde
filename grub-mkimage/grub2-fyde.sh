@@ -3,6 +3,7 @@
 boot=$(cat ../mod_list/boot.txt)
 device=$(cat ../mod_list/device.txt)
 graphical=$(cat ../mod_list/graphical.txt)
+grubfm=$(cat ../mod_list/grubfm.txt)
 shell=$(cat ../mod_list/shell.txt)
 storage=$(cat ../mod_list/storage.txt)
 terminal=$(cat ../mod_list/terminal.txt)
@@ -18,9 +19,10 @@ var=$(cat ../mod_list/var.txt)
 $boot \
 $device \
 $graphical \
+$grubfm \
 $shell \
 $storage \
 $terminal \
 $time \
 $var \
-configfile tetris
+eval configfile tetris

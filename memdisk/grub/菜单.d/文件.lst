@@ -1,0 +1,75 @@
+#==============================================================================
+#####----{功能}----
+#------------------------------------------------------------------------------
+function enum_device {
+	add_parent; for device in (*); do
+		if [ -d "${device}" ] -a [ "${device}" != "(memdisk)" ] -a [ "${device}" != "(proc)" ]; then
+			probe --set=filesystem -f -q "${device}"; probe --set=label -l -q "${device}";
+			if regexp 'loop' "${device}"; then icon=iso;
+			elif [ "(memdisk)" == "${device}" ]; then icon=mem;
+			elif [ "cdfs" == "${filesystem}" ]; then icon=iso;
+			elif [ "VTOYEFI" == "${label}" ]; then icon=ventoy;
+			else icon=hdd; fi; stat --set=size -m "${device}";
+			menuentry "${device}                        ${size}                    ${filesystem}                        [${label}]" \
+			"${device}" --class "grubfm/${icon}" {grubfm_main "${2}";};
+			unset label; unset filesystem; unset size; fi; done;
+};
+#------------------------------------------------------------------------------
+function enum_file {
+	for item in ${grub_path}/*; do regexp --set=1:name '.*/(.*)$' "${item}";
+		if [ -d "${item}" ] -a [ "System Volume Information" != "${name}" ] -a [ '$recycle.bin' != "${name}" ]; then
+			menuentry "  "$"Folder""                -                                                                    <${name}>" \
+			"${item}" --class "grubfm/dir" {grubfm_main "${2}";}; fi; done;
+	for item in ${grub_path}/*; do regexp --set=1:name '.*/(.*)$' "${item}"; regexp --set=1:name_ext '^.*\.(.*$)' "${item}";
+		unset NAME_EXT; tr --set=NAME_EXT -U ${name_ext}
+		if [ -f "${item}" ]; then stat --set=size -m "${item}";
+			if regexp '^[iI][mM][gG]$' "${name_ext}"; then icon=img;
+			else icon=file; fi;
+			menuentry "${NAME_EXT} "$"file""               ${size}                                                                    ${name}" \
+			"${item}" --class "grubfm/${icon}" {grubfm_open "${2}";}; unset size;
+		fi; unset name; unset name_ext; done;
+};
+#------------------------------------------------------------------------------
+### grubfm_main PATH
+function grubfm_main {
+	clear_menu;
+	if [ -z "${1}" ]; then enum_device;
+	else export grub_path="${1}"; set default=1;
+	tr --set=path_title "/" '>' ${grub_path};
+		menuentry "${path_title}" --class "grubfm/go-previous" --hotkey "esc" {
+			if ! regexp --set=1:grub_path '(^.*)/.*$' "${grub_path}"; then unset grub_path; fi;
+			export grub_path; grubfm_main "${grub_path}";
+		}; enum_file; fi;
+};
+#------------------------------------------------------------------------------
+function add_back_menu {
+	set default=1; menuentry $"Back" --class "grubfm/go-previous" --hotkey "esc" {grubfm_main "${grub_path}";};
+};
+#------------------------------------------------------------------------------
+### grubfm_open FILE
+function grubfm_open {
+	unset name; unset name_ext; export grub_file="${1}";
+	regexp --set=1:name '.*/(.*)$' "${grub_file}"; regexp --set=1:name_ext '^.*\.(.*$)' "${grub_file}";
+### 文件类型
+##### .img 文件
+	if regexp '^[iI][mM][gG]$' "${name_ext}"; then clear_menu; add_back_menu;
+		menuentry $"Select the image file" --class "grubfm/img" {
+			set IMG_FILE=${grub_file}; FILE_NAME=${name}; IMG_DIR=${grub_path}; menu_id=安装
+			refresh_theme; configfile ${config_file};
+		}; if [ "${grub_file}" == "${IMG_FILE}" ]; then
+			menuentry $"Cancel the image file" --class "grubfm/img" {
+				unset IMG_FILE; unset FILE_NAME; grubfm_main "${IMG_DIR}";
+			};fi; fi;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{文件}----
+#------------------------------------------------------------------------------
+### 配置
+	menu_config "" "安装";background_color "#202124"; theme_section;
+#------------------------------------------------------------------------------
+### 条目
+	if [ -z "${IMG_DIR}" ]; then enum_device;
+	elif [ -n "${IMG_DIR}" ]; then grubfm_main "${IMG_DIR}"; fi;
+#==============================================================================

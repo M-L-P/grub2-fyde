@@ -1,0 +1,12 @@
+#------------------------------------------------------------------------------
+### 配置
+	menu_config "${number_version}" "主题"; default_number=${number_version}; ini_option;
+#------------------------------------------------------------------------------
+### 条目
+	add_parent; switch_theme;
+	add_selection $"Cosmic Memories"		"20"	"20-${THEME_COLOR}";
+	add_selection $"Desolate Frontier"		"19"	"19-${THEME_COLOR}";
+	add_selection $"Prosperous Aftermath"	"18"	"18-${THEME_COLOR}";
+	add_selection $"Nostalgic Reflections"	"17"	"17-${THEME_COLOR}";
+	add_selection $"Existential Blossom"	"16"	"16-${THEME_COLOR}"; add_parent;
+#==============================================================================
