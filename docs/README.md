@@ -84,7 +84,7 @@
 ### 复制到 ESP
 - 复制文件夹 `zip: EFI/fyde` 到 `ESP: \EFI`；
 
-## [📅规划和进展🗺️](https://github.com/M-L-P/.github/blob/main/profile/plan/README.md)
+## [📅规划和进展🗺️](https://github.com/M-L-P/.github/blob/main/profile/plan/README.md#grub2-fyde)
 
 ## 📝FAQ❓️
 
