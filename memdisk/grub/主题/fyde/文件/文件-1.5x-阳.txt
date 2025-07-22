@@ -1,0 +1,45 @@
+title-text: ""
+desktop-image: "../壁纸/文件.jpg"
+desktop-image-scale-method: "crop" desktop-image-h-align: "center"
+terminal-border: "0" terminal-font: "Terminus Regular 18"
+terminal-left: "50%-405" terminal-top: "50%-405"
+terminal-width: "810" terminal-height: "810"
+terminal-box: "../终端/终端-1.5x_*.png"
+
++ vbox {
+	left = 50%-627 top = 75
+	+ label {translate = "FyDrop" color = "black" font = "Microsoft YaHei Regular 18"}
+}
+
++ vbox {
+	left = 50%-627 top = 153
+	+ label {translate = "My files" color = "black" font = "Microsoft YaHei Regular 18"}
+}
+
++ vbox {
+	left = 50%-627 top = 234
+	+ label {translate = "Bug reports" color = "black" font = "Microsoft YaHei Regular 18"}
+}
+
++ vbox {
+	left = 50%-627 top = 315
+	+ label {translate = "Storage" color = "white" font = "Microsoft YaHei Regular 18"}
+}
+
++ vbox {
+	left = 50%-627 top = 393
+	+ label {translate = "Trash" color = "black" font = "Microsoft YaHei Regular 18"}
+}
+
++ boot_menu {
+	left = 50%-720 top = 0% width = 1440 height = 1047
+	item_font = "Microsoft YaHei Regular 18" selected_item_font = "Microsoft YaHei Regular 18"
+	item_color = "black" selected_item_color= "black"
+	icon_height = 66 icon_width = 66
+	item_height = 66 item_padding = 0 item_icon_space = 0 item_spacing = 0
+	menu_pixmap_style = "../菜单/文件-1.5x/阳菜单_*.png" selected_item_pixmap_style = "阳选择_*.png"
+	scrollbar = true
+	scrollbar_width = 6
+	scrollbar_thumb = "阳滚动条_*.png"
+	scrollbar_right_pad = 4
+}

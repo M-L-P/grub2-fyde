@@ -1,0 +1,233 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: grub2-fyde-20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Chauncy\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: \n"
+"X-Generator: Poedit 3.6\n"
+
+msgid "fydeOS multiboot A"
+msgstr ""
+
+msgid "fydeOS multiboot B"
+msgstr ""
+
+msgid "fydeOS Recovery Tools"
+msgstr ""
+
+msgid "Slot: [${SLOT}]"
+msgstr ""
+
+msgid "Turn A"
+msgstr ""
+
+msgid "Turn B"
+msgstr ""
+
+msgid "Install fydeOS"
+msgstr ""
+
+msgid "Files: "
+msgstr ""
+
+msgid "file"
+msgstr ""
+
+msgid "Folder"
+msgstr ""
+
+msgid "FyDrop"
+msgstr ""
+
+msgid "My files"
+msgstr ""
+
+msgid "Bug reports"
+msgstr ""
+
+msgid "Storage"
+msgstr ""
+
+msgid "Trash"
+msgstr ""
+
+msgid "Mount"
+msgstr ""
+
+msgid "Unmount: "
+msgstr ""
+
+msgid "Show information related to image files: "
+msgstr ""
+
+msgid "Show the passed variables: "
+msgstr ""
+
+msgid "Boot: "
+msgstr ""
+
+msgid "Select the image file"
+msgstr ""
+
+msgid "Cancel the image file"
+msgstr ""
+
+msgid "Boot menu"
+msgstr ""
+
+msgid "Terminal"
+msgstr ""
+
+msgid "Root permission"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "You are going to lose your current settings!!!"
+msgstr ""
+
+msgid "No (press [ESC] or [F4])"
+msgstr ""
+
+msgid "Yes (waiting for the countdown to end)"
+msgstr ""
+
+msgid "Coming Soon or Late!"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Disable"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Exit"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Developer: "
+msgstr ""
+
+msgid "Version: "
+msgstr ""
+
+msgid "Flappy Bird"
+msgstr ""
+
+msgid "Countdown: "
+msgstr ""
+
+msgid "Custom: "
+msgstr ""
+
+msgid "Please enter the countdown seconds (positive integer) that you want."
+msgstr ""
+
+msgid "Devices"
+msgstr ""
+
+msgid "Mouse: "
+msgstr ""
+
+msgid "Trackpad"
+msgstr ""
+
+msgid "on"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "Keyboard: "
+msgstr ""
+
+msgid "Key mapping"
+msgstr ""
+
+msgid "Display"
+msgstr ""
+
+msgid "Resolution: "
+msgstr ""
+
+msgid "max"
+msgstr ""
+
+msgid "Scale: "
+msgstr ""
+
+msgid "Auto"
+msgstr ""
+
+msgid "Themes: "
+msgstr ""
+
+msgid "Schedule: [${GEAR_SCHEDULE}d]"
+msgstr ""
+
+msgid "Dawn Clockwise: "
+msgstr ""
+
+msgid "Dusk Clockwise: "
+msgstr ""
+
+msgid "Time Zones: "
+msgstr ""
+
+msgid "Time & language"
+msgstr ""
+
+msgid "Language: "
+msgstr ""
+
+msgid "Language: English"
+msgstr ""
+
+msgid "Experimental locale"
+msgstr ""
+
+msgid "The language you have selected may not have been fully translated."
+msgstr ""
+
+msgid "You can participate in the translation by visiting https://github.com/M-L-P/grub2-fyde ."
+msgstr ""
+
+msgid "Input"
+msgstr ""
+
+msgid "Existential Blossom"
+msgstr ""
+
+msgid "Nostalgic Reflections"
+msgstr ""
+
+msgid "Prosperous Aftermath"
+msgstr ""
+
+msgid "Desolate Frontier"
+msgstr ""
+
+msgid "Cosmic Memories"
+msgstr ""

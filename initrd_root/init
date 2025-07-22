@@ -1,0 +1,64 @@
+#!/bin/busybox sh
+
+### 初始化
+export PATH=/sbin:/bin
+busybox mount -t proc none /proc
+busybox mount -t sysfs none /sys
+busybox mount -t devtmpfs none /dev
+busybox --install -s
+ln -s /proc/mounts /etc/mtab
+haveged -w 1024 -v 1 -F > /dev/kmsg 2>&1 &
+
+### 自定义函数 echo_var，用于查阅变量的值
+echo_var() {
+	echo "filesystem_UUID: ${filesystem_UUID}"
+	echo "img_partition: ${img_partition}"
+	echo "filesystem_type: ${filesystem_type}"
+	echo "loop_device: ${loop_device}"
+	echo "img_path: ${img_path}"
+	echo "img_file: ${img_file}"
+}
+
+### 根据文件系统的 UUID 找到 .img 所在的分区，filesystem_UUID 是 grub2-fyde 传递的变量
+local img_partition=$(blkid -U "${filesystem_UUID}")
+
+### 判断 .img 所在的分区 的类型
+local filesystem_type=$(blkid -o value -s TYPE "${img_partition}")
+
+### 如果 .img 所在的分区 的类型 是 ntfs
+if [ "${filesystem_type}" == "ntfs" ]; then
+##### 就用 ntfs-3g 的驱动 把 .img 所在的分区 挂载到 /mnt/img_root
+	ntfs-3g "${img_partition}" /mnt/img_root
+##### 否则
+else
+##### 就用 mount 命令挂载到  /mnt/img_root
+	mount -n "${img_partition}" /mnt/img_root
+#### 完毕如果
+fi
+### 寻找可用的回环设备挂载点并设置成 loop_device 的值
+local loop_device=$(losetup -f)
+
+### 把 .img 的临时内存文件系统的挂载路径设为 img_file 的值，img_path 是 grub2-fyde 传递的变量
+local img_file="/mnt/img_root${img_path}"
+
+### 把 它 挂载到 回环设备挂载点上根据分区表自动映射分区，并且禁用 直接的 I/O 进而提升挂载的性能
+losetup --direct-io=off -P ${loop_device} "${img_file}"
+
+### 把 回环块设备上的 第三个分区 挂载到 /mnt/roota
+e2fsck -y ${loop_device}p3
+mount "${loop_device}p3" /mnt/roota
+
+### 检验挂载效果
+echo_var
+cd /mnt/roota
+ls -l
+sleep 15
+
+### 把 /mnt/roota 设置为真实的根文件系统并且切换过去
+mount --move /dev /mnt/roota/dev
+mount --move /sys /mnt/roota/sys
+mount --move /proc /mnt/roota/proc
+sync
+exec switch_root /mnt/roota /sbin/init "$@"
+
+

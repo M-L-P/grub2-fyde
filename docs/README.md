@@ -20,13 +20,25 @@
 #### 特色
 - 使用了 [a1ive](https://github.com/a1ive) 的打过补丁的 [grub](https://github.com/a1ive/grub)，全面支持安全启动，
   - 可以启动任意未签名的内核，以便 fydeOS 在安全启动模式开启的情况下启动，再也不必为了 fydeOS 关闭安全启动了；
-- 暗黑模式；
-- 根据日出日落时间，定时切换 亮|暗 主题；
-- 支持鼠标，支持 PS/2 触控板；
-- 支持多语言；
 - 图形界面切换 A|B 槽位；
-- 图形界面设置倒计时的时间；
+- 快捷键 f12 显示所有的启动菜单；
+- 图形界面手动输入自定义的倒计时秒数，并且只匹配数字；
+- 支持鼠标，支持 PS/2 触控板；
+- 添加了 [Ventoy](https://github.com/ventoy/Ventoy) 的 多国键盘布局；
+- 根据分辨率自动缩放屏幕，也可手动设置 1x、1.5x 和 2x 的缩放倍数；
+- 暗黑模式；
+- 菜单的毛玻璃特效；
+- 根据日出日落时间，定时切换 亮|暗 主题；
 - 图形界面切换主题版本；
+- 隐藏彩蛋；
+- 选择本地硬盘上的 .img 安装映像 用以 安装 fydeOS，
+- - 仿真 fydeOS 【文件】，
+- - 仿真 fydeOS 的终端，
+- - （切换根文件系统失败，initrd 有问题暂时搁置或他人验错），部分代码改编自 [a1ive](https://github.com/a1ive) 的 [grub2-filemanager](https://github.com/a1ive/grub2-filemanager)；
+- 支持多语言，提供测试翻译的入口；
+- 提供测试 KernelSU 的入口；
+- 提供测试 APatch 的入口；
+
 #### 全局按键
 
 按键|功能
@@ -35,9 +47,11 @@
 【Enter】|进入已选择的选项；
 【ESC】|返回上一个菜单列表；（主菜单处退出）
 【Delete】|显示隐藏菜单；
+【F1】|终端；
 【F5】|刷新，重新进入 grub2；
 【F10】|截屏；
-【Insert】|KernelSU 的入口；（暂时需要自行准备修补后的内核）
+【F12】|显示所有的启动菜单；
+【Insert】|获取 Root 权限的入口；
 
 #### 鼠标映射
 
@@ -49,7 +63,7 @@
 右键|【ESC】
 
 #### 文件结构树状图
-<img src="https://gh.sixyin.com/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
+<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️预览👀
@@ -58,11 +72,11 @@
 <summary>🖱️点击展开查看🖱️</summary>
 
 ### 1024x768
-<img src="https://gh.sixyin.com/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/简体中文.gif">
+<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/简体中文.gif">
 
 ### 1920x1080
-<img src="https://gh.sixyin.com/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-light.png">
-<img src="https://gh.sixyin.com/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-dark.png">
+<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-light.png">
+<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-dark.png">
 </details>
 
 ## 🧭指南⬇️
@@ -70,39 +84,15 @@
 ### 复制到 ESP
 - 复制文件夹 `zip: EFI/fyde` 到 `ESP: \EFI`；
 
-## 📅规划🗺️
-
-当前功能|未来规划
---|--
-✔️安全启动<br/>✔️定时切换 亮暗主题|🔜支持 fydeOS v18<br/>🔜支持 KernelSU
+## [📅规划和进展🗺️](https://github.com/M-L-P/.github/blob/main/profile/plan/README.md)
 
 ## 📝FAQ❓️
 
 ### 安全启动
 - 需要通过 [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) （有补丁）启动 `grub2-fyde.efi`，因为该文件未签名；
 
-### Kernel SU
-- fydeOS 的 安卓容器 是 LXC，与宿主系统[共用内核](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
-- 如果你需要安卓的超级用户权限，你应该在编译内核的时候添加 [KernelSU](https://github.com/tiann/KernelSU) 的补丁；
-<details>
-<summary>🖱️点击展开查看🖱️</summary>
-
-#### 源代码
-- [fydeOS r114 的内核源代码](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
-- [KernelSU 仓库](https://github.com/tiann/KernelSU)；
-#### 操作
-编译好了以后，
-- 重命名为 `kernelsu-5.4` 或 `kernelsu-5.10`，
-- 然后复制到 `ESP: \EFI\fyde`；
-#### 这里暂时不提供编译好的，原因如下
-- KernelSU 作为后起之秀，更新频繁，我跟不上 KernelSU 更新的节奏；
-- fydeOS for you 有好些机型，我一台都没有，无法进行任何测试；
-- fydeOS for PC 的用户确实很多，一个用 KernelSU 修补后的内核确实可以方便大波人，但我业余时间要做别的事情；
-
-所以，此处暂时仅提供 KernelSU 的启动入口，暂时不提供编译好的内核。<br/>
-如果你具有编译内核的能力，而且了解 KernelSU，并且想帮助到更多的人，你可以编译好以后，Pull request。
-
-</details>
+### Root 权限
+- 入口处有图形界面的说明；
 
 ### 飞扬的小鸟
 [floppybird](https://github.com/mikebdp2/floppybird) 来自 [mikebdp2](https://github.com/mikebdp2)
@@ -114,10 +104,10 @@
 
 ## 🎉来源🎊
 - [grub](https://github.com/a1ive/grub) 来自 [a1ive](https://github.com/a1ive)；
+- [a1ive](https://github.com/a1ive) 的 [grub2-filemanager](https://github.com/a1ive/grub2-filemanager)；
 - 排版改编自 [Brunch Framework](https://github.com/sebanc/brunch)；
-- Terminal box 来自 [Ventoy](https://github.com/ventoy/Ventoy) 的官方主题；
-- 许多图标改编自 emoji；
+- 许多图标改编自 Windows 10 的内置字体：Segoe UI emoji v-1.29；
 - [floppybird](https://github.com/mikebdp2/floppybird) 来自 [mikebdp2](https://github.com/mikebdp2)；
 - .gif 的动态截图是使用 [Screen2Gif](https://github.com/NickeManarin/ScreenToGif) 对 hyper-V 截取的；
-- 六音的 github 加速器，用于显示图片，https://gh.sixyin.com/ ；
+- Github 加速器，用于显示图片，https://github.moeyy.xyz/ ；
 - ……

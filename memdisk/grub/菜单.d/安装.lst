@@ -1,0 +1,60 @@
+#==============================================================================
+#####----{功能}----
+#------------------------------------------------------------------------------
+function add_back {
+	menuentry "" --class "文件/${THEME_COLOR}回" --hotkey "esc" {
+		set selected=${menu_id}; menu_id=${parent};
+		refresh_theme; configfile ${config_file};
+	};
+};
+#------------------------------------------------------------------------------
+function echo_img {
+	echo -e "\n	IMG_FILE=${IMG_FILE}\n	FILE_NAME=${FILE_NAME}\n	IMG_DIR=${IMG_DIR}\n	IMG_PART=${IMG_PART}\n";
+};
+#------------------------------------------------------------------------------
+function echo_var {
+	echo -e "\n	IMG_PATH=${IMG_PATH}\n	UUID_filesystem=${UUID_filesystem}\n	UUID_partition=${UUID_partition}\n";
+};
+#==============================================================================
+if [ "安装" == "${menu_id}" ]; then
+#==============================================================================
+#####----{安装}----
+#------------------------------------------------------------------------------
+### 菜单
+	menu_config; if [ "文件" == "${selected}" ]; then background_color "black"; fi;
+#------------------------------------------------------------------------------
+### 条目
+	add_parent;
+	add_submenu $"Files: "${FILE_NAME}	"安装/文件"	"f"	"文件";
+	if [ "开" != "${gear_mount}" ]; then
+		menuentry $"Mount" --class "安装/挂载" {
+			regexp --set=1:IMG_PATH '^.*\)(.*$)' "${IMG_FILE}";
+			regexp --set=1:IMG_PART '(^\(.*[,].*\))/.*' "${IMG_FILE}"; loopback -d loop;
+			if loopback loop ${IMG_FILE}; then probe --set=UUID_filesystem -u ${IMG_PART};
+				probe --set=UUID_partition -g (loop,gpt3); export gear_mount=开 IMG_NAME=${FILE_NAME};
+			else false; fi; configfile ${config_file};
+		};
+	elif [ "开" == "${gear_mount}" ]; then
+		menuentry $"Unmount: "${IMG_NAME} --class "安装/卸载" {
+			loopback -d loop; gear_mount=关; configfile ${config_file};
+		};
+		menuentry $"Boot: "${IMG_NAME} --class "安装/启动" {
+			echo -e " "$"Show information related to image files: "; echo_img;
+			echo -e " "$"Show the passed variables: "; echo_var;
+			echo -e "\n\n\n\n\n\n\n	"$"No (press [ESC] or [F4])""			"$"Yes (waiting for the countdown to end)""\n\n\n\n\n"
+			if sleep -v -i 30; then
+				linux (loop,gpt12)/syslinux/vmlinuz.A init=/sbin/init rootwait ro \
+				noresume loglevel=7 audit=0 console=  i915.modeset=1 cros_efi \
+				root=PARTUUID=${UUID_partition} \
+				img_path=${IMG_PATH} filesystem_UUID=${UUID_filesystem};
+				initrd ${experimental_dir}/virtual_usb.cpio;
+			else false; fi;
+		}; fi;
+#==============================================================================
+elif [ "文件" == "${menu_id}" ]; then
+#==============================================================================
+#####----{文件}----
+#------------------------------------------------------------------------------
+	source ${menu_dir}/文件.lst
+#==============================================================================
+fi;

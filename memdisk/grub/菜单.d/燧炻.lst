@@ -1,0 +1,52 @@
+###############################################################################
+#                                [燧炻.lst]
+#                              to boot fydeOS
+###############################################################################
+
+#==============================================================================
+#####----{功能}----
+#------------------------------------------------------------------------------
+function show_install {
+	gear_install=开; selected=0; configfile ${config_file};
+};
+#------------------------------------------------------------------------------
+function loop_img {
+	search -L --set=dualboot_part FYDEOS-DUAL-BOOT; img=($dualboot_part)/fydeos/fydeos_dual_boot.img;
+	if loopback loopdev $img; then
+		for slot in A B; do vmlinuz_${slot}=($dualboot_part)/boot/fydeos_vmlinuz${slot}; done; unset slot;
+	else show_install; fi;
+};
+#------------------------------------------------------------------------------
+function linux_kernel {
+	linux ${vmlinuz} init=/sbin/init boot=local rootwait noresume noswap ro \
+	loglevel=7 console= i915.modeset=1 cros_efi cros_debug fydeos_dualboot;
+};
+#------------------------------------------------------------------------------
+function boot_fydeos {
+	linux_kernel;
+	if [ "RE" == "$1" ]; then initrd ($dualboot_part)/boot/core_util_ramfs.cpio;
+	else initrd ($dualboot_part)/boot/dual_boot_ramfs.cpio; fi;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{条目}----
+#------------------------------------------------------------------------------
+function multiboot_A {
+	menuentry $"fydeOS multiboot A"		--class "启动/A" --id "燧炻" --hotkey "a" {
+		loop_img; vmlinuz=${vmlinuz_A}; boot_fydeos;
+	};
+};
+#------------------------------------------------------------------------------
+function multiboot_B {
+	menuentry $"fydeOS multiboot B"		--class "启动/B" --id "燧炻" --hotkey "b" {
+		loop_img; vmlinuz=${vmlinuz_B}; boot_fydeos;
+	};
+};
+#------------------------------------------------------------------------------
+function recovery_tools {
+	menuentry $"fydeOS Recovery Tools"	--class "启动/RE" --id "恢复" --hotkey "r" {
+		loop_img; vmlinuz=${vmlinuz_B}; boot_fydeos "RE";
+	};
+};
+#==============================================================================
