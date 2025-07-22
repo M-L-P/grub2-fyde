@@ -1,6 +1,6 @@
 title-text: ""
 desktop-image: "幻灯片2.PNG"
-desktop-image-scale-method: "crop" desktop-image-h-align: "center"
+desktop-image-scale-method: "padding" desktop-image-h-align: "center"
 terminal-border: "0" terminal-font: "Terminus (TTF) Regular 24"
 terminal-left: "0" terminal-top: "0"
 terminal-width: "100%" terminal-height: "100%"
