@@ -11,6 +11,9 @@ on:
     paths:
       - '.github/workflows/构建.yml'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     strategy:
