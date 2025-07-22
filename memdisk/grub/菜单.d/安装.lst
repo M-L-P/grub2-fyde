@@ -2,7 +2,7 @@
 #####----{功能}----
 #------------------------------------------------------------------------------
 function echo_img {
-	echo -e "\n	IMG_FILE=${IMG_FILE}\n	FILE_NAME=${FILE_NAME}\n	IMG_DIR=${IMG_DIR}\n";
+	echo -e "\n	IMG_FILE=${IMG_FILE}\n	FILE_NAME=${FILE_NAME}\n	IMG_DIR=${IMG_DIR}\n	IMG_PART=${IMG_PART}\n";
 };
 #------------------------------------------------------------------------------
 function echo_var {
@@ -21,8 +21,9 @@ if [ "安装" == "${menu_id}" ]; then
 	add_submenu $"Files: "${FILE_NAME}	"安装/文件"	"f"	"文件";
 	if [ "开" != "${gear_mount}" ]; then
 		menuentry $"Mount" --class "安装/挂载" {
-			regexp --set=1:IMG_PATH '^.*\)(.*$)' "${IMG_FILE}"; loopback -d loop;
-			if loopback loop ${IMG_FILE}; then probe --set=UUID_filesystem -u (loop,gpt3);
+			regexp --set=1:IMG_PATH '^.*\)(.*$)' "${IMG_FILE}";
+			regexp --set=1:IMG_PART '(^\(.*[,].*\))/.*' "${IMG_FILE}"; loopback -d loop;
+			if loopback loop ${IMG_FILE}; then probe --set=UUID_filesystem -u ${IMG_PART};
 				probe --set=UUID_partition -g (loop,gpt3); export gear_mount=开 IMG_NAME=${FILE_NAME};
 			else false; fi; configfile ${config_file};
 		};

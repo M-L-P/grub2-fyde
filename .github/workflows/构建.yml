@@ -35,8 +35,7 @@ jobs:
         name: ${{ matrix.type }}
         path: |
             ESP
-            grub2-fyde.xz
-            virtual_usb.cpio
+            
 
     - name: 发布
       uses: softprops/action-gh-release@v2

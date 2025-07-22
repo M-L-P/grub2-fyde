@@ -17,17 +17,22 @@ function enum_device {
 #------------------------------------------------------------------------------
 function enum_file {
 	for item in ${grub_path}/*; do regexp --set=1:name '.*/(.*)$' "${item}";
-		if [ -d "${item}" ] -a [ "System Volume Information" != "${name}" ] -a [ '$recycle.bin' != "${name}" ]; then
-			menuentry "  "$"Folder""                -                                                                    <${name}>" \
-			"${item}" --class "grubfm/dir" {grubfm_main "${2}";}; fi; done;
-	for item in ${grub_path}/*; do regexp --set=1:name '.*/(.*)$' "${item}"; regexp --set=1:name_ext '^.*\.(.*$)' "${item}";
-		unset NAME_EXT; tr --set=NAME_EXT -U ${name_ext}
-		if [ -f "${item}" ]; then stat --set=size -m "${item}";
-			if regexp '^[iI][mM][gG]$' "${name_ext}"; then icon=img;
-			else icon=file; fi;
-			menuentry "${NAME_EXT} "$"file""               ${size}                                                                    ${name}" \
-			"${item}" --class "grubfm/${icon}" {grubfm_open "${2}";}; unset size;
-		fi; unset name; unset name_ext; done;
+		if [ -d "${item}" ] -a [ "System Volume Information" != "${name}" ]; then
+			regexp --set=1:first_character '(^.).*' "${name}";
+			if [ '$' != "${first_character}" ] -a [ '.' != "${first_character}" ]; then
+				menuentry "  "$"Folder""                -                                                                    <${name}>" \
+				"${item}" --class "grubfm/dir" {grubfm_main "${2}";}; fi; fi; done;
+	for item in ${grub_path}/*; do regexp --set=1:name '.*/(.*)$' "${item}";
+		regexp --set=1:first_character '(^.).*' "${name}";
+		if [ '$' != "${first_character}" ] -a [ '.' != "${first_character}" ]; then
+			regexp --set=1:name_ext '^.*\.(.*$)' "${item}";
+			unset NAME_EXT; tr --set=NAME_EXT -U ${name_ext}
+			if [ -f "${item}" ]; then stat --set=size -m "${item}";
+				if regexp '^[iI][mM][gG]$' "${name_ext}"; then icon=img;
+				else icon=file; fi;
+				menuentry "${NAME_EXT} "$"file""               ${size}                                                                    ${name}" \
+				"${item}" --class "grubfm/${icon}" {grubfm_open "${2}";}; unset size;
+			fi; fi; unset name; unset name_ext; done;
 };
 #------------------------------------------------------------------------------
 ### grubfm_main PATH
