@@ -40,11 +40,9 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         name: "grub2-fyde-v20.0"
-        tag_name: v20test1
+        tag_name: v20
         make_latest: true
         body_path: docs/发布模板.md
         files: |
           grub2-fyde.zip
-          grub2-fyde.xz
-          virtual_usb.cpio
           

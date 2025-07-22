@@ -20,13 +20,25 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 #### Feature
 - Using patched [grub](https://github.com/a1ive/grub) of [a1ive](https://github.com/a1ive), it totally supports secure boot，
   - It can load any unsigned kernel, so that fydeOS can be booted with Secure Boot enabled, not disabled anymore;
-- Dark mode;
-- Schedule light theme at dawn, and dark theme at dusk;
+- Switching A|B slots on the graphical interface;
+- Shortcut key f12 to show all boot items;
+- Manually inputting custom countdown seconds on the graphical interface, and only match numbers;
 - Mouse and PS/2 trackpad;
-- Multiple languages;
-- -Switching A|B slots on the graphical interface;
-- Set the timeout on the graphical interface;
-- Switch theme versions through graphical interface;
+- Having added multi country keyboard layouts from [Ventoy](https://github.com/ventoy/Ventoy);
+- Automatically scaling the screen according to the resolution, or manually setting the scaling factor to 1x, 1.5x, and 2x;
+- Dark mode;
+- The frosted glass effect on the menu;
+- Regularly, light theme at dawn, and dark theme at dusk;
+- To switch theme versions through graphical interface;
+- Hidden Easter eggs;
+- To select the. img installation image on the local hard drive to install fydeOS,
+- - Simulated [file] of fydeOS,
+- - Simulated terminal of fydeOS,
+- - (Failed to switch root filesystem, temporarily shelved or debugged by others, due to issues of initrd), some code adapted from [grub2-filemanager](https://github.com/a1ive/grub2-filemanager) of [a1ive](https://github.com/a1ive)；
+- Multiple languages, with an entry for testing translation;
+- With an entry for testing KernelSU;
+- With an entry for testing APatch;
+
 #### Global keys
 
 Key|Function
@@ -35,9 +47,11 @@ Key|Function
 [Enter] | Enter the selected entry;
 [ESC] | Returns to the previous menu list; (Exit from the main menu)
 [Delete] | Show hidden menu;
+[F1]| Terminal;
 [F5] | Refresh and re-enter grub2;
 [F10] | Screenshot;
-[Insert] | The entry of KernelSU; (You need to prepare your own patched kernel, temporarily)
+[F12]| show all boot items;
+[Insert] | The entry of getting root permission;
 
 #### Mouse mapping
 
@@ -70,33 +84,15 @@ Right click | [ESC]
 ### Copy in ESP
 - Copy the folder `zip: EFI/fyde` into `ESP: \EFI`;
 
+## [📅Planning & progress🗺️](https://github.com/M-L-P/.github/blob/main/profile/plan/README.md)
+
 ## 📝FAQ❓️
 
 ### Secure Boot
 - You should use [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) (with patch) to load `grub2-fyde.efi` (unsigned).
 
-### Kernel SU
-- The android for fydeOS is LXC, using the [kernel of its host system](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4);
-- If you need android root, you should use [KernelSU](https://github.com/tiann/KernelSU) to patch when compiling your kernel.
-<details>
-<summary>🖱️Click to Unfold to see🖱️</summary>
-
-#### Source Codes
-- [Kernel of fydeOS r114](https://github.com/openFyde/project-openfyde-patches/tree/r114-dev/sys-kernel/chromeos-kernel-5_4)；
-- [KernelSU Repo](https://github.com/tiann/KernelSU)；
-#### Operation
-Having compiled，
-- Rename it `kernelsu-5.4` or `kernelsu-5.10`,
-- Copy it and paste to `ESP: \EFI\fyde`；
-#### Compiled kernels are not temporarily available here for the following reasons
-- As a rising star, KernelSU updates frequently, so I can't keep up with the pace of updates to KernelSU;
-- There are several models of fydeOS for you, but I don't have any and cannot conduct any testing;
-- There are indeed many users of fydeOS for PC, and a kernel patched with KernelSU can indeed be convenient for a large number of people, but I have to do other things in my spare time;
-
-Therefore, only the entry for KernelSU is provided here, and a compiled kernel is not provided, temporarily.<br/>
-If you have the ability to compile kernels, understand KernelSU, and want to help more people, you can pull request after your testing.
-
-</details>
+### Root permission
+- There is a graphical interface description around its entry;
 
 ### Flappy Bird
 [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2)
@@ -108,9 +104,9 @@ Tell your friends that you have got a good stuff.
 
 ## 🎉Credit🎊
 - [grub](https://github.com/a1ive/grub) from [a1ive](https://github.com/a1ive);
+- [grub2-filemanager](https://github.com/a1ive/grub2-filemanager) of [a1ive](https://github.com/a1ive)；
 - Type setting is adapted from [Brunch Framework](https://github.com/sebanc/brunch);
-- Terminal box is adapted from the official theme of [Ventoy](https://github.com/ventoy/Ventoy);
-- Many icons are adapted from emoji;
+- Many icons are adapted from the emoji font from Windows 10, Segoe UI emoji v-1.29;
 - [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2);
 - The .gif cartoon is taken by using Hyper-V and [Screen2Gif](https://github.com/NickeManarin/ScreenToGif);
 - ...
