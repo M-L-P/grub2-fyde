@@ -36,7 +36,7 @@ terminal-box: "../终端/终端-2x_*.png"
 	item_font = "Microsoft YaHei Regular 24" selected_item_font = "Microsoft YaHei Regular 24"
 	item_color = "black" selected_item_color= "black"
 	icon_height = 88 icon_width = 88
-	item_height = 88 item_padding = 0 item_icon_space = 20 item_spacing = 0
+	item_height = 88 item_padding = 0 item_icon_space = 0 item_spacing = 0
 	menu_pixmap_style = "../菜单/文件-2x/阳菜单_*.png" selected_item_pixmap_style = "阳选择_*.png"
 	scrollbar = true
 	scrollbar_width = 8

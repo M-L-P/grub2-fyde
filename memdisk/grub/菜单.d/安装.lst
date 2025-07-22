@@ -1,6 +1,13 @@
 #==============================================================================
 #####----{功能}----
 #------------------------------------------------------------------------------
+function add_back {
+	menuentry "" --class "文件/${THEME_COLOR}回" --hotkey "esc" {
+		set selected=${menu_id}; menu_id=${parent};
+		refresh_theme; configfile ${config_file};
+	};
+};
+#------------------------------------------------------------------------------
 function echo_img {
 	echo -e "\n	IMG_FILE=${IMG_FILE}\n	FILE_NAME=${FILE_NAME}\n	IMG_DIR=${IMG_DIR}\n	IMG_PART=${IMG_PART}\n";
 };
