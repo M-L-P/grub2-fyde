@@ -29,6 +29,7 @@ sudo bash ./grub2-fyde.sh;
 cd ../..; ls -l;
 ### 合成 initrd
 cd initrd_root; ls -l;
+rm ./*/.folder; rm ./mnt/*/.folder;
 find * | cpio -o -H newc | gzip -9 > ../virtual_usb.cpio;
 cd ..; ls -l;
 ### 归档文件
