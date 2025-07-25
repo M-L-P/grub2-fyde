@@ -133,6 +133,9 @@ msgstr "开发者："
 msgid "Version: "
 msgstr "版本："
 
+msgid "You are now ${click_count} steps away from playing."
+msgstr "现在只需再执行 ${click_count} 步操作即可消遣。"
+
 msgid "Flappy Bird"
 msgstr "飞扬的小鸟"
 
@@ -216,6 +219,9 @@ msgstr "你可以访问 https://github.com/M-L-P/grub2-fyde 参与翻译。"
 
 msgid "Input"
 msgstr "输入"
+
+msgid "Wallpaper"
+msgstr "壁纸"
 
 msgid "Existential Blossom"
 msgstr "存在之花"

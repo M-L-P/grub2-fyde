@@ -133,6 +133,9 @@ msgstr ""
 msgid "Version: "
 msgstr ""
 
+msgid "You are now ${click_count} steps away from playing."
+msgstr ""
+
 msgid "Flappy Bird"
 msgstr ""
 
@@ -215,6 +218,9 @@ msgid "You can participate in the translation by visiting https://github.com/M-L
 msgstr ""
 
 msgid "Input"
+msgstr ""
+
+msgid "Wallpaper"
 msgstr ""
 
 msgid "Existential Blossom"

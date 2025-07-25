@@ -94,10 +94,6 @@
 ### Root 权限
 - 入口处有图形界面的说明；
 
-### 飞扬的小鸟
-[floppybird](https://github.com/mikebdp2/floppybird) 来自 [mikebdp2](https://github.com/mikebdp2)
-- - 需要开启 CSM 模式，纯 UEFI 无法运行。
-
 ## ⭐收藏🌟
 如果你喜欢并且期待未来的更新，你可以点亮星星。💫<br/>
 告诉你的朋友，你得到了个好东西。
@@ -107,7 +103,6 @@
 - [a1ive](https://github.com/a1ive) 的 [grub2-filemanager](https://github.com/a1ive/grub2-filemanager)；
 - 排版改编自 [Brunch Framework](https://github.com/sebanc/brunch)；
 - 许多图标改编自 Windows 10 的内置字体：Segoe UI emoji v-1.29；
-- [floppybird](https://github.com/mikebdp2/floppybird) 来自 [mikebdp2](https://github.com/mikebdp2)；
 - .gif 的动态截图是使用 [Screen2Gif](https://github.com/NickeManarin/ScreenToGif) 对 hyper-V 截取的；
 - Github 加速器，用于显示图片，https://github.moeyy.xyz/ ；
 - ……

@@ -1,8 +1,3 @@
-###############################################################################
-#                               [菜单.lst]
-#                      to list the items of the menu
-###############################################################################
-
 #==============================================================================
 #####----{功能}----
 #------------------------------------------------------------------------------
@@ -15,12 +10,12 @@ function submenu_back {
 #------------------------------------------------------------------------------
 function add_submenu {
 	menuentry "$1" "$2" "$3" "$4" --class "$2" --id "$4" --hotkey "$3" {
-		set parent_id=${menu_id}; menu_id=$4;
+		if [ "${menu_dir}/隐藏.lst" != "${config_file}" ]; then parent_id=${menu_id}; fi;
+		set menu_id=$4;
 		if [ "出口" == "${menu_id}" ]; then exit;
-		elif [ "游戏" == "${menu_id}" ]; then config_file=${game_dir}/${4}.lst; 
-		elif [ "安装" == "${menu_id}" ]; then 
-			set config_file=${menu_dir}/${4}.lst; fi;
-		configfile ${config_file};
+		elif [ "游戏" == "${menu_id}" ]; then nes ${prefix}/FlappyBird.nes 3;
+		elif [ "安装" == "${menu_id}" ]; then config_file=${menu_dir}/${4}.lst;
+		fi; configfile ${config_file};
 	};
 };
 #------------------------------------------------------------------------------
@@ -29,7 +24,7 @@ function add_hidden {
 		set thatthat=${menu_id}
 		if [ "终端" == "$1" ]; then commandline;
 		elif [ "刷新" == "$1" ]; then clear_menu; normal;
-		else parent_id=${menu_id}; parent_menu=${prefix}/菜单.lst; menu_id=$1;
+		else parent_menu=${menu_dir}/菜单.lst; menu_id=$1;
 			config_file=${menu_dir}/隐藏.lst; configfile ${config_file};
 		fi;
 	};
@@ -37,13 +32,13 @@ function add_hidden {
 #------------------------------------------------------------------------------
 function add_parent {
 	menuentry $"Back" --class "启事/返回" --hotkey "esc" {
-		set selected=${menu_id};
+		if [ "${menu_dir}/隐藏.lst" == "${config_file}" ]; then selected_hidden=${menu_id};
+		else selected=${menu_id}; fi;
 		if [ "前" == "${parent}" ]; then
 			set config_file=${parent_menu}; menu_id=${thatthat}; unset thatthat;
 		elif [ "主" == "${parent}" ]; then config_file=${parent_menu}; menu_id=菜单;
 		else menu_id=${parent}; fi;
-		if [ "文件" == "${selected}" ] -o [ "语言" == "${selected}" ]; then
-			refresh_theme; fi; 
+		if [ "文件" == "${selected}" ] -o [ "语言" == "${selected}" ]; then refresh_theme; fi; 
 		configfile ${config_file};
 	};
 };
@@ -97,10 +92,11 @@ if [ "菜单" == "${menu_id}" ]; then
 ### 条目
 	if [ "开" != "${gear_install}" ]; then multiboot_${SLOT};
 	else thatthat=菜单; add_submenu $"Install fydeOS" "启动/U盘" "i" "安装"; fi;
-	add_submenu $"Settings"		"菜单/设置"	"f2"	"设置";
+	add_submenu $"Settings"		"菜单/设置"	"f2"		"设置";
 	if [ "关" == "${gear_schedule}" ]; then switch_theme;
 	elif [ "开" == "${gear_schedule}" ]; then menu_date; fi;
-	add_submenu $"Exit"			"菜单/出口"	"esc"	"出口";
+	add_submenu $"Flappy Bird"	"菜单/游戏"	"g"			"游戏";
+	add_submenu $"Exit"			"菜单/出口"	"esc"		"出口";
 	add_submenu $"About"		"菜单/关于"	"backspace"	"关于";
 #==============================================================================
 elif [ "设置" == "${menu_id}" ]; then
@@ -134,11 +130,12 @@ elif [ "关于" == "${menu_id}" ]; then
 	add_parent;
 	menuentry $"Developer: "M.L.P. --class "关于/开发" {echo -e "\n\n			https://github.com/M-L-P"; sleep -v -i 5;set selected=1; configfile ${config_file};};
 	menuentry $"Version: "20.0 --class "关于/版本" {
-		if [ -z ${click_count} ]; then click_count=4; else decrement click_count; fi;
-		if [ "0" -lt "${click_count}" ]; then echo -e "现在只需再执行${click_count}步操作。\n\n			https://github.com/M-L-P/grub2-fyde\n\n"; sleep 1; fi;
+		if [ -z ${click_count} ]; then click_count=3; else decrement click_count; fi;
+		if [ "0" -lt "${click_count}" ]; then echo -e $"You are now ${click_count} steps away from playing.""\n\n			https://github.com/M-L-P/grub2-fyde\n\n"; sleep 1; fi;
+		if [ "0" -eq "${click_count}" ]; then click_count=4; tetris; fi;
 		set selected=2; configfile ${config_file};
 	};
-	if [ "1" -eq "${click_count}" ]; then click_count=5; add_submenu $"Flappy Bird" "关于/游戏" "g" "游戏"; fi;
+	
 #==============================================================================
 elif [ "倒计时" == "${menu_id}" ]; then
 #==============================================================================
@@ -194,7 +191,8 @@ elif [ "键盘" == "${menu_id}" ]; then
 #####----{键盘}----
 #------------------------------------------------------------------------------
 ### 配置
-	menu_config "${selected}" ""; default_number=${number_keyboard}; ini_option;	
+	menu_config "${selected}" "";
+	set default_number=${number_keyboard}; ini_option;	
 #------------------------------------------------------------------------------
 ### 条目
 	add_parent; add_switch $"Key mapping" "${gear_keymap}" "gear_keymap" "true" "disable_keymap";
@@ -223,10 +221,11 @@ elif [ "分辨率" == "${menu_id}" ]; then
 	menu_config "1" "显示"; videomode -l videomode_list;
 #------------------------------------------------------------------------------
 ### 条目
-	add_parent; for resolution in $"max" ${videomode_list}; do
-		if [ $"max" == "${resolution}" ]; then option="[☆]";
-		else option="[  ]"; fi;
-		menuentry "${option} ${resolution}" --class "设备/分辨" {continue;};
+	add_parent; for videomode in $"max" ${videomode_list}; do
+		regexp --set=1:width_x_height '(^.*[x].*)[x].*$' ${videomode}
+		if [ $"max" == "${videomode}" ] -o [ "${resolution}" == "${width_x_height}" ]; then
+		option="[☆]"; else option="[  ]"; fi;
+		menuentry "${option} ${videomode}" --class "设备/分辨" {continue;};
 	done;
 #==============================================================================
 elif [ "缩放" == "${menu_id}" ]; then
@@ -255,7 +254,7 @@ elif [ "主题" == "${menu_id}" ]; then
 ### 条目
 	add_parent;
 	add_submenu $"Schedule: [${GEAR_SCHEDULE}d]"			"主题/闹钟" "1" "定时";
-	add_submenu $"Version: "${FYDEOS_VERSION}				"主题/标签" "2" "版本";
+	add_submenu $"Wallpaper: "${FYDEOS_VERSION}				"主题/标签" "2" "壁纸";
 #==============================================================================
 elif [ "定时" == "${menu_id}" ]; then
 #==============================================================================
@@ -307,11 +306,11 @@ elif [ "时区" == "${menu_id}" ]; then
 	add_parent; list_selection "UTC" -12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1; add_selection "GMT" "0" "0";
 	list_selection "UTC" +1 +2 +3 +4 +5 +6 +7 +8 +9 +10 +11 +12; add_parent;
 #==============================================================================
-elif [ "版本" == "${menu_id}" ]; then
+elif [ "壁纸" == "${menu_id}" ]; then
 #==============================================================================
-#####----{版本}----
+#####----{壁纸}----
 #------------------------------------------------------------------------------
-	source ${menu_dir}/版本.lst
+	source ${menu_dir}/壁纸.lst
 #==============================================================================
 elif [ "时间和语言" == "${menu_id}" ]; then
 #==============================================================================

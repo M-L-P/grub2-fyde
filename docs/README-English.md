@@ -94,10 +94,6 @@ Right click | [ESC]
 ### Root permission
 - There is a graphical interface description around its entry;
 
-### Flappy Bird
-[floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2)
-- - need CSM mode enabled, it cannot run on only UEFI;
-
 ## ⭐Star🌟
 If you like it and are looking forward to the coming update, you can star it.💫<br/>
 Tell your friends that you have got a good stuff.
@@ -107,6 +103,5 @@ Tell your friends that you have got a good stuff.
 - [grub2-filemanager](https://github.com/a1ive/grub2-filemanager) of [a1ive](https://github.com/a1ive)；
 - Type setting is adapted from [Brunch Framework](https://github.com/sebanc/brunch);
 - Many icons are adapted from the emoji font from Windows 10, Segoe UI emoji v-1.29;
-- [floppybird](https://github.com/mikebdp2/floppybird) from [mikebdp2](https://github.com/mikebdp2);
 - The .gif cartoon is taken by using Hyper-V and [Screen2Gif](https://github.com/NickeManarin/ScreenToGif);
 - ...
