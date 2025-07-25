@@ -18,7 +18,7 @@ cd ..; ls -l;
 ### 合成 memdisk.xz
 cd memdisk; ls -l;
 rm ./grub/主题/*.pptx; rm ./grub/主题/fyde/图标/*.pptx; rm ./grub/主题/fyde/壁纸/*.pptx;
-find ./grub ./游戏.d | cpio -o -H newc | xz -9 -e > ../grub-mkimage/grub2-fyde.xz;
+find ./grub | cpio -o -H newc | xz -9 -e > ../grub-mkimage/grub2-fyde.xz;
 cd ..; ls -l;
 ### 合成 grub2-fyde.efi
 git clone https://github.com/M-L-P/grub2.git;
