@@ -25,4 +25,4 @@ $storage \
 $terminal \
 $time \
 $var \
-eval configfile tetris
+eval configfile tetris nes

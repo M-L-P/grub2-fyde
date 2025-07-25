@@ -26,4 +26,4 @@ set /p var= < ..\mod_list\var.txt
 %terminal% ^
 %time% ^
 %var% ^
-eval configfile tetris
+eval configfile tetris nes

@@ -17,6 +17,7 @@ done;
 cd ..; ls -l;
 ### 合成 memdisk.xz
 cd memdisk; ls -l;
+rm ./grub/locale/readme.md;
 rm ./grub/主题/*.pptx; rm ./grub/主题/fyde/图标/*.pptx; rm ./grub/主题/fyde/壁纸/*.pptx;
 find ./grub | cpio -o -H newc | xz -9 -e > ../grub-mkimage/grub2-fyde.xz;
 cd ..; ls -l;

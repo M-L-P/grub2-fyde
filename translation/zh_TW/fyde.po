@@ -220,8 +220,8 @@ msgstr "你可以訪問 https://github.com/M-L-P/grub2-fyde 參與翻譯。"
 msgid "Input"
 msgstr "輸入"
 
-msgid "Wallpaper"
-msgstr "桌布"
+msgid "Wallpaper: "
+msgstr "桌布："
 
 msgid "Existential Blossom"
 msgstr "存在之花"

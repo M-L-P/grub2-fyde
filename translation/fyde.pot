@@ -220,7 +220,7 @@ msgstr ""
 msgid "Input"
 msgstr ""
 
-msgid "Wallpaper"
+msgid "Wallpaper: "
 msgstr ""
 
 msgid "Existential Blossom"
