@@ -78,9 +78,13 @@ grub2-fyde
                 │   ├── fydeOS_latest.gtpk
                 │   └── ${custom}.gtpk
                 ├── /APatch
-                │   └── ${Kernel_patched_by_APatch}
+                │   ├── kernel_apatch_fydeos_classic
+                │   ├── kernel_apatch_fydeos_slim
+                │   ├── kernel_apatch_fydeos_iris
+                │   └── kernel_apatch_fydeos_apu
                 └── /KernelSU
-                    └── ${Kernel_patched_by_KernelSU}
+                    └── initrd_ksu_fydeos.cpio
+
 ```
 
 -----------------------------------------------------------------------------------------------------------------------------------
