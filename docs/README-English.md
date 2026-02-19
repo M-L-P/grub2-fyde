@@ -63,7 +63,25 @@ Left click | [Enter]
 Right click | [ESC]
 
 #### File Tree
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
+
+```
+grub2-fyde
+└── [ESP]FAT32
+    └── /EFI
+        └── /fyde
+            ├── grub2-fyde.efi
+            ├── grub2-fyde.png
+            ├── grubenv
+            └── /experimental
+                ├── /grub2_theme_package_kit
+                │   ├── fydeOS_full.gtpk
+                │   ├── fydeOS_latest.gtpk
+                │   └── ${custom}.gtpk
+                ├── /APatch
+                │   └── ${Kernel_patched_by_APatch}
+                └── /KernelSU
+                    └── ${Kernel_patched_by_KernelSU}
+```
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️Preview👀
