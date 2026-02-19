@@ -63,7 +63,7 @@
 右键|【ESC】
 
 #### 文件结构树状图
-<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
+<img src="https://fastgit.cc/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/grub2-fyde.png">
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️预览👀
@@ -72,11 +72,11 @@
 <summary>🖱️点击展开查看🖱️</summary>
 
 ### 1024x768
-<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/简体中文.gif">
+<img src="https://fastgit.cc/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/简体中文.gif">
 
 ### 1920x1080
-<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-light.png">
-<img src="https://github.moeyy.xyz/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-dark.png">
+<img src="https://fastgit.cc/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-light.png">
+<img src="https://fastgit.cc/https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/简体中文/1080p-dark.png">
 </details>
 
 ## 🧭指南⬇️
@@ -104,5 +104,5 @@
 - 排版改编自 [Brunch Framework](https://github.com/sebanc/brunch)；
 - 许多图标改编自 Windows 10 的内置字体：Segoe UI emoji v-1.29；
 - .gif 的动态截图是使用 [Screen2Gif](https://github.com/NickeManarin/ScreenToGif) 对 hyper-V 截取的；
-- Github 加速器，用于显示图片，https://github.moeyy.xyz/ ；
+- Github 加速器，用于显示图片，https://fastgit.cc/ ；
 - ……

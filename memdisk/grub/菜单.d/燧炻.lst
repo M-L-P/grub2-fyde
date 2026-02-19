@@ -9,7 +9,7 @@ function loop_img {
 	search -L --set=dualboot_part FYDEOS-DUAL-BOOT; img=($dualboot_part)/fydeos/fydeos_dual_boot.img;
 	if loopback loopdev $img; then
 		for slot in A B; do vmlinuz_${slot}=($dualboot_part)/boot/fydeos_vmlinuz${slot}; done; unset slot;
-	else show_install; fi;
+	else unset img; show_install; fi;
 };
 #------------------------------------------------------------------------------
 function linux_kernel {

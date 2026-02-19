@@ -1,0 +1,26 @@
+title-text: ""
+desktop-image: "壁纸/19-阴.png"
+desktop-image-scale-method: "crop" desktop-image-h-align: "left"
+terminal-border: "0" terminal-font: "Terminus (TTF) Regular 24"
+terminal-left: "0" terminal-top: "0"
+terminal-width: "100%" terminal-height: "100%"
+
++ progress_bar {
+	id = "__timeout__"
+	left = 5% top = 92% width = 90% height = 3%
+	fg_color = "darkslateblue" bg_color = "black" border_color = "teal" text_color = "white"
+	font = "Microsoft YaHei Regular 24" text = "@TIMEOUT_NOTIFICATION_SHORT@"
+}
+
++ boot_menu {
+	left = 0 top = 8% width = 600 height = 84%
+	item_font = "Microsoft YaHei Regular 24" selected_item_font = "Microsoft YaHei Regular 24"
+	item_color = "white" selected_item_color= "white"
+	icon_height = 100 icon_width = 100
+	item_height = 120 item_padding = 0 item_icon_space = 40 item_spacing = 0
+	menu_pixmap_style = "(memdisk)/grub/主题.d/菜单.d/阴菜单_*.png" selected_item_pixmap_style = "(memdisk)/grub/主题.d/菜单.d/选择_*.png"
+	scrollbar = true
+	scrollbar_width = 4
+	scrollbar_thumb = "(memdisk)/grub/主题.d/菜单.d/滚动条_*.png"
+	scrollbar_right_pad = 2
+}

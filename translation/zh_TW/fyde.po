@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: grub2-fyde-20.0\n"
+"Project-Id-Version: grub2-fyde-22.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
@@ -56,13 +56,16 @@ msgid "Storage"
 msgstr "儲存"
 
 msgid "Trash"
-msgstr "垃圾桶"
+msgstr "回收站"
 
 msgid "Mount"
 msgstr "掛載"
 
+msgid "Not an image file of FydeOS!"
+msgstr "並非 FydeOS 的映像檔案！"
+
 msgid "Unmount: "
-msgstr "解除掛載："
+msgstr "解除安裝："
 
 msgid "Show information related to image files: "
 msgstr "顯示映像檔案相關資訊："
@@ -110,7 +113,7 @@ msgid "Enable"
 msgstr "啟用"
 
 msgid "Disable"
-msgstr "禁用"
+msgstr "停用"
 
 msgid "Settings"
 msgstr "設定"
@@ -127,14 +130,20 @@ msgstr "完全退出"
 msgid "About"
 msgstr "關於"
 
+msgid "Name: "
+msgstr "名稱："
+
+msgid "Branch: "
+msgstr "分支："
+
 msgid "Developer: "
 msgstr "開發者："
 
 msgid "Version: "
 msgstr "版本："
 
-msgid "You are now ${click_count} steps away from playing."
-msgstr "只要再 ${click_count} 個步驟即可消遣。"
+msgid "Please enter the countdown seconds (positive integer) that you want."
+msgstr "請輸入你想要的倒計時秒數（正整數），然後回車。"
 
 msgid "Flappy Bird"
 msgstr "飛揚的小鳥"
@@ -206,7 +215,7 @@ msgid "Language: "
 msgstr "語言: "
 
 msgid "Language: English"
-msgstr "語言：簡體中文"
+msgstr "語言：繁體中文"
 
 msgid "Experimental locale"
 msgstr "實驗性的多國語言"
@@ -220,20 +229,32 @@ msgstr "你可以訪問 https://github.com/M-L-P/grub2-fyde 參與翻譯。"
 msgid "Input"
 msgstr "輸入"
 
-msgid "Wallpaper: "
-msgstr "桌布："
+msgid "Default"
+msgstr "預設"
 
-msgid "Existential Blossom"
-msgstr "存在之花"
+msgid "Child"
+msgstr "子類"
 
-msgid "Nostalgic Reflections"
-msgstr "懷舊反射"
+msgid "Guest"
+msgstr "訪客"
 
-msgid "Prosperous Aftermath"
-msgstr "繁榮餘波"
+msgid "v16: Existential_Blossom"
+msgstr "v16：存在之花"
 
-msgid "Desolate Frontier"
-msgstr "荒涼邊境"
+msgid "v17: Nostalgic_Reflections"
+msgstr "v17：懷舊反射"
 
-msgid "Cosmic Memories"
-msgstr "宇宙記憶"
+msgid "v18: Prosperous_Aftermath"
+msgstr "v18：繁榮餘波"
+
+msgid "v19: Desolate_Frontier"
+msgstr "v19：荒涼邊境"
+
+msgid "v20: Cosmic_Memories"
+msgstr "v20：宇宙記憶"
+
+msgid "v21: Sunlit_Epiphany"
+msgstr "v21：陽光頓悟"
+
+msgid "v22: Radiant_Anatomy"
+msgstr "v22：光輝解剖"

@@ -1,14 +1,24 @@
 #==============================================================================
 #####----{功能}----
 #------------------------------------------------------------------------------
+function add_back {
+	menuentry "" --class "文件/${THEME_COLOR}回" --hotkey "esc" {
+		set selected=文件;
+		regexp --set=1:address '^(.*)\/.*$' ${address}; regexp --set=1:menu_id '^.*\/(.*)$' ${address};
+		refresh_theme; configfile ${config_file};
+	};
+};
+#------------------------------------------------------------------------------
 function enum_device {
 	add_back; for device in (*); do
 		if [ -d "${device}" ] -a [ "${device}" != "(memdisk)" ] -a [ "${device}" != "(proc)" ]; then
 			probe --set=filesystem -f -q "${device}"; probe --set=label -l -q "${device}";
-			stat --set=size -m "${device}";
+			stat --set=size -m -q "${device}";
 			menuentry "${device}                        ${size}                    ${filesystem}                        [${label}]" \
 			"${device}" --class "文件/${THEME_COLOR}卷" {grubfm_main "${2}";};
-			unset label; unset filesystem; unset size; fi; done;
+			unset label; unset filesystem; unset size;
+		fi;
+	done; unset device;
 };
 #------------------------------------------------------------------------------
 function enum_file {
@@ -17,19 +27,25 @@ function enum_file {
 			regexp --set=1:first_character '(^.).*' "${name}";
 			if [ '$' != "${first_character}" ] -a [ '.' != "${first_character}" ]; then
 				menuentry "  "$"Folder""                -                                                                    <${name}>" \
-				"${item}" --class "文件/${THEME_COLOR}夹" {grubfm_main "${2}";}; fi; fi; done;
+				"${item}" --class "文件/${THEME_COLOR}夹" {grubfm_main "${2}";};
+			fi; unset first_character;
+		fi; unset name;
+	done; unset item;
 	for item in ${grub_path}/*; do regexp --set=1:name '.*/(.*)$' "${item}";
-		regexp --set=1:first_character '(^.).*' "${name}";
-		if [ '$' != "${first_character}" ] -a [ '.' != "${first_character}" ]; then
-			regexp --set=1:name_ext '^.*\.(.*$)' "${item}";
-			unset NAME_EXT; tr --set=NAME_EXT -U ${name_ext}
-			if [ -f "${item}" ]; then stat --set=size -m "${item}";
+		if [ -f "${item}" ]; then
+			regexp --set=1:first_character '(^.).*' "${name}";
+			if [ '$' != "${first_character}" ] -a [ '.' != "${first_character}" ]; then
+				regexp --set=1:name_ext '^.*\.(.*$)' "${item}";
+				if [ -n "${name_ext}" ]; then tr --set=NAME_EXT -U ${name_ext}; fi;
+				stat --set=size -m -q "${item}";
 				if regexp '^[iI][mM][gG]$' "${name_ext}"; then icon="${THEME_COLOR}包";
 				elif regexp '^[bB][iI][nN]$' "${name_ext}"; then icon="${THEME_COLOR}包";
 				else icon="${THEME_COLOR}档"; fi;
 				menuentry "${NAME_EXT} "$"file""               ${size}                                                                    ${name}" \
-				"${item}" --class "文件/${icon}" {grubfm_open "${2}";}; unset size;
-			fi; fi; unset name; unset name_ext; done;
+				"${item}" --class "文件/${icon}" {grubfm_open "${2}";}; unset size; unset NAME_EXT;
+			fi; unset first_character; unset name_ext; unset icon;
+		fi; unset name;
+	done; unset item;
 };
 #------------------------------------------------------------------------------
 ### grubfm_main PATH
@@ -37,11 +53,12 @@ function grubfm_main {
 	clear_menu;
 	if [ -z "${1}" ]; then enum_device;
 	else export grub_path="${1}"; set default=1;
-	tr --set=path_title "/" '>' ${grub_path};
+		tr --set=path_title "/" '>' ${grub_path};
 		menuentry "> ${path_title}" --class "文件/${THEME_COLOR}回" --hotkey "esc" {
 			if ! regexp --set=1:grub_path '(^.*)/.*$' "${grub_path}"; then unset grub_path; fi;
 			export grub_path; grubfm_main "${grub_path}";
-		}; enum_file; fi;
+		}; enum_file;
+	fi;
 };
 #------------------------------------------------------------------------------
 function add_back_menu {
@@ -51,7 +68,8 @@ function add_back_menu {
 function img_or_bin {
 	clear_menu; add_back_menu;
 	menuentry $"Select the image file" --class "文件/${THEME_COLOR}包" {
-		set IMG_FILE=${grub_file}; FILE_NAME=${name}; IMG_DIR=${grub_path}; menu_id=安装
+		set IMG_FILE=${grub_file}; FILE_NAME=${name}; IMG_DIR=${grub_path};
+		regexp --set=1:address '^(.*)\/.*$' ${address}; regexp --set=1:menu_id '^.*\/(.*)$' ${address};
 		refresh_theme; configfile ${config_file};
 	};
 	if [ "${grub_file}" == "${IMG_FILE}" ]; then
@@ -76,7 +94,7 @@ function grubfm_open {
 #####----{文件}----
 #------------------------------------------------------------------------------
 ### 配置
-	menu_config "" "安装";background_color "#202124"; theme_section;
+	menu_config ""; background_color "#202124"; theme_section;
 #------------------------------------------------------------------------------
 ### 条目
 	if [ -z "${IMG_DIR}" ]; then enum_device;

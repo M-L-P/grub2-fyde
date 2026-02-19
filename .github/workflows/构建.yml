@@ -32,20 +32,23 @@ jobs:
     - name: 构建 ${{ matrix.type }}
       run: sudo bash ./构建.sh
 
-    - name: 上传到此处
+    - name: 上传 grub2-fyde.xz
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.type }}
-        path: |
-            ESP
-            
+        path: grub2-fyde.xz
+
     - name: 发布
       uses: softprops/action-gh-release@v2
       with:
-        name: "grub2-fyde-v20.03"
-        tag_name: v20.03
+        name: "grub2-fyde-22.0"
+        tag_name: v22.0
         make_latest: true
         body_path: docs/发布模板.md
         files: |
-          grub2-fyde.zip
+          grub2-fyde_full.zip
+          grub2-fyde_latest.zip
+          grub2-fyde_minimal.zip
+          fydeOS_full.gtpk
+          fydeOS_latest.gtpk
           

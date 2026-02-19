@@ -10,15 +10,15 @@ for po in */grub.po; do
 	if [ -s "${fyde_po}" ]; then
 		msgcat --use-first -o ../translation/${po%/*}/${po%/*}.po ${po} ${fyde_po};
 		msgfmt ../translation/${po%/*}/${po%/*}.po -o ${locale_mo};
-	else
-		msgfmt ${po} -o ${experimental_mo};
+#	else
+#		msgfmt ${po} -o ${experimental_mo};
 	fi;
 done;
 cd ..; ls -l;
 ### 合成 memdisk.xz
 cd memdisk; ls -l;
 rm ./grub/locale/readme.md;
-rm ./grub/主题/*.pptx; rm ./grub/主题/fyde/图标/*.pptx; rm ./grub/主题/fyde/壁纸/*.pptx;
+#rm ./grub/主题/*.pptx; rm ./grub/主题/fyde/图标/*.pptx; rm ./grub/主题/fyde/壁纸/*.pptx;
 find ./grub | cpio -o -H newc | xz -9 -e > ../grub-mkimage/grub2-fyde.xz;
 cd ..; ls -l;
 ### 合成 grub2-fyde.efi
@@ -33,11 +33,22 @@ cd initrd_root; ls -l;
 rm ./*/.folder; rm ./mnt/*/.folder;
 find * | cpio -o -H newc | gzip -9 > ../virtual_usb.cpio;
 cd ..; ls -l;
+### 打包主题
+for branch in full latest; do
+	cd ./gtpk/fydeOS_${branch}.gtpk;
+	find ./* | cpio -o -H newc | xz -9 -e > ../../fydeOS_${branch}.gtpk;
+	cd ../../;
+done;
 ### 归档文件
 cp ./grub2/grub2-fyde/grub2-fyde.xz ./;
-cp ./virtual_usb.cpio ./cmdpath/experimental;
-mkdir -p ESP/EFI/fyde;
-cp ./grub2/grub2-fyde/grub2-fyde.efi ./ESP/EFI/fyde;
-cp -R ./cmdpath/* ./ESP/EFI/fyde;
-zip -r grub2-fyde.zip ./ESP;
-cd ./ESP/EFI/fyde; ls -l;
+#cp ./virtual_usb.cpio ./cmdpath/experimental;
+for branch in full latest minimal; do
+	mkdir -p ${branch}/EFI/fyde;
+	cp ./grub2/grub2-fyde/grub2-fyde.efi ./${branch}/EFI/fyde;
+	cp -R ./cmdpath/* ./${branch}/EFI/fyde;
+	if [ -f ./fydeOS_${branch}.gtpk ]; then
+		cp ./fydeOS_${branch}.gtpk ./${branch}/EFI/fyde/experimental/grub2_theme_package_kit;
+	fi;
+	zip -r grub2-fyde_${branch}.zip ./${branch};
+	ls -l ./${branch}/EFI/fyde; 
+done;
