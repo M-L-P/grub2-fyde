@@ -49,10 +49,11 @@ function ini_option {
 #------------------------------------------------------------------------------
 function add_switch {
 	eval icon="\$gear_$2";
-	menuentry "$1" "$2" "$3" "${icon}" --class "启事/${icon}" --id "$2" {
+	menuentry "$1" "$2" "$3" "${icon}" "$4" --class "启事/${icon}" --id "$2" {
 		if [ "关" == "$4" ]; then "gear_$2"=开; if [ "功能" == "$3" ]; then enable_$2; fi;
 		elif [ "开" == "$4" ]; then "gear_$2"=关; if [ "功能" == "$3" ]; then  disable_$2; fi;
-		fi; save_grubenv gear_$2; set selected="$2"; refresh_theme; configfile ${config_file};
+		fi; save_grubenv gear_$2; set selected="$2";
+		if [ -n $5 ]; then $5; fi; configfile ${config_file};
 	}; unset icon;
 };
 #------------------------------------------------------------------------------
@@ -331,7 +332,7 @@ elif [ "定时" == "${menu_id}" ]; then
 	elif [ "0" == "${TIME_ZONE}" ]; then VAR_TIMEZONE=GMT; fi;
 #------------------------------------------------------------------------------
 ### 条目
-	add_parent; add_switch $"Enable"" | "$"Disable"	"schedule" "";
+	add_parent; add_switch $"Enable"" | "$"Disable"	"schedule" "" "refresh_theme";
 	if [ "开" == "${gear_schedule}" ]; then
 		add_submenu $"Dawn Clockwise: ""${HOUR_DAWN}"	"定时/日出" "1" "破晓";
 		add_submenu $"Dusk Clockwise: ""${HOUR_DUSK}"	"定时/日落" "2" "黄昏";
