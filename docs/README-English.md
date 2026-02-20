@@ -43,49 +43,50 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 
 Key|Function
 -|-
-[↑] [↓] | Navigation;
-[Enter] | Enter the selected entry;
-[ESC] | Returns to the previous menu list; (Exit from the main menu)
-[Delete] | Show hidden menu;
-[F1]| Terminal;
-[F5] | Refresh and re-enter grub2;
-[F10] | Screenshot;
-[F12]| show all boot items;
-[Insert] | The entry of getting root permission;
+<kbd>↑</kbd> <kbd>↓</kbd> | Navigation;
+<kbd>Enter</kbd> | Enter the selected entry;
+<kbd>ESC</kbd> | Returns to the previous menu list; (Exit from the main menu)
+<kbd>Delete</kbd> | Show hidden menu;
+<kbd>F1</kbd>| Terminal;
+<kbd>F5</kbd> | Refresh and re-enter grub2;
+<kbd>F10</kbd> | Screenshot;
+<kbd>F12</kbd>| show all boot items;
+<kbd>Insert</kbd> | The entry of getting root permission;
 
 #### Mouse mapping
 
 Operation | Function
 -|-
-Slide up | [↑]
-Down | [↓]
-Left click | [Enter]
-Right click | [ESC]
+Slide up | <kbd>↑</kbd>
+Down | <kbd>↓</kbd>
+Left click | <kbd>Enter</kbd>
+Right click | <kbd>ESC</kbd>
 
-#### File Tree
-
-```
-grub2-fyde
-└── [ESP]FAT32
-    └── /EFI
-        └── /fyde
-            ├── grub2-fyde.efi
-            ├── grub2-fyde.png
-            ├── grubenv
-            └── /experimental
-                ├── /grub2_theme_package_kit
-                │   ├── fydeOS_full.gtpk
-                │   ├── fydeOS_latest.gtpk
-                │   └── ${custom}.gtpk
-                ├── /APatch
-                │   ├── kernel_apatch_fydeos_classic
-                │   ├── kernel_apatch_fydeos_slim
-                │   ├── kernel_apatch_fydeos_iris
-                │   └── kernel_apatch_fydeos_apu
-                └── /KernelSU
-                    └── initrd_ksu_fydeos.cpio
-
-```
+> [!CAUTION]
+> #### File Tree
+>
+> ```
+> grub2-fyde
+> └── [ESP]FAT32
+>    └── /EFI
+>        └── /fyde
+>            ├── grub2-fyde.efi
+>            ├── grub2-fyde.png
+>            ├── grubenv
+>            └── /experimental
+>                ├── /grub2_theme_package_kit
+>                │   ├── fydeOS_full.gtpk
+>                │   ├── fydeOS_latest.gtpk
+>                │   └── ${custom}.gtpk
+>                ├── /APatch
+>                │   ├── kernel_apatch_fydeos_classic
+>                │   ├── kernel_apatch_fydeos_slim
+>                │   ├── kernel_apatch_fydeos_iris
+>                │   └── kernel_apatch_fydeos_apu
+>                └── /KernelSU
+>                    └── initrd_ksu_fydeos.cpio
+>
+> ```
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️Preview👀
@@ -110,11 +111,13 @@ grub2-fyde
 
 ## 📝FAQ❓️
 
-### Secure Boot
-- You should use [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) (with patch) to load `grub2-fyde.efi` (unsigned).
+> [!IMPORTANT]
+> ### Secure Boot
+> - You should use [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) (with patch) to load `grub2-fyde.efi` (unsigned).
 
-### Root permission
-- There is a graphical interface description around its entry;
+> [!TIP]
+> ### Root permission
+> - There is a graphical interface description around its entry;
 
 ## ⭐Star🌟
 If you like it and are looking forward to the coming update, you can star it.💫<br/>

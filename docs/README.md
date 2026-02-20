@@ -43,49 +43,50 @@
 
 按键|功能
 -|-
-【↑】【↓】|导航；
-【Enter】|进入已选择的选项；
-【ESC】|返回上一个菜单列表；（主菜单处退出）
-【Delete】|显示隐藏菜单；
-【F1】|终端；
-【F5】|刷新，重新进入 grub2；
-【F10】|截屏；
-【F12】|显示所有的启动菜单；
-【Insert】|获取 Root 权限的入口；
+<kbd>↑</kbd><kbd>↓</kbd>|导航；
+<kbd>Enter</kbd>|进入已选择的选项；
+<kbd>ESC</kbd>|返回上一个菜单列表；（主菜单处退出）
+<kbd>Delete</kbd>|显示隐藏菜单；
+<kbd>F1</kbd>|终端；
+<kbd>F5</kbd>|刷新，重新进入 grub2；
+<kbd>F10</kbd>|截屏；
+<kbd>F12</kbd>|显示所有的启动菜单；
+<kbd>Insert</kbd>|获取 Root 权限的入口；
 
 #### 鼠标映射
 
 操作|功能
 -|-
-上滑|【↑】
-下滑|【↓】
-左键|【Enter】
-右键|【ESC】
+上滑|<kbd>↑</kbd>
+下滑|<kbd>↓</kbd>
+左键|<kbd>Enter</kbd>
+右键|<kbd>ESC</kbd>
 
-#### 文件结构树状图
-
-```
-grub2-fyde
-└── [ESP]FAT32
-    └── /EFI
-        └── /fyde
-            ├── grub2-fyde.efi
-            ├── grub2-fyde.png
-            ├── grubenv
-            └── /experimental
-                ├── /grub2_theme_package_kit
-                │   ├── fydeOS_full.gtpk
-                │   ├── fydeOS_latest.gtpk
-                │   └── ${custom}.gtpk
-                ├── /APatch
-                │   ├── kernel_apatch_fydeos_classic
-                │   ├── kernel_apatch_fydeos_slim
-                │   ├── kernel_apatch_fydeos_iris
-                │   └── kernel_apatch_fydeos_apu
-                └── /KernelSU
-                    └── initrd_ksu_fydeos.cpio
-
-```
+> [!CAUTION]
+> #### 文件结构树状图
+>
+> ```
+> grub2-fyde
+> └── [ESP]FAT32
+>    └── /EFI
+>        └── /fyde
+>            ├── grub2-fyde.efi
+>            ├── grub2-fyde.png
+>            ├── grubenv
+>            └── /experimental
+>                ├── /grub2_theme_package_kit
+>                │   ├── fydeOS_full.gtpk
+>                │   ├── fydeOS_latest.gtpk
+>                │   └── ${custom}.gtpk
+>                ├── /APatch
+>                │   ├── kernel_apatch_fydeos_classic
+>                │   ├── kernel_apatch_fydeos_slim
+>                │   ├── kernel_apatch_fydeos_iris
+>                │   └── kernel_apatch_fydeos_apu
+>                └── /KernelSU
+>                    └── initrd_ksu_fydeos.cpio
+>
+> ```
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ## 💻️预览👀
@@ -110,11 +111,13 @@ grub2-fyde
 
 ## 📝FAQ❓️
 
-### 安全启动
-- 需要通过 [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) （有补丁）启动 `grub2-fyde.efi`，因为该文件未签名；
+> [!IMPORTANT]
+> ### 安全启动
+> - 需要通过 [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) （有补丁）启动 `grub2-fyde.efi`，因为该文件未签名；
 
-### Root 权限
-- 入口处有图形界面的说明；
+> [!TIP]
+> ### Root 权限
+> - 入口处有图形界面的说明；
 
 ## ⭐收藏🌟
 如果你喜欢并且期待未来的更新，你可以点亮星星。💫<br/>
