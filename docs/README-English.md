@@ -16,11 +16,11 @@
 
 <h1 align="center">grub2-fyde</h1>
 
-It is used to boot fydeOS, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
-#### Feature
+It is used to boot fydeOS/openfyde, with grub theme added, adapted from which of [brunch](https://github.com/sebanc/brunch).
+#### 📖Feature
 - Using patched [grub](https://github.com/a1ive/grub) of [a1ive](https://github.com/a1ive), it totally supports secure boot，
-  - It can load any unsigned kernel, so that fydeOS can be booted with Secure Boot enabled, not disabled anymore;
-- Switching A|B slots on the graphical interface;
+  - It can load any unsigned kernel, so that fydeOS/openfyde can be booted with Secure Boot enabled, not disabled anymore;
+- ~~Switching A|B slots on the graphical interface;~~
 - Shortcut key f12 to show all boot items;
 - Manually inputting custom countdown seconds on the graphical interface, and only match numbers;
 - Mouse and PS/2 trackpad;
@@ -31,15 +31,15 @@ It is used to boot fydeOS, with grub theme added, adapted from which of [brunch]
 - Regularly, light theme at dawn, and dark theme at dusk;
 - To switch theme versions through graphical interface;
 - Hidden Easter eggs;
-- To select the. img installation image on the local hard drive to install fydeOS,
-- - Simulated [file] of fydeOS,
-- - Simulated terminal of fydeOS,
+- To select the. img installation image on the local hard drive to install fydeOS/openfyde,
+- - Simulated [file] of fydeOS/openfyde,
+- - Simulated terminal of fydeOS/openfyde,
 - - (Failed to switch root filesystem, temporarily shelved or debugged by others, due to issues of initrd), some code adapted from [grub2-filemanager](https://github.com/a1ive/grub2-filemanager) of [a1ive](https://github.com/a1ive)；
 - Multiple languages, with an entry for testing translation;
 - With an entry for testing KernelSU;
 - With an entry for testing APatch;
 
-#### Global keys
+#### ⌨️Global keys
 
 Key|Function
 -|-
@@ -53,17 +53,17 @@ Key|Function
 <kbd>F12</kbd>| show all boot items;
 <kbd>Insert</kbd> | The entry of getting root permission;
 
-#### Mouse mapping
+#### 🖱️Mouse mapping
 
 Operation | Function
 -|-
 Slide up | <kbd>↑</kbd>
-Down | <kbd>↓</kbd>
+Slide down | <kbd>↓</kbd>
 Left click | <kbd>Enter</kbd>
 Right click | <kbd>ESC</kbd>
 
 > [!CAUTION]
-> #### File Tree
+> #### 🗂文件结构树状图🌳
 >
 > ```
 > grub2-fyde
@@ -75,16 +75,15 @@ Right click | <kbd>ESC</kbd>
 >            ├── grubenv
 >            └── /experimental
 >                ├── /grub2_theme_package_kit
->                │   ├── fydeOS_full.gtpk
->                │   ├── fydeOS_latest.gtpk
+>                │   ├── Design_history.gtpk
 >                │   └── ${custom}.gtpk
 >                ├── /APatch
->                │   ├── kernel_apatch_fydeos_classic
->                │   ├── kernel_apatch_fydeos_slim
->                │   ├── kernel_apatch_fydeos_iris
->                │   └── kernel_apatch_fydeos_apu
+>                │   ├── kernel_apatch_fydeOS_classic
+>                │   ├── kernel_apatch_fydeOS_slim
+>                │   ├── kernel_apatch_fydeOS_iris
+>                │   └── kernel_apatch_fydeOS_apu
 >                └── /KernelSU
->                    └── initrd_ksu_fydeos.cpio
+>                    └── initrd_ksu_fydeOS/openfyde.cpio
 >
 > ```
 
@@ -95,16 +94,16 @@ Right click | <kbd>ESC</kbd>
 <summary>🖱️Click to Unfold to see🖱️</summary>
 
 ### 1024x768
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/English/English.gif">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/动画.gif">
 
 ### 1920x1080
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/English/1080p-light.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/English/1080p-dark.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1080P-0.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1080P-1.png">
 </details>
 
 ## 🧭Guide⬇️
 
-### Copy in ESP
+### 📋️Copy in ESP
 - Copy the folder `zip: EFI/fyde` into `ESP: \EFI`;
 
 ## [📅Planning & progress🗺️](https://github.com/M-L-P/.github/blob/main/profile/plan/README.md#grub2-fyde)
@@ -112,11 +111,11 @@ Right click | <kbd>ESC</kbd>
 ## 📝FAQ❓️
 
 > [!IMPORTANT]
-> ### Secure Boot
+> ### 🛡️Secure Boot🔛
 > - You should use [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) (with patch) to load `grub2-fyde.efi` (unsigned).
 
 > [!TIP]
-> ### Root permission
+> ### 👨‍💻Root permission#️
 > - There is a graphical interface description around its entry;
 
 ## ⭐Star🌟

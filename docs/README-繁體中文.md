@@ -16,11 +16,11 @@
 
 <h1 align="center">grub2-fyde</h1>
 
-這個是用來啟動 fydeOS 的，新增了改編自 [brunch](https://github.com/sebanc/brunch) 的 grub 主題。
-#### 特色
+這個是用來啟動 fydeOS/openfyde 的，新增了改編自 [brunch](https://github.com/sebanc/brunch) 的 grub 主題。
+#### 📖特色
 - 使用了 [a1ive](https://github.com/a1ive) 的打過補丁的 [grub](https://github.com/a1ive/grub)，全面支援安全啟動，
-  - 可以啟動任意未簽名的核心，以便 fydeOS 在安全啟動模式開啟的情況下啟動，再也不必為了 fydeOS 關閉安全啟動了；
-- 圖形介面切換 A|B 槽位；
+  - 可以啟動任意未簽名的核心，以便 fydeOS/openfyde 在安全啟動模式開啟的情況下啟動，再也不必為了 fydeOS/openfyde 關閉安全啟動了；
+- ~~圖形介面切換 A|B 槽位；~~
 - 快捷鍵 f12 顯示所有的啟動選單；
 - 圖形介面手動輸入自定義的倒計時秒數，並且只匹配數字；
 - 支援滑鼠，支援 PS/2 觸控板；
@@ -31,15 +31,15 @@
 - 根據日出日落時間，定時切換 亮|暗 主題；
 - 圖形介面切換主題版本；
 - 隱藏彩蛋；
-- 選擇本地硬碟上的 .img 安裝映像 用以 安裝 fydeOS，
-- - 模擬 fydeOS 【檔案】，
-- - 模擬 fydeOS 的終端，
+- 選擇本地硬碟上的 .img 安裝映像 用以 安裝 fydeOS/openfyde，
+- - 模擬 fydeOS/openfyde 【檔案】，
+- - 模擬 fydeOS/openfyde 的終端，
 - - （切換根檔案系統失敗，initrd 有問題暫時擱置或他人驗錯），部分程式碼改編自 [a1ive](https://github.com/a1ive) 的 [grub2-filemanager](https://github.com/a1ive/grub2-filemanager)；
 - 支援多語言；提供測試翻譯的入口；
 - 提供測試 KernelSU 的入口；
 - 提供測試 APatch 的入口；
 
-#### 全域性按鍵
+#### ⌨️全域性按鍵
 
 按鍵|功能
 -|-
@@ -53,7 +53,7 @@
 <kbd>F12</kbd>|顯示所有的啟動選單；
 <kbd>Insert</kbd>|獲取 Root 許可權的入口；
 
-#### 滑鼠對映
+#### 🖱️滑鼠對映
 
 操作|功能
 -|-
@@ -63,7 +63,7 @@
 右鍵|<kbd>ESC</kbd>
 
 > [!CAUTION]
-> #### 檔案結構樹狀圖
+> #### 🗂文件结构树状图🌳
 >
 > ```
 > grub2-fyde
@@ -75,16 +75,15 @@
 >            ├── grubenv
 >            └── /experimental
 >                ├── /grub2_theme_package_kit
->                │   ├── fydeOS_full.gtpk
->                │   ├── fydeOS_latest.gtpk
+>                │   ├── Design_history.gtpk
 >                │   └── ${custom}.gtpk
 >                ├── /APatch
->                │   ├── kernel_apatch_fydeos_classic
->                │   ├── kernel_apatch_fydeos_slim
->                │   ├── kernel_apatch_fydeos_iris
->                │   └── kernel_apatch_fydeos_apu
+>                │   ├── kernel_apatch_fydeOS_classic
+>                │   ├── kernel_apatch_fydeOS_slim
+>                │   ├── kernel_apatch_fydeOS_iris
+>                │   └── kernel_apatch_fydeOS_apu
 >                └── /KernelSU
->                    └── initrd_ksu_fydeos.cpio
+>                    └── initrd_ksu_fydeOS/openfyde.cpio
 >
 > ```
 
@@ -95,16 +94,16 @@
 <summary>🖱️點選展開檢視🖱️</summary>
 
 ### 1024x768
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/繁體中文/繁體中文.gif">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/动画.gif">
 
 ### 1920x1080
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/繁體中文/1080p-light.png">
-<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/繁體中文/1080p-dark.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1080P-0.png">
+<img src="https://raw.githubusercontent.com/M-L-P/.github/main/screenshots/grub2-fyde/1080P-1.png">
 </details>
 
 ## 🧭指南⬇️
 
-### 複製到 ESP
+### 📋️複製到 ESP
 - 複製資料夾 `zip: EFI/fyde` 到 `ESP: \EFI`；
 
 ## [📅規劃和進展🗺️](https://github.com/M-L-P/.github/blob/main/profile/plan/README.md#grub2-fyde)
@@ -112,11 +111,11 @@
 ## 📝FAQ❓️
 
 > [!IMPORTANT]
-> ### 安全啟動
+> ### 🛡️安全啟動🔛
 > - 需要透過 [Yours-UEFI](https://github.com/M-L-P/Yours-UEFI) （有補丁）啟動 `grub2-fyde.efi`，因為該檔案未簽名；
 
 > [!TIP]
-> ### Root 許可權
+> ### 👨‍💻Root 許可權#️
 > - 入口處有圖形介面的說明；
 
 ## ⭐收藏🌟

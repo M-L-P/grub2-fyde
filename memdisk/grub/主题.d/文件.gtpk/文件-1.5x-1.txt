@@ -1,0 +1,29 @@
+title-text: ""
+desktop-image: "../壁纸.d/灰.png"
+desktop-image-scale-method: "stretch" desktop-image-h-align: "center"
+terminal-box: "../终端.d/终端-1.5x_*.png"
+terminal-border: "0" terminal-font: "Terminus (TTF) Regular 18"
+terminal-left: "50%-405" terminal-top: "50%-405" terminal-width: "810" terminal-height: "810"
+
++ vbox {
+	left = 50%-627 top = 75
+	+ label {height = 78 color = "white" font = "Roboto Regular 18" translate = "FyDrop"}
+	+ label {height = 81 color = "white" font = "Roboto Regular 18" translate = "My files"}
+	+ label {height = 81 color = "white" font = "Roboto Regular 18" translate = "Bug reports"}
+	+ label {height = 78 color = "black" font = "Roboto Regular 18" translate = "Storage"}
+	+ label {height = 78 color = "white" font = "Roboto Regular 18" translate = "Trash"}
+}
+
++ boot_menu {
+	left = 50%-720 top = 0% width = 1440 height = 1047
+	item_font = "MSYH Mono Regular 18"
+	selected_item_font = "MSYH Mono Regular 18"
+	item_color = "white"
+	selected_item_color = "white"
+	icon_height = 66 icon_width = 66
+	item_height = 66 item_padding = 0 item_icon_space = 0 item_spacing = 0
+	menu_pixmap_style = "菜单-1.5x.d/阴菜单_*.png"
+	selected_item_pixmap_style = "阴选择_*.png"
+	scrollbar = true scrollbar_thumb = "阴滚动条_*.png"
+	scrollbar_width = 6 scrollbar_right_pad = 4
+}

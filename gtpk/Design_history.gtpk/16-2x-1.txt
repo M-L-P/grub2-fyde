@@ -1,0 +1,26 @@
+title-text: ""
+desktop-image: "壁纸.d/16-阴.png"
+desktop-image-scale-method: "crop" desktop-image-h-align: "left"
+terminal-border: "0" terminal-font: "Terminus (TTF) Regular 48"
+terminal-left: "0" terminal-top: "0" terminal-width: "100%" terminal-height: "100%"
+
++ progress_bar {
+	id = "__timeout__"
+	left = 5% top = 92% width = 90% height = 3%
+	fg_color = "darkslateblue" bg_color = "black" border_color = "teal" text_color = "white"
+	font = "Roboto Regular 48" text = "@TIMEOUT_NOTIFICATION_SHORT@"
+}
+
++ boot_menu {
+	left = 0 top = 0 width = 1200 height = 100%
+	item_font = "Roboto Regular 48"
+	selected_item_font = "Roboto Regular 48"
+	item_color = "white"
+	selected_item_color = "white"
+	icon_height = 200 icon_width = 200
+	item_height = 240 item_padding = 0 item_icon_space = 80 item_spacing = 0
+	menu_pixmap_style = "(memdisk)/grub/主题.d/菜单.d/阴菜单_*.png"
+	selected_item_pixmap_style = "(memdisk)/grub/主题.d/菜单.d/选择_*.png"
+	scrollbar = true scrollbar_thumb = "(memdisk)/grub/主题.d/菜单.d/滚动条_*.png"
+	scrollbar_width = 8 scrollbar_right_pad = 4
+}

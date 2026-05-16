@@ -1,35 +1,35 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: grub2-fyde-22.0\n"
+"Project-Id-Version: grub2-fyde-22.0-SP1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Chauncy\n"
 "Language-Team: \n"
-"Language: zh_CN\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Bugs: \n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
-msgid "fydeOS multiboot A"
-msgstr "燧炻系統 A分割槽"
+msgid "FydeOS multi-boot A"
+msgstr "燧炻系統槽位A"
 
-msgid "fydeOS multiboot B"
-msgstr "燧炻系統 B分割槽"
+msgid "FydeOS multi-boot B"
+msgstr "燧炻系統槽位B"
 
-msgid "fydeOS Recovery Tools"
+msgid "FydeOS Recovery Tools"
 msgstr "燧炻系統恢復工具"
 
-msgid "Slot: [${SLOT}]"
-msgstr "槽位：【${SLOT}】"
+msgid "openFyde multi-boot A"
+msgstr "開源燧炻槽位A"
 
-msgid "Turn A"
-msgstr "轉 A"
+msgid "openFyde multi-boot B"
+msgstr "開源燧炻槽位B"
 
-msgid "Turn B"
-msgstr "轉 B"
+msgid "openFyde Recovery Tools"
+msgstr "開源燧炻恢復工具"
 
 msgid "Install fydeOS"
 msgstr "安裝 fydeOS"
@@ -38,13 +38,13 @@ msgid "Files: "
 msgstr "檔案："
 
 msgid "file"
-msgstr "檔案"
+msgstr "檔案 "
 
 msgid "Folder"
 msgstr "資料夾"
 
 msgid "FyDrop"
-msgstr "燧炻傳送"
+msgstr "FyDrop"
 
 msgid "My files"
 msgstr "我的檔案"
@@ -56,7 +56,7 @@ msgid "Storage"
 msgstr "儲存"
 
 msgid "Trash"
-msgstr "回收站"
+msgstr "垃圾桶"
 
 msgid "Mount"
 msgstr "掛載"
@@ -91,29 +91,11 @@ msgstr "終端"
 msgid "Root permission"
 msgstr "Root 許可權"
 
-msgid "Reset"
-msgstr "重置"
-
-msgid "You are going to lose your current settings!!!"
-msgstr "你將丟失當前的設定項！！！"
-
-msgid "No (press [ESC] or [F4])"
-msgstr "否（按【ESC】或【F4】）"
-
-msgid "Yes (waiting for the countdown to end)"
-msgstr "是（等待倒計時結束）"
-
 msgid "Coming Soon or Late!"
 msgstr "遲早到來！"
 
 msgid "Back"
 msgstr "返回"
-
-msgid "Enable"
-msgstr "啟用"
-
-msgid "Disable"
-msgstr "停用"
 
 msgid "Settings"
 msgstr "設定"
@@ -142,22 +124,13 @@ msgstr "開發者："
 msgid "Version: "
 msgstr "版本："
 
-msgid "Please enter the countdown seconds (positive integer) that you want."
-msgstr "請輸入你想要的倒計時秒數（正整數），然後回車。"
+msgid "You are now ${click_count} steps away from playing."
+msgstr "現在只需再執行 ${click_count} 步操作即可消遣。"
 
 msgid "Flappy Bird"
 msgstr "飛揚的小鳥"
 
-msgid "Countdown: "
-msgstr "倒計時："
-
-msgid "Custom: "
-msgstr "自定義："
-
-msgid "Please enter the countdown seconds (positive integer) that you want."
-msgstr "請輸入你想要的倒計時秒數（正整數），然後回車。"
-
-msgid "Devices"
+msgid "Device"
 msgstr "裝置"
 
 msgid "Mouse: "
@@ -196,26 +169,62 @@ msgstr "自動"
 msgid "Themes: "
 msgstr "主題："
 
-msgid "Schedule: [${GEAR_SCHEDULE}d]"
-msgstr "定時【已${GEAR_SCHEDULE}】"
+msgid "Default"
+msgstr "預設"
 
-msgid "Dawn Clockwise: "
-msgstr "破曉時針："
+msgid "Child"
+msgstr "子類"
 
-msgid "Dusk Clockwise: "
-msgstr "黃昏時針："
+msgid "Guest"
+msgstr "訪客"
 
-msgid "Time Zones: "
-msgstr "時區："
+msgid "Poster"
+msgstr "海報"
 
-msgid "Time & language"
-msgstr "時間和語言"
+msgid "OS wallpaper"
+msgstr "系統桌布"
+
+msgid "Design"
+msgstr "原創設計"
+
+msgid "main"
+msgstr "主分支"
+
+msgid "fydeOS"
+msgstr "燧炻系統"
+
+msgid "openfyde"
+msgstr "開源燧炻"
+
+msgid "history"
+msgstr "歷史"
+
+msgid "dynamic"
+msgstr "動態"
+
+msgid "Switch: "
+msgstr "轉換："
+
+msgid "unsupported"
+msgstr "不支援"
+
+msgid "supported"
+msgstr "支援"
+
+msgid "Secure"
+msgstr "安全"
+
+msgid "Loading unsigned kernel or modules"
+msgstr "載入未簽名的核心或模組"
+
+msgid "GRUB2 preferences"
+msgstr "GRUB2 偏好設定"
 
 msgid "Language: "
 msgstr "語言: "
 
 msgid "Language: English"
-msgstr "語言：繁體中文"
+msgstr "語言：簡體中文"
 
 msgid "Experimental locale"
 msgstr "實驗性的多國語言"
@@ -226,35 +235,41 @@ msgstr "你所選中的語言可能並未翻譯完全。"
 msgid "You can participate in the translation by visiting https://github.com/M-L-P/grub2-fyde ."
 msgstr "你可以訪問 https://github.com/M-L-P/grub2-fyde 參與翻譯。"
 
+msgid "Time: "
+msgstr "時間："
+
+msgid "Countdown: "
+msgstr "倒計時："
+
+msgid "Custom: "
+msgstr "自定義："
+
+msgid "Please enter the countdown seconds (positive integer) that you want."
+msgstr "請輸入你想要的倒計時秒數（正整數），然後回車。"
+
+msgid "Date: "
+msgstr "日期："
+
+msgid "Time zones: "
+msgstr "時區："
+
+msgid "Dawn clockwise: "
+msgstr "破曉時針："
+
+msgid "Dusk clockwise: "
+msgstr "黃昏時針："
+
 msgid "Input"
 msgstr "輸入"
 
-msgid "Default"
-msgstr "預設"
+msgid "Reset"
+msgstr "重置"
 
-msgid "Child"
-msgstr "子類"
+msgid "You are going to lose your current settings!!!"
+msgstr "你將丟失當前的設定項！！！"
 
-msgid "Guest"
-msgstr "訪客"
+msgid "No (press [ESC] or [F4])"
+msgstr "否（按【ESC】或【F4】）"
 
-msgid "v16: Existential_Blossom"
-msgstr "v16：存在之花"
-
-msgid "v17: Nostalgic_Reflections"
-msgstr "v17：懷舊反射"
-
-msgid "v18: Prosperous_Aftermath"
-msgstr "v18：繁榮餘波"
-
-msgid "v19: Desolate_Frontier"
-msgstr "v19：荒涼邊境"
-
-msgid "v20: Cosmic_Memories"
-msgstr "v20：宇宙記憶"
-
-msgid "v21: Sunlit_Epiphany"
-msgstr "v21：陽光頓悟"
-
-msgid "v22: Radiant_Anatomy"
-msgstr "v22：光輝解剖"
+msgid "Yes (waiting for the countdown to end)"
+msgstr "是（等待倒計時結束）"

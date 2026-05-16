@@ -1,0 +1,144 @@
+#==============================================================================
+#####----{环境变量}----
+#------------------------------------------------------------------------------
+function load_grubenv {
+	load_env --file=${cmdpath}/grubenv;
+};
+#------------------------------------------------------------------------------
+function save_grubenv {
+	save_env --file=${cmdpath}/grubenv $@;
+};
+#------------------------------------------------------------------------------
+function unset_variables {
+	for thing in $@; do unset ${thing}; done; unset thing;
+};
+#------------------------------------------------------------------------------
+function load_ini {
+	if [ "info" == "$1" ]; then ini_file=${dir_gtpk_name}/info.ini;
+	else ini_file=${dir_init}/$1.ini; fi; ini_section=$2; shift 2;
+	for ini_key in $@; do
+		ini_get --set=unreferenced_string ${ini_file} ${ini_section}:${ini_key};
+		eval ${ini_key}="${unreferenced_string}";
+	done; unset_variables ini_file ini_section ini_key unreferenced_string;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{关于}----
+#------------------------------------------------------------------------------
+function echo_art {
+	echo -e "\n";
+	echo "  .-_'''-.   .-------.      ___    _  _______       .`````-.    ";
+	echo " '_( )_   \  |  _ _   \   .'   |  | |\  ____  \    /   ,-.  \   ";
+	echo "|(_ o _)|  ' | ( ' )  |   |   .'  | || |    \ |   (___/  |   |  ";
+	echo ". (_,_)/___| |(_ o _) /   .'  '_  | || |____/ /         .'  /   ";
+	echo "|  |  .-----.| (_,_).' __ '   ( \.-.||   _ _ '.     _.-'_.-'    ";
+	echo "'  \  '-   .'|  |\ \  |  |' (`. _` /||  ( ' )  \  _/_  .'       ";
+	echo " \  `-'`   | |  | \ `'   /| (_ (_) _)| (_{;}_) | ( ' )(__..--.  ";
+	echo "  \        / |  |  \    /  \ /  . \ /|  (_,_)  /(_{;}_)      |  ";
+	echo "   `'-...-'  ''-'   `'-'    ``-'`-'' /_______.'  (_,_)-------'  ";
+	echo "               ________    ____     __  ______         .-''-.   ";
+	echo "              |        |   \   \   /  /|    _ `''.   .'_ _   \  ";
+	echo "              |   .----'    \  _. /  ' | _ | ) _  \ / ( ` )   ' ";
+	echo "  _ _    _ _  |  _|____      _( )_ .'  |( ''_'  ) |. (_ o _)  | ";
+	echo " ( ' )--( ' ) |_( )_   | ___(_ o _)'   | . (_) `. ||  (_,_)___| ";
+	echo "(_{;}_)(_{;}_)(_ o._)__||   |(_,_)'    |(_    ._) ''  \   .---. ";
+	echo " (_,_)--(_,_) |(_,_)    |   `-'  /     |  (_.\.' /  \  `-'    / ";
+	echo "              |   |      \      /      |       .'    \       /  ";
+	echo "              '---'       `-..-'       '-----'`       `'-..-'   ";
+	echo "                                                                ";
+};
+#------------------------------------------------------------------------------
+function appear_tetris {
+	if [ -z ${click_count} ]; then click_count=3; else decrement click_count; fi;
+	if [ "0" -lt "${click_count}" ]; then echo -e $"You are now ${click_count} steps away from playing.""\n\n			https://github.com/M-L-P/grub2-fyde\n\n"; sleep 1;
+	elif [ "0" -eq "${click_count}" ]; then click_count=4; tetris; fi;
+	set selected=$1; configfile ${config_file};
+};
+#==============================================================================
+
+#==============================================================================
+#####----{菜单配置}----
+#------------------------------------------------------------------------------
+function menu_config {
+	load_ini "菜单配置" "${menu_id}" ${variables_menu};
+	if [ "1" == "${gate_hidden}" ]; then
+		regexp --set=1:parent_id '^.*\/(.*)\/隐藏$' ${address};
+		refresh_theme "${parent_id}";
+	fi; 
+	if [ "1" == "${gate_radio}" ]; then load_ini "单选项" "${menu_id}" ${variables_radio}; fi;
+	if [ "1" == "${gate_theme}" ]; then theme_section;
+	elif [ "2" == "${gate_theme}" ]; then apply_theme;
+	elif [ "3" == "${gate_theme}" ]; then refresh_theme "${selected}";
+	fi;
+	if [ "0" != "${gate_title}" ]; then title_variable; fi;
+	set entry_item=0;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{日期时间}----
+#------------------------------------------------------------------------------
+function refresh_date {
+	set UTC=${HOUR}; NOW_YEAR=${YEAR}; NOW_MONTH=${MONTH}; NOW_DAY=${DAY}; NOW_WEEKDAY=${WEEKDAY};
+	if [ "0" == "${TIME_ZONE}" ]; then NOW_HOUR=${UTC};
+	elif [ "0" != "${TIME_ZONE}" ]; then expr --set=NOW_HOUR ${UTC}${TIME_ZONE}; fi;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{设备}----
+#------------------------------------------------------------------------------
+function enable_USB {
+	insmod efi_mouse; terminal_input --append mouse; set gate_USB=1;
+};
+#------------------------------------------------------------------------------
+function disable_USB {
+	terminal_input --remove mouse; rmmod efi_mouse; set gate_USB=0;
+};
+#------------------------------------------------------------------------------
+function enable_PS2 {
+	insmod ps2mouse; terminal_input --append ps2mouse; set gate_PS2=1;
+};
+#------------------------------------------------------------------------------
+function disable_PS2 {
+	terminal_input --remove ps2mouse; rmmod ps2mouse; set gate_PS2=0;
+};
+#------------------------------------------------------------------------------
+function enable_keymap {
+	if [ -z "${menu_id}" ]; then source ${dir_func}/键盘配置.d/KBD_${KEYBOARD_LAYOUT}.cfg; fi;
+};
+#------------------------------------------------------------------------------
+function disable_keymap {
+	setkey -d; set KEYBOARD_LAYOUT=""; number_keyboard=0;
+	save_grubenv number_keyboard KEYBOARD_LAYOUT;
+};
+#------------------------------------------------------------------------------
+function load_device {
+	if [ "1" == "${gate_USB}" ]; then enable_USB; fi;
+	if [ "1" == "${gate_PS2}" ]; then enable_PS2; fi;
+	if [ "1" == "${gate_keymap}" ]; then enable_keymap; fi;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{重置}----
+#------------------------------------------------------------------------------
+function restore_default {
+	echo -e "\n\n\n\n\n\n\n	"$"You are going to lose your current settings!!!""\n	\n\n\n\n\n\n\n	"$"No (press [ESC] or [F4])""			"$"Yes (waiting for the countdown to end)""\n\n\n\n\n";
+	if sleep -v -i 15; then 
+		if [ "1" == "${gate_USB}" ]; then disable_USB; fi;
+		if [ "1" == "${gate_PS2}" ]; then disable_PS2; fi;
+		set variables_grubenv="TIME_OUT KEYBOARD_LAYOUT SCALE_FACTOR HOUR_DAWN HOUR_DUSK TIME_ZONE GTPK_NAME WALLPAPER_VERSION lang gate_dark gate_USB gate_PS2 gate_keymap gate_scale gate_schedule number_timeout number_keyboard number_scale number_dawn number_dusk number_timezone number_wallpaper number_lang";
+		load_ini "重置" "默认" ${variables_grubenv};
+		export lang=""; save_grubenv ${variables_grubenv};
+		unset_variables variables_grubenv; clear_menu; normal;
+	fi;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{初始化}----
+#------------------------------------------------------------------------------
+load_grubenv; refresh_date; load_device;
+#==============================================================================

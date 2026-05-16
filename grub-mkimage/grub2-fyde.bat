@@ -1,15 +1,9 @@
+:<<'BATCH'
 @echo off
 cd /d "%~dp0"
-
-set /p boot= < ..\mod_list\boot.txt
-set /p device= < ..\mod_list\device.txt
-set /p graphical= < ..\mod_list\graphical.txt
-set /p grubfm= < ..\mod_list\grubfm.txt
-set /p shell= < ..\mod_list\shell.txt
-set /p storage= < ..\mod_list\storage.txt
-set /p terminal= < ..\mod_list\terminal.txt
-set /p time= < ..\mod_list\time.txt
-set /p var= < ..\mod_list\var.txt
+for %%i in (boot command device fun graphical grubfm shell storage terminal time var) do (
+	set /p %%i= < ..\mod_list\%%i.txt
+)
 ..\grub-mkimage.exe ^
 -m grub2-fyde.xz ^
 -d ..\x86_64-efi ^
@@ -18,7 +12,9 @@ set /p var= < ..\mod_list\var.txt
 -o grub2-fyde.efi ^
 -O x86_64-efi ^
 %boot% ^
+%command% ^
 %device% ^
+%fun% ^
 %graphical% ^
 %grubfm% ^
 %shell% ^
@@ -26,4 +22,26 @@ set /p var= < ..\mod_list\var.txt
 %terminal% ^
 %time% ^
 %var% ^
-eval configfile tetris nes
+configfile
+goto :EOF
+BATCH
+#!/usr/bin/env sh
+../grub-mkimage \
+-m grub2-fyde.xz \
+-d "../x86_64-efi" \
+-c grub2-fyde.cfg \
+-p "(memdisk)/grub" \
+-o grub2-fyde.efi \
+-O x86_64-efi \
+$(cat ../mod_list/boot.txt) \
+$(cat ../mod_list/command.txt) \
+$(cat ../mod_list/device.txt) \
+$(cat ../mod_list/fun.txt) \
+$(cat ../mod_list/graphical.txt) \
+$(cat ../mod_list/grubfm.txt) \
+$(cat ../mod_list/shell.txt) \
+$(cat ../mod_list/storage.txt) \
+$(cat ../mod_list/terminal.txt) \
+$(cat ../mod_list/time.txt) \
+$(cat ../mod_list/var.txt) \
+configfile 

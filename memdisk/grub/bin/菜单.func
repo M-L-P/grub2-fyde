@@ -1,0 +1,189 @@
+#==============================================================================
+#####----{标题变量函数}----
+#------------------------------------------------------------------------------
+function condition_variable {
+	if [ "0" != "$1" ]; then eval $2=$3; 
+	elif [ "0" == "$1" ]; then eval $2=$4; fi;
+};
+#------------------------------------------------------------------------------
+function title_variable {
+	if [ "-2" == "${gate_title}" ]; then title_wallpaper; fi;
+	if [ "1" -le "${gate_title}" ]; then
+		load_ini "标题变量" "${menu_id}" ${variables_title1};
+		condition_variable "${if_gate1}" "title_var1" "${value_on1}" "${value_off1}";
+	fi;
+	if [ "2" == "${gate_title}" ]; then
+		load_ini "标题变量" "${menu_id}" ${variables_title2};
+		condition_variable "${if_gate2}" "title_var2" "${value_on2}" "${value_off2}";
+	fi;
+};
+#------------------------------------------------------------------------------
+function title_wallpaper {
+##### 获取关于页面的相关信息；
+	set about_gtpk="gtpk_name gtpk_branch gtpk_version gtpk_developer automated_switching";
+	load_ini "info" "Info" ${about_gtpk};
+##### 壁纸版本号映射壁纸名称；
+	ini_get --set=wallpaper_version ${dir_gtpk_name}/info.ini ${THEME_COLOR}:wallpaper_version; 
+	for version_number in ${wallpaper_version}; do
+		set wallpaper_version_v="v${version_number} ${wallpaper_version_v}"
+		ini_get --set=v${version_number} ${dir_gtpk_name}/info.ini TR-$lang:v${version_number}; 
+	done; unset version_number;
+##### 规划每个主题包中的壁纸编号；
+	if [ "Poster" == "${GTPK_NAME}" ]; then entry_item=1;
+	elif [ "openfyde_WP" == "${GTPK_NAME}" ]; then entry_item=3;
+	elif [ "fydeOS_WP" == "${GTPK_NAME}" ]; then entry_item=6;
+	elif [ "Design_history" == "${GTPK_NAME}" ]; then entry_item=7;
+	else entry_item=50; fi;
+#### 汇总局部变量；
+	variables_local="${about_gtpk} about_gtpk ${wallpaper_version_v} wallpaper_version_v wallpaper_version wallpaper_latest variables_local";
+};
+#==============================================================================
+
+
+#==============================================================================
+#####----{通用菜单函数}----
+#------------------------------------------------------------------------------
+function add_command {
+	increment entry_item; load_ini "命令项" "$1" ${variables_command};
+	regexp --set=1:item_id '(^[^0-9]+)[0-9]+$' "$1";
+	if [ "出口" == "${item_id}" ]; then hotkey=esc; else hotkey=${entry_item}; fi;
+	menuentry "${command_name}" "${item_id}" "${command_body}" --class "${command_polarity}" --hotkey "${hotkey}" --id "${item_id}" {
+		set selected=$2; eval $3; configfile ${config_file};
+	};	unset_variables item_id ${variables_command};
+};
+#------------------------------------------------------------------------------
+function add_cascade {
+	increment entry_item; load_ini "级联项" "$1" ${variables_cascade};
+	regexp --set=1:item_id '(^[^0-9]+)[0-9]+$' "$1";
+	menuentry "${cascade_name}" "${item_id}" "${cascade_body}" --class "${cascade_polarity}" --hotkey "${entry_item}" --id "${item_id}" {
+		set menu_id=$2; eval $3; address="${address}/${menu_id}"; configfile ${config_file};
+	}; unset_variables item_id ${variables_cascade};
+};
+#------------------------------------------------------------------------------
+function add_hidden {
+	load_ini "隐藏项" "$1" ${variables_hidden};
+	hiddenentry "${hidden_name}" "$1" "${hidden_body}" --id "$1" --hotkey "${hidden_polarity}" {
+		set menu_id=$2; eval $3; address="${address}/${menu_id}"; configfile ${config_file};
+	}; unset_variables ${variables_hidden};
+};
+#------------------------------------------------------------------------------
+function list_hidden {
+	if [ "1" == "${gate_hotkey}" ]; then for id in $@; do
+		add_hidden "${id}";
+	done; unset id; fi;
+};
+#------------------------------------------------------------------------------
+function add_switch {
+	increment entry_item; load_ini "开关项" "$1" ${variables_switch};
+	eval gate="\$gate_$1";
+	if [ "dark" == "$1" ]; then icon="gtpk/转换"; else icon="启事/${gate}"; fi;
+	menuentry "${switch_name}" "$1" "${switch_polarity}" "${gate}" "${switch_body}" --class "${icon}" --hotkey "${entry_item}" --id "$1" {
+		if [ "0" == "$4" ]; then "gate_$2"=1; if [ "1" == "$3" ]; then enable_$2; fi;
+		elif [ "1" == "$4" ]; then "gate_$2"=0; if [ "1" == "$3" ]; then disable_$2; fi;
+		fi; save_grubenv gate_$2; set selected="$2";
+		eval $5; configfile ${config_file};
+	}; unset_variables gate icon ${variables_switch};
+};
+#------------------------------------------------------------------------------
+function add_radio {
+	increment entry_item;
+	if [ "No.${entry_item}" == "${radio_polarity}" ]; then checked="[☆]";
+	else set checked="[  ]"; fi;
+	if [ "壁纸" == "${menu_id}" ]; then icon=$3-${wallpaper_polarity}; else icon=${menu_id}/$3; fi
+	menuentry "${checked} $1" "$2" "No.${entry_item}" "$3" "$4" --class "${icon}" --id "No.${entry_item}" {
+		set ${radio_name}=$3;
+		if [ "%d" == "$4" ]; then
+			echo -e "\n "$"Please enter the countdown seconds (positive integer) that you want."" \n";
+			read "$2"; regexp --set=1:${radio_body} '([0-9]+)' "${_d}";
+		else set ${radio_body}=$2; fi;
+		set selected=$3; save_grubenv ${radio_body} ${radio_name};
+		if [ "倒数" == "${menu_id}" ]; then timeout=${TIME_OUT};
+		elif [ "语言" == "${menu_id}" ]; then load_gtpk; 
+		elif [ "键盘" == "${menu_id}" ]; then source $5;
+		elif [ "壁纸" == "${menu_id}" ]; then save_grubenv GTPK_NAME;
+		else apply_theme; fi; configfile ${config_file};
+	}; unset_variables icon checked;
+};
+#------------------------------------------------------------------------------
+function list_radio {
+	set item_name=$1; shift 1;
+	for thing in $@; do
+		if [ "键盘" == "${menu_id}" ]; then
+			regexp --set=1:layout '^.*[K][B][D]_(.*)\.[c][f][g]$' ${thing};
+			add_radio "${layout}" "${layout}" "${layout}" "${thing}";
+		elif [ "壁纸" == "${menu_id}" ]; then
+			eval item_name=\"\$v$thing\";
+			add_radio "${item_name}" "${thing}" "${thing}";
+		else add_radio "${item_name}${thing}" "${thing}" "${thing}"; fi;
+	done; if [ "UTC" != "${item_name}" ]; then unset entry_item; fi;
+	unset_variables thing item_name;
+};
+#------------------------------------------------------------------------------
+function list_entry {
+	load_ini "页面布局" "${menu_id}" ${variables_page};
+	for entry_cmd in ${variables_page}; do eval "eval \$${entry_cmd}"; done;
+	unset_variables entry_cmd ${variables_page};
+};
+#==============================================================================
+
+#==============================================================================
+#####----{专用菜单函数}----
+#------------------------------------------------------------------------------
+function submenu_back {
+	menuentry $"Back" --class "启事/返回" --hotkey "esc" {
+#		if [ "语言" == "${menu_id}" ]; then selected=语言; background_color black; fi;
+		submenu_exit;
+	};
+};
+#------------------------------------------------------------------------------
+function add_parent {
+	menuentry $"Back" "$1" "$2" "$3" --class "启事/返回" --hotkey "esc" {
+		if [ "1" == "${gate_radio}" ]; then unset_variables ${variables_radio}; fi;
+		if [ -n "${gate_title}" ]; then unset_variables ${variables_title1} ${variables_title2}; fi;
+		if [ "隐藏" == "$2" ]; then selected_hidden=${menu_id};
+		else selected=${menu_id}; fi;
+		if [ -n "$3" ]; then eval $3; fi; if [ -n "$4" ]; then selected=$4; fi;
+		regexp --set=1:address '^(.*)\/.*$' ${address};
+		regexp --set=1:menu_id '^.*\/(.*)$' ${address};
+		configfile ${config_file};
+	};
+};
+#------------------------------------------------------------------------------
+function add_coming {
+	clear_menu;
+	add_command "进展0";
+};
+#------------------------------------------------------------------------------
+function list_resolution {
+	for videomode in $"max" ${videomode_list}; do
+		regexp --set=1:width_x_height '(^.*[x].*)[x].*$' ${videomode}
+		if [ $"max" == "${videomode}" ] -o [ "${resolution}" == "${width_x_height}" ]; then
+		checked="[☆]"; else checked="[  ]"; fi;
+		add_command "分辨0";
+	done; unset_variables videomode checked;
+};
+#------------------------------------------------------------------------------
+function list_gtpk {
+	set entry_gtpk=5;
+	while eval package_id=\$gtpk_id${entry_gtpk}; [ -n "${package_id}" ]; do
+		if [ "Design_history" == "${package_id}" ]; then icon="历史";
+		elif [ "Design_history" != "${package_id}" ]; then icon="自定"; fi;
+		eval title=\$TR_${package_id};
+		add_cascade "壁纸4";
+		unset_variables id icon; increment entry_gtpk;
+	done; unset_variables entry_gtpk package_id title;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{初始化}----
+#------------------------------------------------------------------------------
+set menu_id=主页; address=/${menu_id}; config_file="${dir_menu}/菜单.lst"; timeout=${TIME_OUT};
+set variables_menu="default gate_hidden gate_hotkey gate_radio gate_theme gate_title";
+for number in 1 2; do set variables_title${number}="if_gate${number} value_on${number} value_off${number}"; done;
+for item_type in cascade command switch radio hidden; do
+	set variables_${item_type}="${item_type}_name ${item_type}_polarity ${item_type}_body";
+done; unset item_type;
+set variables_page="entry_cmd1 entry_cmd2 entry_cmd3 entry_cmd4 entry_cmd5 entry_cmd6 entry_cmd7 entry_cmd8 entry_cmd9";
+configfile ${config_file};
+#==============================================================================

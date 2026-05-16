@@ -1,0 +1,101 @@
+#==============================================================================
+#####----{入口}----
+#------------------------------------------------------------------------------
+function load_img {
+### 搜查指定名称的分区并保存指定的变量；
+	search -L -q --set=openfyde_dualboot_part OFYDE-DUAL-BOOT;
+	search -L -q --set=fydeos_dualboot_part FYDEOS-DUAL-BOOT;
+### 挂载 .img 文件，并读取系统的分支、版本号等信息；
+	for OS in fydeos openfyde; do
+		eval dualboot_part=\$${OS}_dualboot_part;
+		set img=($dualboot_part)/${OS}/${OS}_dual_boot.img;
+		loopback ${OS} ${img};
+		set lsb_release=(${OS},gpt3)/etc/lsb-release;
+		ini_get --set=BOARD_${OS} ${lsb_release} :CHROMEOS_RELEASE_BOARD;
+		if [ "openfyde" == "${OS}" ]; then
+			ini_get --set=VER_${OS} ${lsb_release} :CHROMEOS_RELEASE_CHROME_MILESTONE;
+		elif [ "fydeos" == "${OS}" ]; then
+			ini_get --set=VER_${OS} ${lsb_release} :CHROMEOS_RELEASE_BUILD_TYPE;
+			regexp --set=1:VER_${OS} '^.*(v.*)$' "${VER_fydeos}"
+		fi;
+	done; unset_variables dualboot_part img lsb_release OS;
+};
+#------------------------------------------------------------------------------
+function select_kernel {
+### 双启动分区里的内核；
+	eval dualboot_part=\$${OS}_dualboot_part; 
+	for slot in A B; do vmlinuz_${slot}=($dualboot_part)/boot/${OS}_vmlinuz${slot}; done; unset slot;
+### 内置于 .img 里的内核；
+#	for slot in A B; do vmlinuz_${slot}=(${OS},gpt12)/syslinux/vmlinuz.${slot}; done; unset slot;
+};
+#------------------------------------------------------------------------------
+function linux_kernel {
+	linux ${vmlinuz} init=/sbin/init boot=local rootwait noresume noswap ro \
+	loglevel=7 console= i915.modeset=1 cros_efi cros_debug fydeos_dualboot;
+};
+#------------------------------------------------------------------------------
+function boot_fydeos {
+	linux_kernel;
+### 恢复工具使用的 初始 RAM 文件系统；	
+	if [ "RE" == "$1" ]; then initrd ($dualboot_part)/boot/core_util_ramfs.cpio;
+### 正常启动使用的 初始 RAM 文件系统；
+	else initrd ($dualboot_part)/boot/dual_boot_ramfs.cpio; fi;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{条目}----
+#------------------------------------------------------------------------------
+function fydeos_multiboot_A {
+	menuentry $"FydeOS multi-boot A"		--class "启动/A" --id "A" --hotkey "a" {
+		OS=fydeos; select_kernel; vmlinuz=${vmlinuz_A}; boot_fydeos;
+	};
+};
+#------------------------------------------------------------------------------
+function fydeos_multiboot_B {
+	menuentry $"FydeOS multi-boot B"		--class "启动/B" --id "B" --hotkey "b" {
+		OS=fydeos; select_kernel; vmlinuz=${vmlinuz_B}; boot_fydeos;
+	};
+};
+#------------------------------------------------------------------------------
+function fydeos_recovery_tools {
+	menuentry $"FydeOS Recovery Tools"	--class "启动/RE" --id "RE" --hotkey "r" {
+		OS=fydeos; select_kernel; vmlinuz=${vmlinuz_B}; boot_fydeos "RE";
+	};
+};
+#------------------------------------------------------------------------------
+function openfyde_multiboot_A {
+	menuentry $"openFyde multi-boot A"		--class "启动/OA" --id "A" --hotkey "a" {
+		OS=openfyde; select_kernel; vmlinuz=${vmlinuz_A}; boot_fydeos;
+	};
+};
+#------------------------------------------------------------------------------
+function openfyde_multiboot_B {
+	menuentry $"openFyde multi-boot B"		--class "启动/OB" --id "B" --hotkey "b" {
+		OS=openfyde; select_kernel; vmlinuz=${vmlinuz_B}; boot_fydeos;
+	};
+};
+#------------------------------------------------------------------------------
+function openfyde_recovery_tools {
+	menuentry $"openFyde Recovery Tools"	--class "启动/ORE" --id "RE" --hotkey "r" {
+		OS=openfyde; select_kernel; vmlinuz=${vmlinuz_B}; boot_fydeos "RE";
+	};
+};
+#------------------------------------------------------------------------------
+function submenu_fydeos {
+	increment entry_item;
+	submenu $"Boot: ""${BOARD_fydeos} ${VER_fydeos}" --class "启动/fydeOS" --id "启动/fydeOS" --hotkey "f" {
+		default=A; submenu_back; fydeos_multiboot_A; fydeos_multiboot_B; fydeos_recovery_tools;
+		if ${boot_once}; then add_cascade "安装3"; fi;
+	};
+};
+#------------------------------------------------------------------------------
+function submenu_openfyde {
+	increment entry_item;
+	submenu $"Boot: ""${BOARD_openfyde} r${VER_openfyde}" --class "启动/openfyde" --id "启动/openfyde" --hotkey "o" {
+		default=A; submenu_back; openfyde_multiboot_A; openfyde_multiboot_B; openfyde_recovery_tools;
+		if ${boot_once}; then add_cascade "安装3"; fi;
+	};
+};
+#==============================================================================
+load_img;

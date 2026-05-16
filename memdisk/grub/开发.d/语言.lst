@@ -1,0 +1,22 @@
+#------------------------------------------------------------------------------
+### 配置
+	menu_config;
+#------------------------------------------------------------------------------
+### 条目
+	add_parent "菜单" "";
+	if [ "话语气泡" == "${number_lang}" ]; then menuentry "[☆] ${lang}" --class "语言/话语气泡" --id "话语气泡" {continue}; fi;
+	add_radio "English" "" "Eng";
+	add_radio "简体中文" "zh_CN" "简";
+	add_radio "繁體中文" "zh_TW" "繁";
+#	submenu $"Experimental locale" --class "语言/话语气泡" --id "话语气泡" {
+#		set selected=实验性语言; background_color brown; theme_section "实验性语言"; submenu_back;
+#		for experimental_locale in ${secondary_locale_dir}/*.mo; do
+#			regexp --set=1:language '^.*/(.*)\.[m][o]$' ${experimental_locale};
+#			menuentry "${language}" --class "语言/话语气泡" --id "language" {
+#				echo -e "\n\n\n\n\n\n\n	"$"The language you have selected may not have been fully translated.""\n	"$"You can participate in the translation by visiting https://github.com/M-L-P/grub2-fyde .""\n\n\n\n\n\n\n	"$"No (press [ESC] or [F4])""			"$"Yes (waiting for the countdown to end)""\n\n\n\n\n"
+#				if sleep -v -i 15; then export lang=$1 number_lang=话语气泡; save_grubenv lang number_lang; fi;
+#				unset selected; background_color "black"; configfile ${config_file};
+#			};
+#		done; unset experimental_locale;
+#	};
+#==============================================================================

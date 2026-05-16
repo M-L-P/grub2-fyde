@@ -41,14 +41,12 @@ jobs:
     - name: 发布
       uses: softprops/action-gh-release@v2
       with:
-        name: "grub2-fyde-22.0"
-        tag_name: v22.0
+        name: "grub2-fyde-22.1"
+        tag_name: v22.1
         make_latest: true
         body_path: docs/发布模板.md
         files: |
           grub2-fyde_full.zip
-          grub2-fyde_latest.zip
           grub2-fyde_minimal.zip
-          fydeOS_full.gtpk
-          fydeOS_latest.gtpk
+          Design_history.gtpk
           

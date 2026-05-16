@@ -1,0 +1,29 @@
+title-text: ""
+desktop-image: "../壁纸.d/openfyde.png"
+desktop-image-scale-method: "stretch" desktop-image-h-align: "center"
+terminal-box: "../终端.d/终端-2x_*.png"
+terminal-border: "0" terminal-font: "Terminus (TTF) Regular 24"
+terminal-left: "50%-540" terminal-top: "50%-540" terminal-width: "1080" terminal-height: "1080"
+
++ vbox {
+	left = 50%-836 top = 100
+	+ label {height = 104 color = "black" font = "Roboto Regular 24" translate = "FyDrop"}
+	+ label {height = 108 color = "black" font = "Roboto Regular 24" translate = "My files"}
+	+ label {height = 108 color = "black" font = "Roboto Regular 24" translate = "Bug reports"}
+	+ label {height = 104 color = "white" font = "Roboto Regular 24" translate = "Storage"}
+	+ label {height = 104 color = "black" font = "Roboto Regular 24" translate = "Trash"}
+}
+
++ boot_menu {
+	left = 50%-960 top = 0% width = 1920 height = 1396
+	item_font = "MSYH Mono Regular 24"
+	selected_item_font = "MSYH Mono Regular 24"
+	item_color = "black"
+	selected_item_color = "black"
+	icon_height = 88 icon_width = 88
+	item_height = 88 item_padding = 0 item_icon_space = 0 item_spacing = 0
+	menu_pixmap_style = "菜单-2x.d/阳菜单_*.png"
+	selected_item_pixmap_style = "阳选择_*.png"
+	scrollbar = true scrollbar_thumb = "阳滚动条_*.png"
+	scrollbar_width = 8 scrollbar_right_pad = 4
+}

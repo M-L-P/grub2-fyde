@@ -1,0 +1,115 @@
+#==============================================================================
+#####----{功能}----
+#------------------------------------------------------------------------------
+function align_20 {
+	regexp --set=captured_three '^.{16}(....)' "$2"; eval captured_three=${captured_three};
+	if [ -z ${captured_three} ]; then
+		regexp --set=$1 '(^.{20}).*$' "$2                    ";
+	else regexp --set=$1 '(^.{16}).*$' "$2";
+		eval "$1"=\$$1"...)";
+	fi; unset captured_three;
+};
+#------------------------------------------------------------------------------
+function align_53 {
+	regexp --set=captured_three '^.{50}(...)' "$2"; eval captured_three=${captured_three};
+	if [ -z ${captured_three} ]; then
+		regexp --set=$1 '(^.{53}).*$' "$2                                                     ";
+	else regexp --set=$1 '(^.{50}).*$' "$2";
+		eval "$1"=\$$1"...";
+	fi; unset captured_three;
+};
+#------------------------------------------------------------------------------
+function list_view {
+	align_53 "$1" "$2"; align_20 "$3" "$4"; align_20 "$5" "$6"; align_20 "$7" "$8";
+};
+#------------------------------------------------------------------------------
+function add_back {
+	menuentry "" --class "${gate_dark}回" --hotkey "esc" {
+		set selected=文件;
+		regexp --set=1:address '^(.*)\/.*$' ${address}; regexp --set=1:menu_id '^.*\/(.*)$' ${address};
+		theme_main; configfile ${config_file};
+	};
+};
+#------------------------------------------------------------------------------
+function enum_device {
+	add_back; for device in (*); do
+		if [ -d "${device}" ] -a [ "${device}" != "(memdisk)" ] -a [ "${device}" != "(proc)" ]; then
+			probe --set=Name -l -q "${device}"; probe --set=Type -f -q "${device}";
+			stat --set=Size -m -q "${device}";
+			list_view "Name" "[${Name}]" "Size" "${Size}" "Type" "${Type}" "Date_modified" "${device}";
+			menuentry "${Size}${Date_modified}${Type}${Name}" "${device}" --class "${gate_dark}卷" {grubfm_main "${2}";};
+			unset_variables Name Size Type Date_modified;
+		fi;
+	done; unset device;
+};
+#------------------------------------------------------------------------------
+function enum_file {
+	for item in ${grub_path}/*; do regexp --set=1:Name '.*/(.*)$' "${item}";
+		if [ -d "${item}" ] -a [ "System Volume Information" != "${Name}" ]; then
+			regexp --set=1:first_character '(^.).*' "${Name}";
+			if [ '$' != "${first_character}" ] -a [ '.' != "${first_character}" ]; then
+				list_view "Name" "<${Name}>" "Size" "—" "Type" $"Folder" "Date_modified" "—";
+				menuentry "${Size}${Date_modified}${Type}${Name}" "${item}" --class "${gate_dark}夹" {grubfm_main "${2}";};
+				unset_variables Name Size Type Date_modified;
+			fi; unset first_character;
+		fi; unset Name;
+	done; unset item;
+	for item in ${grub_path}/*; do regexp --set=1:Name '.*/(.*)$' "${item}";
+		if [ -f "${item}" ]; then
+			regexp --set=1:first_character '(^.).*' "${Name}";
+			if [ '$' != "${first_character}" ] -a [ '.' != "${first_character}" ]; then
+				regexp --set=1:name_ext '^.*\.(.*$)' "${item}";
+				if [ -n "${name_ext}" ]; then tr --set=name_ext -U ${name_ext}; fi;
+				stat --set=Size -m -q "${item}";
+				if regexp '^[iI][mM][gG]$' "${name_ext}"; then icon="${gate_dark}包";
+				elif regexp '^[bB][iI][nN]$' "${name_ext}"; then icon="${gate_dark}包";
+				else icon="${gate_dark}档"; fi;
+				list_view "Name" "${Name}" "Size" "${Size}" "Type" "${name_ext} "$"file" "Date_modified" "—";
+				menuentry "${Size}${Date_modified}${Type}${Name}" "${item}" --class "${icon}" {grubfm_open "${2}";};
+				unset_variables Name Size Type Date_modified name_ext;
+			fi; unset_variables first_character icon;
+		fi; unset Name;
+	done; unset item;
+};
+#------------------------------------------------------------------------------
+### grubfm_main PATH
+function grubfm_main {
+	clear_menu;
+	if [ -z "${1}" ]; then enum_device;
+	else export grub_path="${1}"; set default=1;
+		tr --set=path_title "/" '>' ${grub_path};
+		menuentry "> ${path_title}" --class "${gate_dark}回" --hotkey "esc" {
+			if ! regexp --set=1:grub_path '(^.*)/.*$' "${grub_path}"; then unset grub_path; fi;
+			export grub_path; grubfm_main "${grub_path}";
+		}; enum_file;
+	fi;
+};
+#------------------------------------------------------------------------------
+function add_back_menu {
+	set default=1; menuentry "←" --class "${gate_dark}回" --hotkey "esc" {grubfm_main "${grub_path}";};
+};
+#------------------------------------------------------------------------------
+function img_or_bin {
+	clear_menu; add_back_menu;
+	menuentry $"Select the image file" --class "${gate_dark}包" {
+		set IMG_FILE=${grub_file}; FILE_Name=${Name}; IMG_DIR=${grub_path};
+		regexp --set=1:address '^(.*)\/.*$' ${address}; regexp --set=1:menu_id '^.*\/(.*)$' ${address};
+		theme_main; configfile ${config_file};
+	};
+	if [ "${grub_file}" == "${IMG_FILE}" ]; then
+		menuentry $"Cancel the image file" --class "${gate_dark}包" {
+			unset_variables IMG_FILE FILE_Name; grubfm_main "${IMG_DIR}";
+		};
+	fi;
+};
+#------------------------------------------------------------------------------
+### grubfm_open FILE
+function grubfm_open {
+	unset_variables Name name_ext; export grub_file="${1}";
+	regexp --set=1:Name '.*/(.*)$' "${grub_file}"; regexp --set=1:name_ext '^.*\.(.*$)' "${grub_file}";
+### 文件类型
+##### .img 文件 或 .bin 文件
+	if regexp '^[iI][mM][gG]$' "${name_ext}"; then img_or_bin;
+	elif regexp '^[bB][iI][nN]$' "${name_ext}"; then img_or_bin; fi;
+};
+#==============================================================================

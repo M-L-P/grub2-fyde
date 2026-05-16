@@ -26,7 +26,7 @@ git clone https://github.com/M-L-P/grub2.git;
 chmod -R 777 grub2;
 mv ./grub-mkimage ./grub2/grub2-fyde;
 cd grub2/grub2-fyde; ls -l;
-sudo bash ./grub2-fyde.sh;
+sudo bash ./grub2-fyde.bat;
 cd ../..; ls -l;
 ### 合成 initrd
 cd initrd_root; ls -l;
@@ -34,20 +34,18 @@ rm ./*/.folder; rm ./mnt/*/.folder;
 find * | cpio -o -H newc | gzip -9 > ../virtual_usb.cpio;
 cd ..; ls -l;
 ### 打包主题
-for branch in full latest; do
-	cd ./gtpk/fydeOS_${branch}.gtpk;
-	find ./* | cpio -o -H newc | xz -9 -e > ../../fydeOS_${branch}.gtpk;
-	cd ../../;
-done;
+cd ./gtpk/Design_history.gtpk;
+find ./* | cpio -o -H newc | xz -9 -e > ../../Design_history.gtpk;
+cd ../../;
 ### 归档文件
 cp ./grub2/grub2-fyde/grub2-fyde.xz ./;
 #cp ./virtual_usb.cpio ./cmdpath/experimental;
-for branch in full latest minimal; do
+for branch in full minimal; do
 	mkdir -p ${branch}/EFI/fyde;
 	cp ./grub2/grub2-fyde/grub2-fyde.efi ./${branch}/EFI/fyde;
 	cp -R ./cmdpath/* ./${branch}/EFI/fyde;
-	if [ -f ./fydeOS_${branch}.gtpk ]; then
-		cp ./fydeOS_${branch}.gtpk ./${branch}/EFI/fyde/experimental/grub2_theme_package_kit;
+	if [ "full" == "${branch}" ]; then
+		cp ./Design_history.gtpk ./${branch}/EFI/fyde/experimental/grub2_theme_package_kit;
 	fi;
 	zip -r grub2-fyde_${branch}.zip ./${branch};
 	ls -l ./${branch}/EFI/fyde; 

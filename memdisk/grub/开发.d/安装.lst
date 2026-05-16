@@ -1,0 +1,66 @@
+#==============================================================================
+#####----{功能}----
+#------------------------------------------------------------------------------
+function echo_img {
+	echo -e "\n	IMG_FILE=${IMG_FILE}\n	FILE_NAME=${FILE_NAME}\n	IMG_DIR=${IMG_DIR}\n	IMG_PART=${IMG_PART}\n";
+};
+#------------------------------------------------------------------------------
+function echo_var {
+	echo -e "\n	IMG_PATH=${IMG_PATH}\n	UUID_filesystem=${UUID_filesystem}\n	UUID_partition=${UUID_partition}\n";
+};
+#------------------------------------------------------------------------------
+function mis_img {
+	echo $"Not an image file of FydeOS!"; icon=失败; sleep 3; loopback -d loop;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{安装}----
+#------------------------------------------------------------------------------
+### 菜单
+	menu_config;
+#------------------------------------------------------------------------------
+### 变量
+	unset_variables name name_ext;
+	if [ "文件" == "${selected}" ]; then background_color "black"; fi;
+#------------------------------------------------------------------------------
+### 条目
+	if [ "/菜单/安装" == "${address}" ]; then add_parent "菜单";
+	else add_parent "隐藏"; fi;
+	add_cascade "文件0";
+	if [ "1" != "${gate_mount}" ]; then
+		menuentry $"Mount" --class "安装/挂载${icon}" {
+			regexp --set=1:IMG_PATH '^.*\)(.*$)' "${IMG_FILE}";
+			regexp --set=1:IMG_PART '(^\(.*[,].*\))/.*' "${IMG_FILE}";
+			loopback -d loop; loopback loop ${IMG_FILE};
+			set os_release=(loop,gpt3)/etc/os-release;
+			if [ -s ${os_release} ]; then ini_get --set=OS_ID ${os_release} ID;
+				if [ "FydeOS" == "${OS_ID}" ]; then
+					probe --set=UUID_filesystem -u ${IMG_PART};
+					probe --set=UUID_partition -g (loop,gpt3);
+					export gate_mount=1 IMG_NAME=${FILE_NAME};
+					unset icon;
+				else mis_img; fi;
+			else mis_img; fi;
+			unset_variables os_release OS_ID;
+			configfile ${config_file};
+		};
+	elif [ "1" == "${gate_mount}" ]; then
+		menuentry $"Unmount: "${IMG_NAME} --class "安装/卸载" {
+			loopback -d loop; gate_mount=0; configfile ${config_file};
+		};
+		menuentry $"Boot: "${IMG_NAME} --class "安装/启动" {
+			add_coming;
+#			echo -e " "$"Show information related to image files: "; echo_img;
+#			echo -e " "$"Show the passed variables: "; echo_var;
+#			echo -e "\n\n\n\n\n\n\n	"$"No (press [ESC] or [F4])""			"$"Yes (waiting for the countdown to end)""\n\n\n\n\n"
+#			if sleep -v -i 30; then
+#				linux (loop,gpt12)/syslinux/vmlinuz.A init=/sbin/init rootwait ro \
+#				noresume loglevel=7 audit=0 console=  i915.modeset=1 cros_efi \
+#				root=PARTUUID=${UUID_partition} \
+#				img_path=${IMG_PATH} filesystem_UUID=${UUID_filesystem};
+#				initrd ${dir_experimental}/virtual_usb.cpio;
+#			fi;
+		};
+	fi;
+#==============================================================================

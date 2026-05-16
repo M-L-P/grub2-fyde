@@ -1,0 +1,123 @@
+#==============================================================================
+#####----{图形界面函数}----
+#------------------------------------------------------------------------------
+function resolution_width {
+	videomode -l videomode_list; videomode -c resolution;
+	regexp --set=1:width '(^.*)[x].*$' ${resolution};
+};
+#------------------------------------------------------------------------------
+function map_gtpk {
+	for theme in $@; do
+		set dir_gtpk_${theme}=${dir_themes}/${theme}.gtpk;
+		ini_get --set=TR_${theme} ${dir_themes}/${theme}.gtpk/info.ini TR-${lang}:package_name;
+	done; unset theme;
+};
+#------------------------------------------------------------------------------
+function load_gtpk {
+### 映射内置主题包的解包路径；
+	map_gtpk "Poster" "openfyde_WP" "fydeOS_WP";	
+### 设定外置主题的上一个主题（最后一个内置主题）的行数；
+	set entry_gtpk=4; 
+### 映射外置主题包的解包路径；（外置主题包目录存在的情况下，当中的每个外置主题包的真实名称附带分支去映射其源文件的解包路径）
+	if [ -d "${dir_gtpk}" ]; then for item in ${dir_gtpk}/*.gtpk; do
+		if [ ! -e ${item} ]; then continue; fi;
+		increment entry_gtpk;
+		regexp --set=1:gtpk_filename '^.*\/(.*)\.gtpk$' "${item}";
+		if [ -d ${item} ]; then dir_gtpk_filename=${item};
+		elif [ -f ${item} ]; then
+			loopback ${gtpk_filename}.gtpk ${item};
+			set dir_gtpk_filename=(${gtpk_filename}.gtpk);
+		fi; unset gtpk_filename;
+		ini_get --set=gtpk_id ${dir_gtpk_filename}/info.ini TR-:package_name;
+		ini_get --set=TR_${gtpk_id} ${dir_gtpk_filename}/info.ini TR-${lang}:package_name;
+		set gtpk_id${entry_gtpk}=${gtpk_id}; dir_gtpk_${gtpk_id}=${dir_gtpk_filename};
+		unset_variables gtpk_id;
+	done; fi; unset_variables item entry_gtpk dir_gtpk_filename;
+};
+#------------------------------------------------------------------------------
+function latest_wallpaper {
+### 映射当前主题包的解包路径；
+	eval dir_gtpk_name="\$dir_gtpk_${GTPK_NAME}";
+### 获取当前主题包中最新壁纸对应的版本号；
+	ini_get --set=wallpaper_latest ${dir_gtpk_name}/info.ini ${THEME_COLOR}:wallpaper_latest;
+};
+#------------------------------------------------------------------------------
+function theme_main {
+### 映射主题色的后缀；
+	if [ "1" == "${gate_dark}" ]; then THEME_COLOR=Dark;
+	elif [ "0" == "${gate_dark}" ]; then THEME_COLOR=Light; fi;
+### 映射当前主题包的解包路径；
+	eval dir_gtpk_name="\$dir_gtpk_${GTPK_NAME}";
+### 查看当前主题包是否支持联动，并设其属性；
+	ini_get --set=automated_switching ${dir_gtpk_name}/info.ini Info:automated_switching;
+	eval automated_switching=${automated_switching};
+	if [ $"supported" == "${automated_switching}" ]; then wallpaper_polarity=${gate_dark};
+	elif [ $"unsupported" == "${automated_switching}" ]; then wallpaper_polarity=""; gate_schedule=0; fi;
+	unset automated_switching;
+### 输出主题；
+	export theme=${dir_gtpk_name}/${WALLPAPER_VERSION}-${SCALE_FACTOR}-${wallpaper_polarity}.txt;
+};
+#------------------------------------------------------------------------------
+function schedule_theme {
+### 刷新日期时间；
+	refresh_date;
+### 根据当前时间映射联动主题，破晓到黄昏期间主题色为阳，其余时间主题色为阴；
+	if [ "${NOW_HOUR}" -ge "${HOUR_DAWN}" ] -a [ "${NOW_HOUR}" -le "${HOUR_DUSK}" ]; then gate_dark=0;
+	else gate_dark=1; fi;
+### 保存主题色，输出主题；
+	save_grubenv gate_dark;
+};
+#------------------------------------------------------------------------------
+function auto_scale {
+	set number_scale=No.$1; SCALE_FACTOR=$2; save_grubenv number_scale SCALE_FACTOR;
+};
+#------------------------------------------------------------------------------
+function apply_theme {
+### 根据屏幕分辨率的情况自动缩放；
+	if [ "1" == "${gate_scale}" ]; then
+		if [ ${width} -lt 1536 ]; then auto_scale "2" "1x";
+		elif [ "${width}" -ge 1536 ] -a [ "${width}" -lt 2048 ]; then auto_scale "3" "1.5x";
+		elif [ "${width}" -ge 2048 ]; then auto_scale "4" "2x"; fi;
+	fi;
+### 根据定时及其开关状态进行联动或手动；
+	if [ "1" == "${gate_schedule}" ]; then schedule_theme; fi;
+### 根据主题包输出主题；
+	theme_main;
+};
+#------------------------------------------------------------------------------
+function theme_section {
+	if [ "实验性语言" == "$1" ]; then export theme=${dir_themes}/语言.gtpk/话语气泡-${SCALE_FACTOR}-${gate_dark}.txt;
+	else if [ "倒数" == "${menu_id}" ]; then
+			background_image --mode=normal ${dir_themes}/倒数.gtpk/${gate_dark}键盘-${SCALE_FACTOR}.png;
+		elif [ "文件" == "${menu_id}" ]; then background_color '#202124';
+		fi; export theme=${dir_themes}/${menu_id}.gtpk/${menu_id}-${SCALE_FACTOR}-${gate_dark}.txt;
+	fi;
+};
+#------------------------------------------------------------------------------
+function refresh_theme {
+	if [ "倒数" == "$1" ]; then background_image; apply_theme;
+	elif [ "语言" == "$1" ]; then apply_theme; fi;
+	unset parent_id;
+};
+#------------------------------------------------------------------------------
+function preview_theme {
+	set GTPK_NAME=$1; latest_wallpaper;
+	WALLPAPER_VERSION=${wallpaper_latest}; selected_gtpk=$2; number_wallpaper=3;
+};
+#==============================================================================
+
+#==============================================================================
+#####----{初始化}----
+#------------------------------------------------------------------------------
+### 缩写路径
+set dir_themes=${prefix}/主题.d; icondir=${dir_themes}/图标.d;
+set dir_gtpk=${dir_experimental}/grub2_theme_package_kit;
+### 图形效果
+set gfxmode=auto; gfxpayload=auto; terminal_output gfxterm;
+### 加载字体
+for font in Terminus_TTF_Regular Roboto_Regular MSYH_Mono_Regular; do for size in 12 18 24 36 48; do
+	loadfont ${font}_${size};
+done; done; unset_variables font size;
+### 应用主题
+resolution_width; load_gtpk; apply_theme;
+#==============================================================================
