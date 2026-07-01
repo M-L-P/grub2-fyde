@@ -65,25 +65,77 @@ Right click | <kbd>ESC</kbd>
 > [!CAUTION]
 > #### 🗂文件结构树状图🌳
 >
-> ```
-> grub2-fyde
-> └── [ESP]FAT32
->    └── /EFI
->        └── /fyde
->            ├── grub2-fyde.efi
->            ├── grub2-fyde.png
->            ├── grubenv
->            └── /experimental
->                ├── /grub2_theme_package_kit
->                │   ├── Design_history.gtpk
->                │   └── ${custom}.gtpk
->                ├── /APatch
->                │   ├── kernel_apatch_fydeOS_classic
->                │   ├── kernel_apatch_fydeOS_slim
->                │   ├── kernel_apatch_fydeOS_iris
->                │   └── kernel_apatch_fydeOS_apu
->                └── /KernelSU
->                    └── initrd_ksu_fydeOS/openfyde.cpio
+> ```mermaid
+>graph LR
+>    Root["[ESP] FAT32"]
+>    EFI系统目录["/EFI"]
+>    cmdpath["/fyde"]
+>    
+>    %% 主要文件
+>    EFI引导镜像["grub2-fyde.efi"]
+>    图标["grub2-fyde.png"]
+>    环境块["grubenv"]
+>    
+>    %% 实验性目录
+>    实验性目录["/experimental"]
+>    
+>    %% GRUB Theme Package Kit
+>    主题包目录["/grub2_theme_package_kit"]
+>    原创设计史主题包["Design_history.gtpk"]
+>    自定义的主题包["${custom}.gtpk"]
+>    
+>    %% APatch
+>    AP目录["/APatch"]
+>    经典版内核["kernel_apatch_fydeOS_classic"]
+>    能效版内核["kernel_apatch_fydeOS_slim"]
+>    现代版内核["kernel_apatch_fydeOS_iris"]
+>    AMD内核["kernel_apatch_fydeOS_apu"]
+>    
+>    %% KernelSU
+>    KSU目录["/KernelSU"]
+>    KSU_initrd["initrd_ksu_fydeOS.cpio"]
+>
+>    %% 连接关系
+>    Root --> EFI系统目录
+>    EFI系统目录 --> cmdpath
+>    
+>    cmdpath --> EFI引导镜像
+>    cmdpath --> 图标
+>    cmdpath --> 环境块
+>    cmdpath --> 实验性目录
+>    
+>    实验性目录 --> 主题包目录
+>    实验性目录 --> AP目录
+>    实验性目录 --> KSU目录
+>    
+>    主题包目录 --> 原创设计史主题包
+>    主题包目录 --> 自定义的主题包
+>    
+>    AP目录 --> 经典版内核
+>    AP目录 --> 能效版内核
+>    AP目录 --> 现代版内核
+>    AP目录 --> AMD内核
+>    
+>    KSU目录 --> KSU_initrd
+>    
+>    %% 按指定规则配色
+>    classDef 目录类 fill:#f5f5f5,stroke:#616161,stroke-width:2px;
+>    classDef efi文件 fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px;
+>    classDef 内核文件类 fill:#ffe0b2,stroke:#f57c00,stroke-width:2px;
+>    classDef cpio文件 fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
+>    classDef 环境块类 fill:#c8e6c9,stroke:#388e3c,stroke-width:2px;
+>    classDef png文件 fill:#bbdefb,stroke:#1976d2,stroke-width:2px;
+>    classDef gtpk文件 fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px;
+>    
+>    %% 节点绑定
+>    class Root,EFI系统目录,cmdpath,实验性目录,主题包目录,AP目录,KSU目录 目录类;
+>    class EFI引导镜像 efi文件;
+>    class 经典版内核,能效版内核,现代版内核,AMD内核 内核文件类;
+>    class KSU_initrd cpio文件;
+>    class 环境块 环境块类;
+>    class 图标 png文件;
+>    class 原创设计史主题包,自定义的主题包 gtpk文件;
+>
 >
 > ```
 
