@@ -1,3 +1,9 @@
+亲爱的朋友们：<br/>
+    我生病了。病去如抽丝，掉了几层皮。<br/>
+	暂停更新，等我好转一些。<br/>
+<br/>
+<br/>
+<br/>
 [grub2-brunch](https://github.com/M-L-P/grub2-brunch)|[grub2-fyde](https://github.com/M-L-P/grub2-fyde)|[grub2-androidx86](https://github.com/M-L-P/grub2-androidx86)
 -|-|-
 

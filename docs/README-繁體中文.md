@@ -1,3 +1,9 @@
+親愛的朋友們：<br/>
+    我生病了。病去如抽絲，掉了幾層皮。<br/>
+	暫停更新，等我好轉一些。<br/>
+<br/>
+<br/>
+<br/>
 [grub2-brunch](https://github.com/M-L-P/grub2-brunch)|[grub2-fyde](https://github.com/M-L-P/grub2-fyde)|[grub2-androidx86](https://github.com/M-L-P/grub2-androidx86)
 -|-|-
 
